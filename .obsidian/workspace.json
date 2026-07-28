@@ -185,6 +185,8 @@
   },
   "active": "078a40bdc3c80361",
   "lastOpenFiles": [
+    "Orchestrator_Prompt.txt",
+    "Mother",
     "Output Lessons/Simplifier l'écriture d'une racine carrée pour extraire les carrés parfaits_v_10.html",
     "validators/__pycache__/validate_lesson.cpython-312.pyc",
     "validators/__pycache__",
@@ -194,8 +196,6 @@
     "find_exact_html_match.py",
     "find_last_match.py",
     "fix_remaining_6.py",
-    "fix_all_latex.py",
-    "test_perfect_matches.py",
     "prompts/05_quality_engineer.md",
     "prompts/04_html_generator.md",
     "prompts/03_experience_architect.md",
