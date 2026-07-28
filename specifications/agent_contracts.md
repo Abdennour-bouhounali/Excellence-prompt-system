@@ -65,7 +65,7 @@ All pipeline agents MUST adhere to the following universal rules:
 - **Inputs**: `knowledge_graph.json`, `curriculum_rules.md`, `excellens_style_guide.md`.
 - **Outputs**: `content_spec.json`.
 - **Allowed Decisions**:
-  - Structuring the 7-stage Core Backbone (`activate_prior`, `discovery`, `formalization`, `guided_practice`, `misconception_repair`, `mastery`, `reflection`).
+  - Structuring the 8-stage Core Backbone (`activate_prior`, `discovery`, `formalization`, `guided_practice`, `misconception_repair`, `mastery`, `reflection`, `exam_test`).
   - Formulating narrative explanations, worked example steps, and French pedagogical voice.
   - Designing the 5-tier exercise taxonomy (L1: Recognition, L2: Transformation, L3: Application, L4: Brevet, L5: Transfer).
   - Writing scaffolded hints, detailed corrections, and diagnostic error notebook entries.

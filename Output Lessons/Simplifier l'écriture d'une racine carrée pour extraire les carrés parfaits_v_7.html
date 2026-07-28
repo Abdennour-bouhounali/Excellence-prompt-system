@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simplifier l'écriture d'une racine carrée | Excellens</title>
+
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #e0e7ff;
+      --secondary: #0284c7;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --success-light: #d1fae5;
+      --danger: #ef4444;
+      --danger-light: #fee2e2;
+      --warning: #f59e0b;
+      --warning-light: #fef3c7;
+      
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-sidebar: #ffffff;
+      
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      
+      --border-color: #e2e8f0;
+      --border-focus: #6366f1;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08);
+
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg-main: #0f172a;
+      --bg-card: #1e293b;
+      --bg-sidebar: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-light: #64748b;
+      --border-color: #334155;
+      --primary-light: rgba(79, 70, 229, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--border-focus);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+
+    [data-theme="dark"] .app-header {
+      background: rgba(30, 41, 59, 0.9);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .header-stats {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .stat-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      padding: 24px;
+      min-height: calc(100vh - 64px);
+    }
+
+    @media (max-width: 900px) {
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .app-sidebar {
+      position: sticky;
+      top: 84px;
+      max-height: calc(100vh - 104px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover:not(.locked) {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .nav-item.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .nav-item.completed .status-icon {
+      color: var(--success);
+    }
+
+    .nav-item.locked {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .status-icon {
+      font-size: 1rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #4f46e5 0%, #0284c7 100%);
+      color: white;
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-banner h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .hero-banner p {
+      opacity: 0.95;
+      font-size: 1.05rem;
+      max-width: 750px;
+    }
+
+    .lab-section {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .lab-section.locked {
+      opacity: 0.55;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+
+    .lab-section.locked::after {
+      content: "🔒 Complète l'étape précédente pour débloquer cette section";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(15,23,42,.45);
+      backdrop-filter: blur(4px);
+      border-radius: var(--radius-lg);
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 20px;
+      z-index: 10;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 16px;
+    }
+
+    .section-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .card {
+      background: var(--bg-main);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .math-input-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-main);
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-color);
+      font-size: 1.25rem;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+
+    .math-input-group:focus-within {
+      border-color: var(--primary);
+    }
+
+    .math-input {
+      width: 55px;
+      height: 42px;
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      color: var(--text-main);
+    }
+
+    .radical-wrapper {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .radical-symbol {
+      position: absolute;
+      left: 0;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .radical-content {
+      border-top: 2px solid var(--text-main);
+      padding-top: 2px;
+      margin-left: 2px;
+    }
+
+    .feedback-box {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      display: none;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .feedback-box.correct {
+      display: block;
+      background: var(--success-light);
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .feedback-box.incorrect {
+      display: block;
+      background: var(--danger-light);
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: #c7d2fe;
+    }
+
+    .continue-btn-container {
+      margin-top: 24px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .option-btn {
+      padding: 14px 18px;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .option-btn:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .option-btn.selected-correct {
+      border-color: var(--success);
+      background: var(--success-light);
+      color: #065f46;
+    }
+
+    .option-btn.selected-incorrect {
+      border-color: var(--danger);
+      background: var(--danger-light);
+      color: #991b1b;
+    }
+
+    .viz-container {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .timer-badge {
+      font-family: var(--font-mono);
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 1.2rem;
+      font-weight: 800;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <a href="#" class="brand-logo">
+      <span>Excellens</span>
+    </a>
+    <div class="header-stats">
+      <div class="stat-badge">
+        <span>⚡ XP:</span>
+        <span id="xp-counter">0</span>
+      </div>
+      <div class="stat-badge">
+        <span>🔥 Série:</span>
+        <span id="streak-counter">0</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" aria-label="Navigation des étapes">
+      <div class="sidebar-title">Parcours d'apprentissage</div>
+      <ul class="nav-list" id="nav-list">
+        <li>
+          <a class="nav-item active" data-stage="0" href="#stage-0">
+            <span class="status-icon">▶</span>
+            <span>1. Diagnostic des Prérequis</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item locked" data-stage="1" href="#stage-1">
+            <span class="status-icon">🔒</span>
+            <span>2. Découverte Intuitive</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item locked" data-stage="2" href="#stage-2">
+            <span class="status-icon">🔒</span>
+            <span>3. Formalisation & Règle</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item locked" data-stage="3" href="#stage-3">
+            <span class="status-icon">🔒</span>
+            <span>4. Pratique Guidée</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item locked" data-stage="4" href="#stage-4">
+            <span class="status-icon">🔒</span>
+            <span>5. Analyse des Erreurs</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item locked" data-stage="5" href="#stage-5">
+            <span class="status-icon">🔒</span>
+            <span>6. Entraînement & Maîtrise</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item locked" data-stage="6" href="#stage-6">
+            <span class="status-icon">🔒</span>
+            <span>7. Métacognition</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item locked" data-stage="7" href="#stage-7">
+            <span class="status-icon">🔒</span>
+            <span>8. Simulation Brevet Chrono</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <!-- Hero Banner -->
+      <section class="hero-banner">
+        <h1>Simplifier l'écriture d'une racine carrée</h1>
+        <p>Apprends à extraire les carrés parfaits sous le radical pour obtenir une écriture exacte et irréductible sous la forme $a$$\sqrt{b}$.</p>
+      </section>
+
+      <!-- Stage 0: Activate Prior -->
+      <section id="stage-0" class="lab-section" data-stage="0">
+        <div class="section-header">
+          <span class="section-badge">Étape 1</span>
+          <h2 class="section-title">Diagnostic des Prérequis (Carrés Parfaits)</h2>
+        </div>
+        <div class="card">
+          <p style="margin-bottom: 16px;">Avant de simplifier des racines carrées, révisons les <strong>carrés parfaits</strong> fondamentaux. Quel est le plus grand carré parfait qui divise $12$ ?</p>
+          <div class="options-grid" id="q-stage-0">
+            <button class="option-btn" onclick="checkQ0(2, this)">$2$</button>
+            <button class="option-btn" onclick="checkQ0(3, this)">$3$</button>
+            <button class="option-btn" onclick="checkQ0(4, this)">$4$ (car $2^2 = 4$)</button>
+            <button class="option-btn" onclick="checkQ0(6, this)">$6$</button>
+          </div>
+          <div id="fb-stage-0" class="feedback-box"></div>
+        </div>
+        <div class="continue-btn-container" id="cont-stage-0" style="display:none;">
+          <button class="btn" onclick="unlockNextStage(0)">➡ Continuer vers : Étape 2 — Découverte Intuitive</button>
+        </div>
+      </section>
+
+      <!-- Stage 1: Discovery -->
+      <section id="stage-1" class="lab-section locked" data-stage="1">
+        <div class="section-header">
+          <span class="section-badge">Étape 2</span>
+          <h2 class="section-title">Découverte Intuitive : Aire et Côté d'un Carré</h2>
+        </div>
+        <div class="card">
+          <p style="margin-bottom: 16px;">Imaginons un rectangle d'aire $12$ décomposé en un carré d'aire $4$ et un rectangle d'aire $3$. Extraire un carré parfait revient à chercher le côté d'une zone carrée connue !</p>
+          <div class="viz-container">
+            <svg width="320" height="160" viewBox="0 0 320 160" style="max-width:100%; height:auto;">
+              <!-- Square part (Area 4, side 2) -->
+              <rect x="20" y="20" width="120" height="120" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3" rx="8"/>
+              <text x="80" y="85" text-anchor="middle" font-weight="bold" fill="#4f46e5" font-size="16">Aire = 4</text>
+              <text x="80" y="110" text-anchor="middle" font-size="14" fill="#4338ca">(Côté = √4 = 2)</text>
+
+              <!-- Remaining part (Area 3) -->
+              <rect x="150" y="20" width="140" height="120" fill="#fef3c7" stroke="#f59e0b" stroke-width="3" rx="8"/>
+              <text x="220" y="85" text-anchor="middle" font-weight="bold" fill="#b45309" font-size="16">Facteur = 3</text>
+              <text x="220" y="110" text-anchor="middle" font-size="14" fill="#b45309">(Reste √3)</text>
+            </svg>
+            <p style="margin-top: 12px; font-weight: 700;">$$\sqrt{12}$$ = $\sqrt{4 \cdot 3}$ = $\sqrt{4}$ $\cdot$ $\sqrt{3}$ = $2$$\sqrt{3}$</p>
+          </div>
+          <p style="margin-top: 16px;">Testons cette intuition : quelle est la valeur simplifiée de $\sqrt{4 \cdot 5}$ ?</p>
+          <div style="margin-top: 12px;">
+            <div class="math-input-group">
+              <input type="text" id="disc-coeff" class="math-input" aria-label="Coefficient extérieur" inputmode="numeric" pattern="[0-9]*" placeholder="a">
+              <div class="radical-wrapper">
+                <span class="radical-symbol">√</span>
+                <span class="radical-content">
+                  <input type="text" id="disc-rad" class="math-input" aria-label="Nombre sous le radical" inputmode="numeric" pattern="[0-9]*" placeholder="b">
+                </span>
+              </div>
+            </div>
+            <button class="btn btn-secondary" style="margin-left: 12px;" onclick="checkDiscovery()">Vérifier</button>
+          </div>
+          <div id="fb-stage-1" class="feedback-box"></div>
+        </div>
+        <div class="continue-btn-container" id="cont-stage-1" style="display:none;">
+          <button class="btn" onclick="unlockNextStage(1)">➡ Continuer vers : Étape 3 — Formalisation & Règle</button>
+        </div>
+      </section>
+
+      <!-- Stage 2: Formalization -->
+      <section id="stage-2" class="lab-section locked" data-stage="2">
+        <div class="section-header">
+          <span class="section-badge">Étape 3</span>
+          <h2 class="section-title">Formalisation & Propriété Fondamentale</h2>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 12px;">Propriété d'extraction du radical</h3>
+          <p style="margin-bottom: 12px;">Pour tous nombres réels positifs $a$ et $b$ :</p>
+          <div style="background: var(--primary-light); padding: 16px; border-radius: var(--radius-md); text-align: center; margin-bottom: 16px;">
+            <p style="font-size: 1.3rem; font-weight: 800; color: var(--primary);">$$\sqrt{a^2 \cdot b}$$ = $a$$\sqrt{b}$</p>
+          </div>
+          <h4 style="margin-bottom: 8px;">Méthode en 3 étapes :</h4>
+          <ol style="margin-left: 20px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+            <li><strong>Chercher le plus grand carré parfait</strong> ($4, 9, 16, 25, 36, 49, 64, 81, 100$) qui divise le nombre sous la racine.</li>
+            <li><strong>Séparer la racine</strong> en utilisant la propriété $\sqrt{x \cdot y}$ = $\sqrt{x}$ $\cdot$ $\sqrt{y}$.</li>
+            <li><strong>Calculer la racine du carré parfait</strong> pour faire sortir sa valeur devant le radical.</li>
+          </ol>
+          <div style="background: white; padding: 16px; border-radius: var(--radius-md); border-left: 4px solid var(--primary);">
+            <p><strong>Exemples modèles :</strong></p>
+            <ul style="list-style: none; margin-top: 8px; display: flex; flex-direction: column; gap: 6px;">
+              <li>• $\sqrt{18}$ = $\sqrt{9 \cdot 2}$ = $\sqrt{9}$ $\cdot$ $\sqrt{2}$ = $3$$\sqrt{2}$</li>
+              <li>• $\sqrt{50}$ = $\sqrt{25 \cdot 2}$ = $\sqrt{25}$ $\cdot$ $\sqrt{2}$ = $5$$\sqrt{2}$</li>
+            </ul>
+          </div>
+        </div>
+        <div class="continue-btn-container">
+          <button class="btn" onclick="unlockNextStage(2)">➡ Continuer vers : Étape 4 — Pratique Guidée</button>
+        </div>
+      </section>
+
+      <!-- Stage 3: Guided Practice -->
+      <section id="stage-3" class="lab-section locked" data-stage="3">
+        <div class="section-header">
+          <span class="section-badge">Étape 4</span>
+          <h2 class="section-title">Pratique Guidée</h2>
+        </div>
+        <div class="card">
+          <p style="margin-bottom: 16px;">Complète les étapes pour simplifier $\sqrt{75}$ sous la forme $a$$\sqrt{b}$ :</p>
+          <p style="margin-bottom: 12px;">$$\sqrt{75}$$ = $\sqrt{25 \cdot 3}$ = $\sqrt{25}$ $\cdot$ $\sqrt{3}$</p>
+          <div style="margin-bottom: 16px;">
+            <label style="font-weight: 700; display: block; margin-bottom: 8px;">Résultat final $a$$\sqrt{b}$ :</label>
+            <div class="math-input-group">
+              <input type="text" id="guided-a" class="math-input" aria-label="Valeur de a" inputmode="numeric" pattern="[0-9]*" placeholder="a">
+              <div class="radical-wrapper">
+                <span class="radical-symbol">√</span>
+                <span class="radical-content">
+                  <input type="text" id="guided-b" class="math-input" aria-label="Valeur de b" inputmode="numeric" pattern="[0-9]*" placeholder="b">
+                </span>
+              </div>
+            </div>
+            <button class="btn btn-secondary" style="margin-left: 12px;" onclick="checkGuided()">Valider</button>
+          </div>
+          <div id="fb-stage-3" class="feedback-box"></div>
+        </div>
+        <div class="continue-btn-container" id="cont-stage-3" style="display:none;">
+          <button class="btn" onclick="unlockNextStage(3)">➡ Continuer vers : Étape 5 — Analyse des Erreurs</button>
+        </div>
+      </section>
+
+      <!-- Stage 4: Misconception Repair -->
+      <section id="stage-4" class="lab-section locked" data-stage="4">
+        <div class="section-header">
+          <span class="section-badge">Étape 5</span>
+          <h2 class="section-title">Analyse des Erreurs Fréquentes</h2>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--danger); margin-bottom: 12px;">⚠️ Piège classique #1 : La somme sous le radical</h3>
+          <p style="margin-bottom: 12px;">Est-il vrai que $\sqrt{9 + 16}$ = $\sqrt{9}$ + $\sqrt{16}$ ?</p>
+          <div class="options-grid" id="q-stage-4">
+            <button class="option-btn" onclick="checkQ4(false, this)">Vrai : on peut séparer les racines d'une somme</button>
+            <button class="option-btn" onclick="checkQ4(true, this)">Faux : $\sqrt{9+16}$ = $\sqrt{25}$ = $5$, alors que $\sqrt{9}$ + $\sqrt{16}$ = $3+4 = 7$</button>
+          </div>
+          <div id="fb-stage-4" class="feedback-box"></div>
+        </div>
+        <div class="card" style="margin-top: 16px;">
+          <h3 style="color: var(--warning); margin-bottom: 12px;">⚠️ Piège classique #2 : Ne pas choisir le plus grand carré parfait</h3>
+          <p>Pour $\sqrt{72}$, si on choisit $9$, on obtient $\sqrt{9 \cdot 8}$ = $3$$\sqrt{8}$. Mais $\sqrt{8}$ se simplifie encore ! En choisissant $36$, on obtient directement $6$$\sqrt{2}$.</p>
+        </div>
+        <div class="continue-btn-container" id="cont-stage-4" style="display:none;">
+          <button class="btn" onclick="unlockNextStage(4)">➡ Continuer vers : Étape 6 — Entraînement & Maîtrise</button>
+        </div>
+      </section>
+
+      <!-- Stage 5: Mastery Exercises -->
+      <section id="stage-5" class="lab-section locked" data-stage="5">
+        <div class="section-header">
+          <span class="section-badge">Étape 6</span>
+          <h2 class="section-title">Entraînement Progressif (5 Niveaux)</h2>
+        </div>
+
+        <!-- Exo L1 -->
+        <div class="card">
+          <span class="section-badge" style="background:#dbeafe; color:#1e40af;">Niveau 1 — Reconnaissance</span>
+          <p style="margin: 12px 0;">Laquelle de ces décompositions permet de simplifier $\sqrt{45}$ le plus rapidement ?</p>
+          <div class="options-grid" id="q-m-l1">
+            <button class="option-btn" onclick="checkML1(false, this)">$\sqrt{45}$ = $\sqrt{5 \cdot 9}$ avec $5$ carré parfait</button>
+            <button class="option-btn" onclick="checkML1(true, this)">$\sqrt{45}$ = $\sqrt{9 \cdot 5}$ avec $9 = 3^2$ carré parfait</button>
+            <button class="option-btn" onclick="checkML1(false, this)">$\sqrt{45}$ = $\sqrt{15 \cdot 3}$</button>
+          </div>
+          <div id="fb-m-l1" class="feedback-box"></div>
+        </div>
+
+        <!-- Exo L2 -->
+        <div class="card">
+          <span class="section-badge" style="background:#dbeafe; color:#1e40af;">Niveau 2 — Transformation</span>
+          <p style="margin: 12px 0;">Simplifier $\sqrt{32}$ sous la forme $a$$\sqrt{b}$ où $b$ est le plus petit possible :</p>
+          <div class="math-input-group">
+            <input type="text" id="ml2-a" class="math-input" aria-label="Valeur a pour radical 32" inputmode="numeric" pattern="[0-9]*" placeholder="a">
+            <div class="radical-wrapper">
+              <span class="radical-symbol">√</span>
+              <span class="radical-content">
+                <input type="text" id="ml2-b" class="math-input" aria-label="Valeur b pour radical 32" inputmode="numeric" pattern="[0-9]*" placeholder="b">
+              </span>
+            </div>
+          </div>
+          <button class="btn btn-secondary" style="margin-left: 12px;" onclick="checkML2()">Valider</button>
+          <div id="fb-m-l2" class="feedback-box"></div>
+        </div>
+
+        <!-- Exo L3 -->
+        <div class="card">
+          <span class="section-badge" style="background:#dbeafe; color:#1e40af;">Niveau 3 — Application Multi-Étapes</span>
+          <p style="margin: 12px 0;">Simplifier $4$$\sqrt{20}$ sous la forme $a$$\sqrt{5}$ :</p>
+          <div class="math-input-group">
+            <input type="text" id="ml3-a" class="math-input" aria-label="Valeur a pour 4 racine de 20" inputmode="numeric" pattern="[0-9]*" placeholder="a">
+            <div class="radical-wrapper">
+              <span class="radical-symbol">√</span>
+              <span class="radical-content">
+                <span style="font-weight:bold; font-family:var(--font-mono); margin-left:4px;">5</span>
+              </span>
+            </div>
+          </div>
+          <button class="btn btn-secondary" style="margin-left: 12px;" onclick="checkML3()">Valider</button>
+          <div id="fb-m-l3" class="feedback-box"></div>
+        </div>
+
+        <div class="continue-btn-container" id="cont-stage-5" style="display:none;">
+          <button class="btn" onclick="unlockNextStage(5)">➡ Continuer vers : Étape 7 — Métacognition</button>
+        </div>
+      </section>
+
+      <!-- Stage 6: Reflection -->
+      <section id="stage-6" class="lab-section locked" data-stage="6">
+        <div class="section-header">
+          <span class="section-badge">Étape 7</span>
+          <h2 class="section-title">Métacognition & Fiche Récapitulative</h2>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--primary); margin-bottom: 12px;">💡 Résumé Express en 5 secondes</h3>
+          <div style="background: var(--primary-light); padding: 16px; border-radius: var(--radius-md); font-weight: 700; color: var(--primary);">
+            Pour simplifier $\sqrt{N}$ : trouve le plus grand carré parfait $k^2$ qui divise $N$, décompose $N = k^2 \cdot r$, et écris $k$$\sqrt{r}$.
+          </div>
+        </div>
+        <div class="continue-btn-container">
+          <button class="btn" onclick="unlockNextStage(6)">➡ Continuer vers : Étape 8 — Simulation Brevet Chrono</button>
+        </div>
+      </section>
+
+      <!-- Stage 7: Chrono Exam Simulation -->
+      <section id="stage-7" class="lab-section locked" data-stage="7">
+        <div class="section-header">
+          <span class="section-badge">Étape 8</span>
+          <h2 class="section-title">Simulation Brevet Chronométrée</h2>
+        </div>
+        <div class="card">
+          <div class="timer-badge">⏳ Temps restant : <span id="exam-timer">03:00</span></div>
+          <p style="margin-bottom: 16px;"><strong>Sujet type Brevet :</strong> Écrire l'expression $A = $$\sqrt{48}$ - $2$$\sqrt{27}$ + $$\sqrt{12}$ sous la forme $a$$\sqrt{3}$ où $a$ est un entier relatif.</p>
+          <div style="margin-bottom: 16px;">
+            <div class="math-input-group">
+              <input type="text" id="exam-a" class="math-input" aria-label="Valeur de a pour examen brevet" inputmode="numeric" pattern="[-0-9]*" placeholder="a">
+              <div class="radical-wrapper">
+                <span class="radical-symbol">√</span>
+                <span class="radical-content">
+                  <span style="font-weight:bold; font-family:var(--font-mono); margin-left:4px;">3</span>
+                </span>
+              </div>
+            </div>
+            <button class="btn" style="margin-left: 12px;" onclick="submitExam()">Terminer l'Épreuve</button>
+          </div>
+          <div id="fb-stage-7" class="feedback-box"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const STORAGE_KEY = 'excellens_progress_v1';
+      
+      let state = {
+        platform: 'v1',
+        lessonId: 'simplifier-racines-carrees',
+        completedStages: [],
+        unlockedStages: [0],
+        xp: 0,
+        streak: 0,
+        errorNotebook: []
+      };
+
+      function loadState() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            state = Object.assign(state, JSON.parse(saved));
+          }
+        } catch (e) {
+          console.warn('Could not load state', e);
+        }
+        updateUIState();
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (e) {
+          console.warn('Could not save state', e);
+        }
+      }
+
+      function addXP(amount) {
+        state.xp += amount;
+        state.streak += 1;
+        document.getElementById('xp-counter').textContent = state.xp;
+        document.getElementById('streak-counter').textContent = state.streak;
+        saveState();
+      }
+
+      function renderAllMath(element = document.body) {
+        if (window.renderMathInElement) {
+          window.renderMathInElement(element, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false }
+            ],
+            throwOnError: false
+          });
+        }
+      }
+
+      window.unlockNextStage = function(currentStage) {
+        if (!state.completedStages.includes(currentStage)) {
+          state.completedStages.push(currentStage);
+        }
+        const nextStage = currentStage + 1;
+        if (nextStage <= 7 && !state.unlockedStages.includes(nextStage)) {
+          state.unlockedStages.push(nextStage);
+        }
+        saveState();
+        updateUIState();
+
+        const nextEl = document.getElementById(`stage-${nextStage}`);
+        if (nextEl) {
+          nextEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
+      function updateUIState() {
+        document.querySelectorAll('.nav-item').forEach(item => {
+          const stage = parseInt(item.getAttribute('data-stage'), 10);
+          const icon = item.querySelector('.status-icon');
+          
+          item.classList.remove('active', 'completed', 'locked');
+          if (state.completedStages.includes(stage)) {
+            item.classList.add('completed');
+            if (icon) icon.textContent = '✅';
+          } else if (state.unlockedStages.includes(stage)) {
+            if (icon) icon.textContent = '▶';
+          } else {
+            item.classList.add('locked');
+            if (icon) icon.textContent = '🔒';
+          }
+        });
+
+        document.querySelectorAll('.lab-section').forEach(sec => {
+          const stage = parseInt(sec.getAttribute('data-stage'), 10);
+          if (state.unlockedStages.includes(stage)) {
+            sec.classList.remove('locked');
+          } else {
+            sec.classList.add('locked');
+          }
+        });
+
+        document.getElementById('xp-counter').textContent = state.xp;
+        document.getElementById('streak-counter').textContent = state.streak;
+      }
+
+      window.checkQ0 = function(val, btn) {
+        const fb = document.getElementById('fb-stage-0');
+        const options = document.querySelectorAll('#q-stage-0 .option-btn');
+        options.forEach(b => b.classList.remove('selected-correct', 'selected-incorrect'));
+
+        if (val === 4) {
+          btn.classList.add('selected-correct');
+          fb.className = 'feedback-box correct';
+          fb.innerHTML = '<strong>Bravo !</strong> $4$ est bien un carré parfait ($2^2 = 4$) qui divise $12$ ($12 = 4 \cdot 3$).';
+          addXP(10);
+          document.getElementById('cont-stage-0').style.display = 'flex';
+        } else {
+          btn.classList.add('selected-incorrect');
+          fb.className = 'feedback-box incorrect';
+          fb.innerHTML = '<strong>Indice :</strong> Cherche un nombre égal à un entier au carré ($1, 4, 9, 16...$) qui divise $12$.';
+          document.getElementById('cont-stage-0').style.display = 'flex';
+        }
+        renderAllMath(fb);
+      };
+
+      window.checkDiscovery = function() {
+        const coeff = parseInt(document.getElementById('disc-coeff').value, 10);
+        const rad = parseInt(document.getElementById('disc-rad').value, 10);
+        const fb = document.getElementById('fb-stage-1');
+
+        if (coeff === 2 && rad === 5) {
+          fb.className = 'feedback-box correct';
+          fb.innerHTML = '<strong>Excellente intuition !</strong> $\sqrt{4 \cdot 5}$ = $\sqrt{4}$ $\cdot$ $\sqrt{5}$ = $2$$\sqrt{5}$.';
+          addXP(15);
+          document.getElementById('cont-stage-1').style.display = 'flex';
+        } else {
+          fb.className = 'feedback-box incorrect';
+          fb.innerHTML = '<strong>Rappel :</strong> $\sqrt{4}$ = $2$, donc $\sqrt{4 \cdot 5}$ = $2$$\sqrt{5}$.';
+          document.getElementById('cont-stage-1').style.display = 'flex';
+        }
+        renderAllMath(fb);
+      };
+
+      window.checkGuided = function() {
+        const a = parseInt(document.getElementById('guided-a').value, 10);
+        const b = parseInt(document.getElementById('guided-b').value, 10);
+        const fb = document.getElementById('fb-stage-3');
+
+        if (a === 5 && b === 3) {
+          fb.className = 'feedback-box correct';
+          fb.innerHTML = '<strong>Parfait !</strong> $\sqrt{75}$ = $\sqrt{25 \cdot 3}$ = $5$$\sqrt{3}$.';
+          addXP(20);
+          document.getElementById('cont-stage-3').style.display = 'flex';
+        } else {
+          fb.className = 'feedback-box incorrect';
+          fb.innerHTML = '<strong>Attention :</strong> $\sqrt{25}$ = $5$, il reste $3$ sous la racine.';
+          document.getElementById('cont-stage-3').style.display = 'flex';
+        }
+        renderAllMath(fb);
+      };
+
+      window.checkQ4 = function(isCorrect, btn) {
+        const fb = document.getElementById('fb-stage-4');
+        const options = document.querySelectorAll('#q-stage-4 .option-btn');
+        options.forEach(b => b.classList.remove('selected-correct', 'selected-incorrect'));
+
+        if (isCorrect) {
+          btn.classList.add('selected-correct');
+          fb.className = 'feedback-box correct';
+          fb.innerHTML = '<strong>Exact !</strong> La racine d'une somme n'est JAMAIS égale à la somme des racines : $\sqrt{a+b}$ $\neq$ $\sqrt{a}$ + $\sqrt{b}$.';
+          addXP(15);
+          document.getElementById('cont-stage-4').style.display = 'flex';
+        } else {
+          btn.classList.add('selected-incorrect');
+          fb.className = 'feedback-box incorrect';
+          fb.innerHTML = '<strong>Erreur classique :</strong> Calcule d'abord $9+16=25$, puis $\sqrt{25}=5$. Comparé à $3+4=7$, les deux résultats sont différents !';
+          document.getElementById('cont-stage-4').style.display = 'flex';
+        }
+        renderAllMath(fb);
+      };
+
+      window.checkML1 = function(isCorrect, btn) {
+        const fb = document.getElementById('fb-m-l1');
+        const options = document.querySelectorAll('#q-m-l1 .option-btn');
+        options.forEach(b => b.classList.remove('selected-correct', 'selected-incorrect'));
+
+        if (isCorrect) {
+          btn.classList.add('selected-correct');
+          fb.className = 'feedback-box correct';
+          fb.innerHTML = '<strong>Correct !</strong> $9$ est le carré parfait de $3$, donc $\sqrt{45}$ = $\sqrt{9 \cdot 5}$ = $3$$\sqrt{5}$.';
+          addXP(15);
+          checkAllMasteryDone();
+        } else {
+          btn.classList.add('selected-incorrect');
+          fb.className = 'feedback-box incorrect';
+          fb.innerHTML = '<strong>Indice :</strong> Cherche le facteur qui est égal à un entier au carré.';
+        }
+        renderAllMath(fb);
+      };
+
+      window.checkML2 = function() {
+        const a = parseInt(document.getElementById('ml2-a').value, 10);
+        const b = parseInt(document.getElementById('ml2-b').value, 10);
+        const fb = document.getElementById('fb-m-l2');
+
+        if (a === 4 && b === 2) {
+          fb.className = 'feedback-box correct';
+          fb.innerHTML = '<strong>Très bien !</strong> $\sqrt{32}$ = $\sqrt{16 \cdot 2}$ = $4$$\sqrt{2}$.';
+          addXP(20);
+          checkAllMasteryDone();
+        } else {
+          fb.className = 'feedback-box incorrect';
+          fb.innerHTML = '<strong>Indice :</strong> $32 = 16 \cdot 2$ et $\sqrt{16} = 4$.';
+        }
+        renderAllMath(fb);
+      };
+
+      window.checkML3 = function() {
+        const a = parseInt(document.getElementById('ml3-a').value, 10);
+        const fb = document.getElementById('fb-m-l3');
+
+        if (a === 8) {
+          fb.className = 'feedback-box correct';
+          fb.innerHTML = '<strong>Brillant !</strong> $4$$\sqrt{20}$ = $4 \cdot $$\sqrt{4 \cdot 5}$ = $4 \cdot 2$$\sqrt{5}$ = $8$$\sqrt{5}$.';
+          addXP(25);
+          checkAllMasteryDone();
+        } else {
+          fb.className = 'feedback-box incorrect';
+          fb.innerHTML = '<strong>Étape par étape :</strong> $\sqrt{20}$ = $2$$\sqrt{5}$, donc $4 \cdot 2$$\sqrt{5}$ = $8$$\sqrt{5}$.';
+        }
+        renderAllMath(fb);
+      };
+
+      function checkAllMasteryDone() {
+        document.getElementById('cont-stage-5').style.display = 'flex';
+      }
+
+      let examTimeLeft = 180;
+      let timerInterval = null;
+
+      function startExamTimer() {
+        const timerEl = document.getElementById('exam-timer');
+        timerInterval = setInterval(() => {
+          if (examTimeLeft <= 0) {
+            clearInterval(timerInterval);
+            submitExam();
+          } else {
+            examTimeLeft--;
+            const mins = String(Math.floor(examTimeLeft / 60)).padStart(2, '0');
+            const secs = String(examTimeLeft % 60).padStart(2, '0');
+            if (timerEl) timerEl.textContent = `${mins}:${secs}`;
+          }
+        }, 1000);
+      }
+
+      window.submitExam = function() {
+        if (timerInterval) clearInterval(timerInterval);
+        const a = parseInt(document.getElementById('exam-a').value, 10);
+        const fb = document.getElementById('fb-stage-7');
+
+        if (a === 0) {
+          fb.className = 'feedback-box correct';
+          fb.innerHTML = '<strong>Félicitations Épique !</strong> $A = 4$$\sqrt{3}$ - $6$$\sqrt{3}$ + $2$$\sqrt{3}$ = $0$$\sqrt{3}$ = $0$. Tu as réussi la simulation Brevet !';
+          addXP(50);
+          unlockNextStage(7);
+        } else {
+          fb.className = 'feedback-box incorrect';
+          fb.innerHTML = '<strong>Détail de la correction Brevet :</strong><br>• $\sqrt{48}$ = $\sqrt{16 \cdot 3}$ = $4$$\sqrt{3}$<br>• $2$$\sqrt{27}$ = $2 \cdot 3$$\sqrt{3}$ = $6$$\sqrt{3}$<br>• $\sqrt{12}$ = $2$$\sqrt{3}$<br>• $A = (4 - 6 + 2)$$\sqrt{3}$ = $0$$\sqrt{3}$ = $0$.';
+          unlockNextStage(7);
+        }
+        renderAllMath(fb);
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        loadState();
+        renderAllMath();
+        startExamTimer();
+      });
+    })();
+  </script>
+</body>
+</html>

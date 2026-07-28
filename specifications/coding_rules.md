@@ -1,6 +1,6 @@
 # Excellens Coding & Software Architecture Rules (`coding_rules.md`)
 
-This specification defines the frontend architecture, JavaScript state management, DOM performance rules, and HTML/CSS coding standards for Excellens web applications.
+This specification defines the frontend architecture, JavaScript state management (`excellens_progress_v1`), DOM performance rules, and HTML/CSS coding standards for Excellens web applications.
 
 ---
 
@@ -17,7 +17,7 @@ This specification defines the frontend architecture, JavaScript state managemen
 
 ---
 
-## 2. JavaScript State Engine & Storage Architecture
+## 2. JavaScript State Engine & Storage Architecture (`excellens_progress_v1`)
 
 1. **Encapsulated Scope**: Wrap all application logic in an Immediately Invoked Function Expression (IIFE) to avoid global namespace pollution:
    ```javascript
@@ -27,14 +27,24 @@ This specification defines the frontend architecture, JavaScript state managemen
    })();
    ```
 
-2. **State Management Protocol**:
-   - Maintain a single reactive `state` object holding `unlockedStages` (initially `[0]`), `completedStages`, XP, streak counters, error log entries, and exam state.
-   - Persist state to `localStorage` under a unique key (`excellens_[topic_slug]_state`).
-   - Wrap `localStorage` calls in `try...catch` blocks to prevent crashes in restricted browsing contexts.
+2. **SaaS Platform State Management**:
+   - Maintain state under key `excellens_progress_v1`:
+     ```javascript
+     const STORAGE_KEY = 'excellens_progress_v1';
+     let state = {
+       platform: 'v1',
+       lessonId: 'simplifier-racines-carrees',
+       completedStages: [],
+       unlockedStages: [0],
+       xp: 0,
+       streak: 0,
+       errorNotebook: []
+     };
+     ```
+   - Wrap `localStorage` read/write calls in `try...catch` blocks to prevent crashes in restricted browsing contexts.
 
 3. **Dynamic SVG Rendering**:
    - Interactive graphics must be rendered dynamically using `document.createElementNS('http://www.w3.org/2000/svg', tag)`.
-   - Update graphics responsively based on viewport bounds and scale coordinates mathematically.
 
 4. **KaTeX Compilation Helper & Dynamic LaTeX Rendering**:
    - Provide a safe `renderAllMath(element = document.body)` helper function:
@@ -51,19 +61,19 @@ This specification defines the frontend architecture, JavaScript state managemen
        }
      }
      ```
-   - **Timing & Execution Lifecycle**: Never use `onload` on `<script defer src=".../auto-render.min.js">` tag. Always invoke `renderAllMath(document.body)` inside `DOMContentLoaded`.
+   - Trigger `renderAllMath(document.body)` on `DOMContentLoaded` and after any dynamic DOM modification.
 
-5. **Dynamic Sidebar Active, 3-State Icon & Lock Progression Management**:
-   - **IntersectionObserver Active Tracking**: Use an `IntersectionObserver` to monitor `.lab-section` visibility. Dynamically assign `.active` ONLY to the navigation item matching the currently visible section in the viewport.
-   - **3-State Sidebar Progression**: Maintain explicit CSS and JS rendering for 3 step states:
-     - `.nav-item.locked .status-icon`: Displays `🔒` with amber styling (`color: var(--amber-warning)`).
-     - `.nav-item.active .status-icon`: Displays `▶` with primary accent highlight border (`border-left: 3px solid var(--violet-accent)`).
-     - `.nav-item.completed .status-icon`: Displays `✅` with green styling (`color: var(--emerald-positive)`). Once a step is completed, its sidebar icon stays green permanently.
+5. **Dynamic Sidebar Active, 3-State Icon & Lock Progression**:
+   - Use `IntersectionObserver` to dynamically toggle `.active` ONLY on the navigation item matching the section visible in the viewport.
+   - Maintain 3 step states:
+     - `.nav-item.locked .status-icon`: Displays `🔒` (`color: var(--amber-warning)`).
+     - `.nav-item.active .status-icon`: Displays `▶` and highlight border.
+     - `.nav-item.completed .status-icon`: Displays `✅` (`color: var(--emerald-positive)`).
 
-6. **Automatic Unlocking & Non-Blocking Progression Protocol**:
-   - **Case A (Evaluated - Correct Answer)**: Automatically mark current step completed (`completedStages.push(curr)`), icon -> green `✅`, unlock next stage (`unlockedStages.push(next)`), update UI, perform smooth scroll (`nextElement.scrollIntoView({ behavior: 'smooth' })`), and activate next step. No extra click required.
-   - **Case B (Evaluated - Incorrect Answer)**: Display corrective feedback AND immediately reveal a Continue button (`➡ Continuer vers : Étape X — [Title]`). Clicking unlocks next stage, smooth scrolls, and updates sidebar active state. Student is never blocked.
-   - **Case C (Informational Step)**: Render a navigation button at bottom (`➡ Continuer vers : Étape suivante — [Title]`). Clicking marks current step completed (icon -> ✅), unlocks next stage, smooth scrolls, and updates sidebar active state.
+6. **Non-Blocking Progression**:
+   - **Case A (Correct Answer)**: Auto-mark completed (icon -> green ✅), unlock next stage, smooth scroll (`nextElement.scrollIntoView({ behavior: 'smooth' })`).
+   - **Case B (Incorrect Answer)**: Display corrective feedback AND immediately reveal Continue button (`➡ Continuer vers : Étape X`). Clicking unlocks next stage, smooth scrolls, and updates sidebar active state.
+   - **Case C (Informational Step)**: Render bottom navigation button (`➡ Continuer vers : Étape suivante`).
 
 ---
 
@@ -71,9 +81,8 @@ This specification defines the frontend architecture, JavaScript state managemen
 
 1. **Box Model Reset**: Apply `* { box-sizing: border-box; }` universally.
 2. **CSS Variables First**: Every color, font, border radius, spacing unit, and shadow MUST use defined `--var` custom properties.
-3. **Semantic HTML (No Raw Markdown)**: Raw Markdown syntax (`**bold**`, `*italic*`, `_text_`) MUST NEVER exist in the generated HTML source or JS innerHTML templates. Convert all emphasis into semantic HTML tags (`<strong>`, `<em>`).
-4. **Smooth Theme Transitions**: Include `transition: background-color 0.3s ease, color 0.3s ease;` on core layout elements.
-5. **Locked Section Overlay**: Implement `.lab-section.locked` with:
+3. **Semantic HTML (Zero Raw Markdown)**: Raw Markdown syntax (`**bold**`, `*italic*`) MUST NEVER exist in output HTML or JS template strings. Convert emphasis to `<strong>`, `<em>`.
+4. **Locked Section Overlay**: Enforce `.lab-section.locked` with:
    ```css
    .lab-section.locked {
      position: relative;
@@ -98,8 +107,8 @@ This specification defines the frontend architecture, JavaScript state managemen
      z-index: 10;
    }
    ```
-6. **Bounded Sidebar Container**:
-   - The navigation sidebar MUST enforce viewport-constrained max height and internal vertical scrolling (`position: sticky; top: 84px; max-height: calc(100vh - 104px); overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth;`).
+5. **Bounded Sidebar Container**:
+   - Sidebar MUST enforce viewport-constrained max height and internal vertical scrolling (`position: sticky; top: 84px; max-height: calc(100vh - 104px); overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth;`).
 
 ---
 
