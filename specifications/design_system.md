@@ -102,19 +102,14 @@ All styling must be driven by CSS Custom Properties attached to `:root` and over
 - **Sticky Topbar Header**: `position: sticky; top: 0; z-index: 100`, glassmorphic backdrop filter (`backdrop-filter: blur(16px)`). Holds brand logo, streak badge, XP display, lesson progress bar, theme toggle.
 - **Hero Header**: High-impact header section containing breadcrumbs, kicker tag, main title, overview metadata, and initial challenge card.
 - **Two-Column Main Layout**:
-  - `sidebar`: `position: sticky; top: 84px`, 260px fixed width, bounded height (`max-height: calc(100vh - 104px)`), internal vertical scroll area (`overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth;`), rendering section navigation links with explicit status icons (`🔓`/`🔒`). The sidebar must never expand infinitely or push page layout, ensuring full accessibility across 20+ lesson sections.
+  - `sidebar`: `position: sticky; top: 84px`, 260px fixed width, bounded height (`max-height: calc(100vh - 104px)`), internal vertical scroll area (`overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth;`), rendering section navigation links with status icons (`🔓`/`🔒`). The sidebar must never expand infinitely or push page layout, ensuring full accessibility across 20+ lesson sections.
   - `main`: Fluid flexible column (`minmax(0, 1fr)`) containing sequential `.lab-section` modules.
 
 ---
 
 ## 4. UI Component Primitives
 
-1. **`.sidebar` & `.sidebar-nav`**: Navigation container with sticky positioning (`top: 84px`), fixed width (`260px`), viewport-constrained max height (`max-height: calc(100vh - 104px)`), and internal vertical scrolling (`overflow-y: auto; scroll-behavior: smooth`).
-   - **Lock Icon Color States**:
-     - `.locked .nav-icon`: Yellow/amber color (`var(--amber-warning)`, `#d97706`) with `🔒` icon indicating locked state.
-     - `.unlocked .nav-icon`: Green color (`var(--emerald-positive)`, `#10b981`) with `🔓` icon indicating unlocked, accessible state. Dynamic JS state engine updates classes on section progression.
-   - **Active Item Viewport Tracking**:
-     - `.nav-item.active`: Highlighted state reflecting the currently visible section in the viewport. JS scroll observer (`IntersectionObserver`) dynamically moves `.active` to the visible section and removes it from `stage-0` when scrolled past.
+1. **`.sidebar` & `.sidebar-nav`**: Navigation container with sticky positioning (`top: 84px`), fixed width (`260px`), viewport-constrained max height (`max-height: calc(100vh - 104px)`), and internal vertical scrolling (`overflow-y: auto; scroll-behavior: smooth`) so navigation remains permanently accessible regardless of lesson section count.
 2. **`.lab-section`**: Main content section container with smooth lock overlay (`.lab-section.locked`).
 3. **`.discovery-panel`**: Interactive experimentation container housing dynamic equation displays, range sliders, and prediction action controls.
 4. **`.quiz-card` & `.exercise-card`**: Input/QCM option card containers featuring feedback boxes (`.feedback-box.good`, `.feedback-box.bad`, `.feedback-box.info`).

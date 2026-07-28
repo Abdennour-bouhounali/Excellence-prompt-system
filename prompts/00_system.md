@@ -47,7 +47,7 @@ Orchestrate the multi-agent pipeline (`01_lesson_designer` ➔ `02_html_generato
 4. Validate `lesson_spec.json` against `specifications/output_schema.md`.
 5. Pass valid `lesson_spec.json` to `02_html_generator.md` to produce presentation design decisions (`design_decisions.json`) and raw HTML (`lesson.html`).
 6. Pass raw `lesson.html` and specifications to `03_reviewer.md` to trigger quality auditing (`review_report.json`), enforce mandatory 100% LaTeX syntax & rendering compilation verification, and output `final_lesson.html`.
-7. Ensure delivery of `final_lesson.html` is strictly blocked until `03_reviewer.md` confirms full LaTeX compilation success, HTML markdown conversion (zero raw `**` markers), green unlocked sidebar states, scroll-tracked active navigation, and non-blocking exercise progression.
+7. Ensure delivery of `final_lesson.html` is strictly blocked until `03_reviewer.md` confirms full LaTeX compilation success and scrollable sidebar compliance.
 8. Return `final_lesson.html` to the system output.
 
 ---
@@ -70,17 +70,16 @@ Orchestrate the multi-agent pipeline (`01_lesson_designer` ➔ `02_html_generato
 ├─────────────────────────────────────────────────────────────────────────┤
 │ STEP 2: STAGE 1 EXECUTION (LESSON DESIGN)                               │
 │ • Delegate payload to 01_lesson_designer.md.                            │
-│ • Receive lesson_spec.json (with non-blocking practice & diagnostic).   │
+│ • Receive lesson_spec.json.                                             │
 │ • Audit lesson_spec.json against specifications/output_schema.md.       │
 ├─────────────────────────────────────────────────────────────────────────┤
 │ STEP 3: STAGE 2 EXECUTION (HTML GENERATION)                             │
 │ • Delegate lesson_spec.json to 02_html_generator.md.                    │
-│ • Receive design_decisions.json and lesson.html (with clean HTML        │
-│   formatting, green unlocked sidebar icons, dynamic scroll observer).   │
+│ • Receive design_decisions.json and lesson.html (with scrollable nav). │
 ├─────────────────────────────────────────────────────────────────────────┤
 │ STEP 4: STAGE 3 EXECUTION (REVIEW & REFINEMENT)                         │
 │ • Delegate lesson.html + lesson_spec.json to 03_reviewer.md.            │
-│ • Enforce mandatory LaTeX, raw markdown, sidebar state & QA audits.     │
+│ • Enforce mandatory LaTeX syntax & rendering compilation audit.         │
 │ • Receive review_report.json and final_lesson.html.                     │
 ├─────────────────────────────────────────────────────────────────────────┤
 │ STEP 5: PIPELINE CONCLUSION                                             │
@@ -95,10 +94,6 @@ Orchestrate the multi-agent pipeline (`01_lesson_designer` ➔ `02_html_generato
 - [ ] Are all user input parameters present and populated?
 - [ ] Was `lesson_spec.json` verified against schema prior to HTML generation?
 - [ ] Did `02_html_generator` emit both `design_decisions.json` and `lesson.html` with bounded scrollable navigation?
-- [ ] Are all markdown syntax elements (`**text**`) properly converted to valid HTML tags (`<strong>text</strong>`) without raw markdown markers in the output?
-- [ ] Do sidebar lock icons visually transition from yellow/orange (`🔒`) when locked to green (`🔓`) when unlocked?
-- [ ] Does sidebar navigation dynamically track the active viewport section using scroll detection (removing `.active` from stage 0 when leaving)?
-- [ ] Do exercise attempts provide feedback/explanations and unlock the next stage regardless of correctness (never blocking progression)?
 - [ ] Did `03_reviewer` verify that 100% of LaTeX mathematical expressions compile cleanly without rendering errors or raw code visible?
 - [ ] Did `03_reviewer` generate an explicit `review_report.json` prior to final emission?
 - [ ] Is `final_lesson.html` a standalone single file requiring zero extra local files?
@@ -109,7 +104,7 @@ Orchestrate the multi-agent pipeline (`01_lesson_designer` ➔ `02_html_generato
 1. The pipeline executes sequentially without skipping prompts or responsibilities.
 2. No prompt acts outside its strict scope boundary.
 3. The final output is valid production-ready HTML adhering to all Excellens specifications.
-4. Mandatory gatekeeping: Output delivery is strictly blocked until all LaTeX mathematical expressions compile successfully, HTML formatting is free of raw markdown syntax, sidebar lock/active states render accurately, and non-blocking exercise progression is verified.
+4. Mandatory gatekeeping: Output delivery is strictly blocked until all LaTeX mathematical expressions compile successfully and layout constraints pass validation.
 
 ---
 

@@ -38,21 +38,18 @@ Evaluate `lesson.html` across seven critical audit dimensions:
 1. **Pedagogical Fidelity**: Verify all stages, questions, worked examples, Feynman prompts, and exam questions from `lesson_spec.json` are present and accurately implemented.
 2. **WCAG 2.1 AA Accessibility**: Audit color contrast ratios, focus visible indicators (`:focus-visible`), touch targets (≥44px), ARIA live regions (`aria-live="polite"`), screen reader landmark tags, and `prefers-reduced-motion` fallbacks.
 3. **JavaScript Robustness**: Check for syntax errors, unhandled exceptions in `localStorage`, `setInterval` memory leaks, event listener duplication, and KaTeX `renderMath` initialization crashes.
-4. **CSS & Visual Design System Consistency**: Ensure all color tokens use defined `--var` properties across both light and dark themes. Verify bounded internal scrolling sidebar navigation (`max-height: calc(100vh - 104px); overflow-y: auto;`), explicit yellow locked (`🔒`) vs green unlocked (`🔓`) nav icon states, dynamic scroll-based `.active` section tracking, and responsive grid behavior on mobile breakpoints.
+4. **CSS & Visual Design System Consistency**: Ensure all color tokens use defined `--var` properties across both light and dark themes. Verify bounded internal scrolling sidebar navigation (`max-height: calc(100vh - 104px); overflow-y: auto;`) and responsive grid behavior on mobile breakpoints.
 5. **Mandatory LaTeX Syntax & Rendering Validation**: Audit every mathematical expression to guarantee 100% compilation accuracy:
    - **Syntax Validation**: Verify every `$ ... $` inline and `$$ ... $$` display block expression. Ensure no unmatched delimiters, broken commands, or invalid KaTeX syntax exist.
    - **Rendering Validation**: Verify that KaTeX compiles and renders all fractions, roots, powers, matrices, inequalities, and Greek symbols cleanly, ensuring zero raw LaTeX code is visible to students.
    - **Correction Process**: If any LaTeX error is detected: 1) Identify the problematic expression location, 2) Fix the syntax or delimiter mismatch, 3) Re-run compilation validation, 4) Block final approval until 100% of expressions compile flawlessly.
-6. **Markdown Emphasis Syntax Audit**: Scan HTML content text for unparsed markdown syntax (e.g. `**bold**`, `*italic*`). Ensure 100% conversion to HTML elements (`<strong>`, `<em>`). Auto-convert any lingering raw markdown markers before emission.
-7. **Non-Blocking Progression Audit**: Audit exercise event handlers. Verify that any student attempt unlocks the next stage (`student_attempted ➔ unlock_next_stage()`) with feedback, preventing students from becoming permanently blocked on wrong answers.
-8. **SEO & Structured Data**: Confirm Open Graph tags, canonical URL, page title, meta description, and Schema.org `LearningResource` JSON-LD data are complete.
-9. **Performance & Print Support**: Check initial DOM render speed and print stylesheet overrides.
+6. **SEO & Structured Data**: Confirm Open Graph tags, canonical URL, page title, meta description, and Schema.org `LearningResource` JSON-LD data are complete.
+7. **Performance & Print Support**: Check initial DOM render speed and print stylesheet overrides.
 
 ---
 
-## RAW SYNTAX & UI TESTS
+## RAW LATEX DETECTION TEST
 
-### 1. Raw LaTeX Detection Test
 Search the generated HTML source code.
 
 The following patterns indicate an error:
@@ -64,25 +61,28 @@ The following patterns indicate an error:
 - `\alpha`
 - `\beta`
 
-appearing outside `$ ... $` or `$$ ... $$`.
+appearing outside:
+`$ ... $`
+or:
+`$$ ... $$`
 
-### 2. Raw Markdown Detection Test
-Search HTML content text nodes for unparsed markdown formatting:
-- `**text**` (Forbidden: `<p>**valeur exacte**</p>`)
-- `*text*` or `_text_`
+### Example error:
+```html
+<p>\sqrt{12}=2\sqrt{3}</p>
+```
 
-Remediation Protocol:
-Automatically convert `**text**` ➔ `<strong>text</strong>` and `*text*` ➔ `<em>text</em>`. Re-run scan to confirm zero raw markdown syntax remains.
+### Correct:
+```html
+<p>
+$\sqrt{12}=2\sqrt{3}$
+</p>
+```
 
-### 3. Sidebar Lock Icon & Scroll Active Test
-- Verify `.locked .nav-icon` features yellow/orange color (`#d97706` / `🔒`) and `.unlocked .nav-icon` features green color (`#10b981` / `🔓`).
-- Verify JS state updates `.locked` to `.unlocked` and icon text from `🔒` to `🔓` on stage unlock.
-- Verify scroll position tracking (e.g. `IntersectionObserver`) dynamically updates `.nav-item.active` so `stage-0` does NOT remain permanently highlighted.
-
-### 4. Centralized KaTeX Renderer Audit:
-- Ensure the `auto-render.min.js` script tag does **NOT** contain an `onload` attribute.
-- Ensure application JavaScript defines `function renderAllMath(element = document.body)` with delimiters `{left: '$$', right: '$$', display: true}` and `{left: '$', right: '$', display: false}`.
-- Ensure all dynamic math updates and initial load use `renderAllMath(...)` instead of raw `renderMathInElement(...)`.
+### Remediation Protocol:
+If detected:
+1. Fix automatically.
+2. Re-run the scan.
+3. Approve only when no raw LaTeX remains.
 
 ### 2. Surgical Remediation & `final_lesson.html` Emission
 - Execute target corrections for every issue flagged in `review_report.json`.
@@ -96,8 +96,6 @@ Automatically convert `**text**` ➔ `<strong>text</strong>` and `*text*` ➔ `<
 - **NEVER** remove required accessibility features to save lines of code.
 - **NEVER** introduce external JS libraries or frameworks.
 - **NEVER** approve or emit `final_lesson.html` if uncompiled, broken, or raw LaTeX expressions exist.
-- **NEVER** approve HTML containing raw markdown formatting markers (`**text**`).
-- **NEVER** approve exercise logic that blocks student progression on wrong answers.
 
 ---
 
@@ -108,22 +106,19 @@ Automatically convert `**text**` ➔ `<strong>text</strong>` and `*text*` ➔ `<
 │ STEP 1: EXECUTE SYSTEMATIC AUDIT                                        │
 │ • Audit HTML against WCAG 2.1 AA contrast & keyboard rules.             │
 │ • Audit sidebar for bounded height & internal vertical scrolling.       │
-│ • Audit sidebar lock states (yellow locked 🔒 vs green unlocked 🔓).    │
-│ • Audit scroll active tracking (IntersectionObserver removes stage-0). │
 │ • Audit EVERY inline ($...$) & display ($$...$$) LaTeX expression.      │
-│ • Audit text nodes for raw markdown markers (**bold** -> <strong>).     │
-│ • Audit exercise progression (attempt unlocks next stage, non-blocking).│
+│ • Audit JS state engine & KaTeX compilation helper.                     │
+│ • Audit CSS variables & responsive layout behavior.                     │
 ├─────────────────────────────────────────────────────────────────────────┤
 │ STEP 2: GENERATE review_report.json                                     │
 │ • Assign pedagogicalFidelityScore, wcagComplianceScore, codeQualityScore.│
 │ • List identifiedIssues (category: pedagogy, ux, accessibility,         │
-│   javascript, css, performance, latex, markdown) with remediation.      │
+│   javascript, css, performance, latex) with remediationAction.          │
 ├─────────────────────────────────────────────────────────────────────────┤
 │ STEP 3: APPLY PRECISION REMEDIATION                                     │
 │ • Fix broken focus rings, missing ARIA tags, or contrast issues.        │
 │ • Fix any broken LaTeX syntax or unparsed mathematical delimiters.      │
-│ • Convert lingering raw markdown emphasis markers into HTML elements.   │
-│ • Fix sidebar scrolling, lock icons, active scroll observer, or JS state.│
+│ • Fix sidebar scrolling or JS state persistence bugs.                   │
 ├─────────────────────────────────────────────────────────────────────────┤
 │ STEP 4: EMIT PRODUCTION ARTIFACT                                        │
 │ • Re-verify 100% LaTeX compilation success.                             │
@@ -136,10 +131,6 @@ Automatically convert `**text**` ➔ `<strong>text</strong>` and `*text*` ➔ `<
 ## Quality Checklist
 - [ ] Has `review_report.json` been generated prior to emitting `final_lesson.html`?
 - [ ] Has EVERY inline (`$...$`) and display (`$$...$$`) LaTeX expression been verified to compile cleanly with zero raw code visible?
-- [ ] Have all raw markdown formatting markers (`**text**`) been converted to valid HTML (`<strong>text</strong>`)?
-- [ ] Do sidebar lock icons show yellow/orange (`🔒`) for locked and green (`🔓`) for unlocked stages?
-- [ ] Is sidebar active navigation dynamically updated via scroll observer so `stage-0` does not remain permanently active?
-- [ ] Do exercise attempts provide feedback and unlock progression without hard-blocking wrong answers?
 - [ ] Is the sidebar navigation verified to feature bounded height (`max-height: calc(100vh - 104px)`) and internal vertical scrolling (`overflow-y: auto`)?
 - [ ] Are all color contrast ratios ≥4.5:1 (normal text) and ≥3.0:1 (large text/borders)?
 - [ ] Is `:focus-visible` present and styled with a 3px outline?

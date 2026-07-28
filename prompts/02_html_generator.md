@@ -44,65 +44,6 @@ Ingest `lesson_spec.json` and shared specifications to architect the presentatio
 
 ---
 
-## MANDATORY MARKDOWN EMPHASIS RENDERING RULES
-
-Generated HTML must NEVER contain raw markdown syntax formatting markers in content text.
-
-### Forbidden:
-
-```html
-<p>**valeur exacte**</p>
-<div>*remarque importante*</div>
-```
-
-### Required:
-
-Convert all markdown formatting into valid, semantic HTML elements:
-- `**text**` ➔ `<strong>text</strong>`
-- `*text*` or `_text_` ➔ `<em>text</em>`
-
-Example:
-
-```html
-<p><strong>valeur exacte</strong></p>
-<div><em>remarque importante</em></div>
-```
-
-Zero markdown syntax markers (`**`, `*`, `_`, `#`) are allowed in rendered text nodes of the final HTML.
-
----
-
-## MANDATORY SIDEBAR & PROGRESSION UI RULES
-
-### 1. Sidebar Lock Icon Visual Color States
-- **Locked Stage**:
-  - CSS rule: `.locked .nav-icon` uses yellow/orange color (`var(--amber-warning)`, `#d97706`) and lock icon `🔒`. The stage appears unavailable.
-- **Unlocked Stage**:
-  - CSS rule: `.unlocked .nav-icon` MUST change to green color (`var(--emerald-positive)`, `#10b981`) and unlock icon `🔓`. The stage visually communicates accessibility.
-- **Dynamic JavaScript Management**: The state engine MUST update the class (`.locked` ➔ `.unlocked`) and icon content dynamically whenever:
-  - a stage is unlocked
-  - the student progresses through a section
-  - the sidebar is re-rendered
-
-### 2. Active Sidebar Item Scroll-Tracking Logic
-- The `.active` class must strictly reflect the student's current viewport location.
-- **Rules**:
-  - Only the currently visible lesson section receives `.nav-item.active`.
-  - When the student scrolls out of `stage-0`, `.active` MUST be removed from `stage-0`.
-- **Implementation Requirement**:
-  - Use `IntersectionObserver` observing all `.lab-section` elements (or scroll position tracking) to dynamically add `.active` to the visible section's nav item and remove it from all others. `stage-0` MUST NOT remain permanently highlighted.
-
-### 3. Non-Blocking Exercise Progression Logic
-- Wrong answers MUST NEVER block learning progression.
-- **Behavior**:
-  - Correct answer: Display positive feedback, award XP, and unlock the next stage.
-  - Incorrect answer: Display diagnostic explanation and correction, allow re-attempts, AND unlock the next stage after the attempt.
-- **JS Progression Condition**:
-  - Required: `if (student_attempted) { unlock_next_stage(); }`
-  - Forbidden: `if (!isCorrect) { block_progression(); }`
-
----
-
 ## MANDATORY KATEX OUTPUT FORMAT RULES
 
 Mathematical expressions MUST NEVER appear as raw LaTeX text in HTML.
@@ -144,34 +85,6 @@ $$
 $$
 </div>
 ```
-
----
-
-### Centralized KaTeX Rendering Helper Rule
-
-1. **Do NOT use `onload` in auto-render.min.js script tag**:
-   ```html
-   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
-   ```
-
-2. **Define a single centralized `renderAllMath` helper function at the top of application JS**:
-   ```javascript
-   function renderAllMath(element = document.body) {
-     if (window.renderMathInElement) {
-       renderMathInElement(element, {
-         delimiters: [
-           { left: '$$', right: '$$', display: true },
-           { left: '$', right: '$', display: false }
-         ],
-         throwOnError: false
-       });
-     }
-   }
-   ```
-
-3. **Always call `renderAllMath(container)` whenever formulas or HTML with math are dynamically generated in JavaScript**:
-   - Initial DOM load: `renderAllMath(document.body);`
-   - Dynamic update: `renderAllMath(document.getElementById('elementId'));`
 
 ---
 
@@ -224,12 +137,11 @@ Reject the generation if:
 - Any `\sqrt` exists outside `$ ... $` or `$$ ... $$`
 - Any `\frac` exists outside `$ ... $` or `$$ ... $$`
 - Any LaTeX command appears directly inside HTML text
-- Any raw markdown formatting markers (`**`, `*`) remain in text nodes
 - Any mathematical expression is not wrapped for KaTeX rendering
 
-The final HTML must contain only compilable KaTeX expressions and valid HTML tags.
+The final HTML must contain only compilable KaTeX expressions.
 
-Zero raw LaTeX expressions and zero raw markdown markers are allowed.
+Zero raw LaTeX expressions are allowed.
 
 ---
 
@@ -238,8 +150,6 @@ Zero raw LaTeX expressions and zero raw markdown markers are allowed.
 - **NEVER** introduce third-party UI frameworks (Tailwind, React, Vue, Bootstrap).
 - **NEVER** hardcode layout choices because they were present in a previous lesson; every component choice must be justified in `design_decisions.json`.
 - **NEVER** allow the sidebar navigation to expand infinitely or push page layout on lessons with long section lists; the sidebar MUST enforce internal vertical scrolling (`max-height: calc(100vh - 104px)`, `overflow-y: auto`).
-- **NEVER** leave raw markdown markers (`**text**`) in final HTML text nodes.
-- **NEVER** block student progression on wrong exercise answers.
 
 ---
 
@@ -255,6 +165,68 @@ Zero raw LaTeX expressions and zero raw markdown markers are allowed.
 │    • What interaction controls (sliders, input rows, QCM grids)?        │
 │    • Document choices in design_decisions.json.                         │
 ├─────────────────────────────────────────────────────────────────────────┤
+│ 3. CONSTRUCT HTML/CSS FOUNDATION                                        │
+│    • Write CSS custom property tokens for light & dark mode.            │
+│    • Build responsive grid layout & bounded scrollable navigation sidebar.│
+├─────────────────────────────────────────────────────────────────────────┤
+│ 4. IMPLEMENT JAVASCRIPT STATE & INTERACTIVE ENGINES                     │
+│    • Build IIFE state manager with localStorage persistence.            │
+│    • Implement dynamic SVG rendering & event listeners.                 │
+│    • Wire KaTeX renderMath compiler and confetti canvas.                │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Quality Checklist
+- [ ] Is `design_decisions.json` generated alongside `lesson.html`?
+- [ ] Does `lesson.html` include light and dark theme styling via CSS custom properties?
+- [ ] Does the sidebar navigation include viewport-constrained vertical scrolling (`max-height: calc(100vh - 104px); overflow-y: auto;`) so long section lists remain accessible without breaking layout?
+- [ ] Are interactive SVG graphics generated dynamically via Vanilla JS DOM methods?
+- [ ] Is all state logic encapsulated within an IIFE with `localStorage` fallback?
+- [ ] Are focus rings (`:focus-visible`) and ARIA live regions properly wired?
+- [ ] Does the page compile LaTeX math via KaTeX correctly?
+
+---
+
+## Acceptance Criteria
+1. Output includes both valid `design_decisions.json` and a fully functional standalone `lesson.html`.
+2. App runs in any modern browser without external JS framework dependencies.
+3. Responsive across mobile, tablet, desktop, and print viewports.
+
+---
+
+## Output Format
+
+```json
+/* design_decisions.json */
+{
+  "layoutStrategy": { "sidebarType": "sticky", "reasoning": "Supports student orientation across multi-stage journey" },
+  "interactiveEngines": [ { "stageId": "stage2", "engineKind": "number_line", "implementationType": "svg" } ]
+}
+```
+
+```html
+<!-- lesson.html -->
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson Title | Excellens</title>
+  <!-- KaTeX CSS & Script -->
+  <style>
+    /* Complete Design System CSS */
+  </style>
+</head>
+<body>
+  <!-- Complete HTML Layout -->
+  <script>
+    // IIFE State Engine & Interactive Logic
+  </script>
+</body>
+</html>
+```
 │ 3. CONSTRUCT HTML/CSS FOUNDATION                                        │
 │    • Write CSS custom property tokens for light & dark mode.            │
 │    • Build responsive grid layout & bounded scrollable navigation sidebar.│

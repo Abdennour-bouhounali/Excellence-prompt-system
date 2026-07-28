@@ -41,7 +41,6 @@ Analyze input lesson requirements and construct a pure pedagogical specification
    - Feynman Technique Metacognitive Prompt & Self-Evaluation Rubric
    - 15-Question Timed Exam Simulation
 5. **Exercise & Assessment Design**: Draft all questions, QCM options, open inputs, correct answers, step-by-step solutions, and diagnostic mistake hints.
-6. **Non-Blocking Pedagogical Progression**: Design exercises based on the principle of learning through attempt, feedback, and iteration. Wrong answers must NEVER block progression. Every exercise must provide clear diagnostic explanations for errors so that any completed attempt unlocks the next learning step (`student_attempted ➔ unlock_next_stage()`).
 
 ---
 
@@ -49,7 +48,6 @@ Analyze input lesson requirements and construct a pure pedagogical specification
 - **NEVER** output HTML, CSS, JavaScript, dynamic SVG code, or web layout markup.
 - **NEVER** specify UI visual elements such as cards, sidebars, progress bar colors, button styles, or pixel layouts.
 - **NEVER** hardcode 14 stages as a fixed template if the topic requires fewer or more pedagogical stages.
-- **NEVER** design exercise logic that hard-blocks learning flow or requires 100% first-try correctness to unlock downstream lesson stages.
 
 ---
 
@@ -73,8 +71,7 @@ Analyze input lesson requirements and construct a pure pedagogical specification
 ├─────────────────────────────────────────────────────────────────────────┤
 │ 4. FORMULATE EXERCISES & DIAGNOSTIC REMEDIATION                         │
 │    • Create scaffolded exercises from intuition to exam rigor.          │
-│    • Formulate specific diagnostic feedback for likely wrong answers.   │
-│    • Ensure attempt submission reveals feedback & enables progression.  │
+│    • Formulate specific diagnostic feedback for likely wrong answers.    │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
