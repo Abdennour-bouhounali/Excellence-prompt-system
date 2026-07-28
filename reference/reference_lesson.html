@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculer avec les nombres relatifs grâce à la flèche graduée | Excellens</title>
+  <meta name="description" content="Laboratoire interactif, cours complet et préparation intégrale au Brevet (5e, 4e, 3e) : addition, soustraction, double signe, multiplication, division, carnet d'erreurs, technique de Feynman et examen blanc chronométré.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://www.excellens.co/revisions/mathematiques/nombres-relatifs/calculer">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Calculer avec les nombres relatifs grâce à la flèche graduée | Excellens">
+  <meta property="og:description" content="Laboratoire interactif et entraînement complet : comprends enfin les nombres relatifs grâce à la flèche graduée, au carnet d'erreurs et à l'examen blanc officiel du Brevet.">
+  <meta property="og:url" content="https://www.excellens.co/revisions/mathematiques/nombres-relatifs/calculer">
+  <meta property="og:site_name" content="Excellens">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- KaTeX for LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$',right:'$',display:false},{left:'$$',right:'$$',display:true}],throwOnError:false});"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Calculer avec les nombres relatifs grâce à la flèche graduée",
+    "description": "Laboratoire interactif, cours complet, carnet d'erreurs personnalisé, méthode Feynman et simulation d'examen du Brevet sur les nombres relatifs.",
+    "inLanguage": "fr-FR",
+    "educationalLevel": ["5e", "4e", "3e", "Seconde"],
+    "learningResourceType": ["InteractiveResource", "Cours", "Exercices", "Quiz", "Brevet", "ExamSimulation"],
+    "teaches": [
+      "Se repérer sur une droite graduée",
+      "Additionner des nombres relatifs par déplacement",
+      "Soustraire des nombres relatifs",
+      "Comprendre la règle du double signe négatif",
+      "Multiplier et diviser des nombres relatifs",
+      "Résoudre des problèmes du Brevet des Collèges",
+      "Auto-évaluer ses erreurs et enseigner la notion"
+    ],
+    "isAccessibleForFree": true,
+    "provider": {
+      "@type": "Organization",
+      "name": "Excellens",
+      "url": "https://www.excellens.co"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      /* Brand & Base Colors */
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #ffffff;
+      --bg-alt: #f1f5f9;
+      --border-color: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      
+      --navy-primary: #0f172a;
+      --navy-accent: #1e293b;
+      
+      --emerald-positive: #10b981;
+      --emerald-dark: #047857;
+      --emerald-bg: #ecfdf5;
+      --emerald-border: #a7f3d0;
+      
+      --coral-negative: #f43f5e;
+      --coral-dark: #be123c;
+      --coral-bg: #fff1f2;
+      --coral-border: #fecdd3;
+      
+      --violet-accent: #6d28d9;
+      --violet-soft: #7c3aed;
+      --violet-bg: #f5f3ff;
+      --violet-border: #ddd6fe;
+      
+      --amber-warning: #d97706;
+      --amber-bg: #fffbeb;
+      --amber-border: #fef3c7;
+      
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.12);
+      
+      --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --max-width: 1160px;
+    }
+
+    [data-theme="dark"] {
+      --bg-base: #090d16;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1f2937;
+      --bg-alt: #1a2332;
+      --border-color: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      
+      --navy-primary: #f8fafc;
+      --navy-accent: #e2e8f0;
+      
+      --emerald-bg: rgba(16, 185, 129, 0.15);
+      --emerald-border: rgba(16, 185, 129, 0.4);
+      
+      --coral-bg: rgba(244, 63, 94, 0.15);
+      --coral-border: rgba(244, 63, 94, 0.4);
+      
+      --violet-bg: rgba(124, 58, 237, 0.2);
+      --violet-border: rgba(139, 92, 246, 0.4);
+      --amber-bg: rgba(245, 158, 11, 0.18);
+      --amber-border: rgba(245, 158, 11, 0.4);
+      
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    button, input, select, textarea { font: inherit; }
+    a { color: var(--violet-soft); text-decoration: none; }
+    :focus-visible { outline: 3px solid var(--violet-soft); outline-offset: 3px; }
+
+    /* LaTeX Math Styling */
+    .math-expr {
+      font-family: KaTeX_Main, "Times New Roman", serif;
+      font-weight: 700;
+      color: var(--text-main);
+      padding: 0 2px;
+    }
+
+    /* Canvas Confetti */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Header Sticky Bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.3s ease;
+    }
+    [data-theme="dark"] .topbar {
+      background: rgba(17, 24, 39, 0.9);
+    }
+    .topbar-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 64px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--text-main);
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--violet-soft), #4f46e5);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3);
+    }
+
+    .top-gamification {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+    .progress-bar-container {
+      width: 150px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--border-color);
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--violet-soft), var(--emerald-positive));
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .theme-toggle-btn {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .theme-toggle-btn:hover { transform: scale(1.08); }
+
+    /* Hero Header */
+    .hero {
+      padding: 48px 20px 36px;
+      background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg-base) 100%);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .breadcrumbs {
+      display: flex;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--violet-bg);
+      border: 1px solid var(--violet-border);
+      color: var(--violet-soft);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin: 0 0 20px;
+    }
+    .hero-meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .meta-pill {
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .hero-challenge-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--violet-soft);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-challenge-card small {
+      color: var(--violet-soft);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+    }
+    .hero-challenge-card strong {
+      display: block;
+      margin: 8px 0 14px;
+      font-size: 1.15rem;
+      line-height: 1.4;
+    }
+
+    /* Layout & Sidebar Navigation */
+    .layout {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 84px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sidebar-title {
+      margin: 0 0 14px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 11px;
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .sidebar-link:hover {
+      background: var(--violet-bg);
+      color: var(--violet-soft);
+    }
+    .sidebar-link.active {
+      background: var(--violet-soft);
+      color: #fff;
+    }
+    .sidebar-status-icon { font-size: 0.88rem; }
+
+    main { min-width: 0; display: flex; flex-direction: column; gap: 40px; }
+
+    /* Lab Sections */
+    .lab-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 40px);
+      box-shadow: var(--shadow-md);
+      scroll-margin-top: 84px;
+      position: relative;
+      transition: opacity 0.4s ease, filter 0.4s ease;
+    }
+    .lab-section.locked {
+      opacity: 0.55;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+    .lab-section.locked::after {
+      content: "🔒 Complète l'étape précédente pour débloquer cette section";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(4px);
+      border-radius: var(--radius-lg);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      z-index: 10;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .section-header { margin-bottom: 24px; }
+    .section-step {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--violet-soft);
+      margin-bottom: 6px;
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+    .section-desc {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Interactive Discovery Panel from File B */
+    .discovery-panel {
+      margin: 22px 0;
+      padding: 20px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-alt);
+    }
+    .discovery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .discovery-equation {
+      color: var(--text-main);
+      font-size: clamp(1.35rem, 3vw, 1.9rem);
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .discovery-result {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--violet-bg);
+      color: var(--violet-soft);
+      font-weight: 900;
+      white-space: nowrap;
+      border: 1px solid var(--violet-border);
+    }
+    .discovery-controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .control-card {
+      padding: 14px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+    }
+    .control-card label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .control-card strong { color: var(--text-main); font-size: 1.05rem; }
+    .control-card input[type="range"] { width: 100%; margin-top: 10px; accent-color: var(--violet-soft); }
+    .discovery-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .discovery-feedback { margin: 0; color: var(--text-muted); font-weight: 700; font-size: 0.95rem; }
+
+    /* Curiosity Hook & Quiz Cards */
+    .hook-box, .quiz-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-top: 18px;
+    }
+    .hook-question, .quiz-card .question {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 0 0 16px;
+      color: var(--text-main);
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .option-btn, .answer-btn {
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .option-btn:hover, .answer-btn:hover {
+      border-color: var(--violet-soft);
+      background: var(--violet-bg);
+      transform: translateY(-2px);
+    }
+    .option-btn.selected-correct, .answer-btn.correct {
+      border-color: var(--emerald-positive) !important;
+      background: var(--emerald-bg) !important;
+      color: var(--emerald-dark) !important;
+    }
+    .option-btn.selected-wrong, .answer-btn.incorrect {
+      border-color: var(--coral-negative) !important;
+      background: var(--coral-bg) !important;
+      color: var(--coral-dark) !important;
+    }
+
+    .feedback-box {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      display: none;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .feedback-box.show { display: block; animation: fadeIn 0.3s ease; }
+    .feedback-box.good { background: var(--emerald-bg); border: 1px solid var(--emerald-border); color: var(--emerald-dark); }
+    .feedback-box.bad { background: var(--coral-bg); border: 1px solid var(--coral-border); color: var(--coral-dark); }
+    .feedback-box.info { background: var(--violet-bg); border: 1px solid var(--violet-border); color: var(--violet-soft); }
+
+    /* Interactive SVG Number Line Engine */
+    .number-line-container {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px 16px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+    #interactiveSvg, #demoSvg, #replaySvg {
+      width: 100%;
+      min-width: 720px;
+      height: 250px;
+      display: block;
+    }
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-color);
+    }
+    .live-equation {
+      font-size: 1.5rem;
+      font-weight: 900;
+      font-family: monospace;
+      color: var(--text-main);
+      padding: 8px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+    }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .action-btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .action-btn:hover {
+      border-color: var(--violet-soft);
+      background: var(--violet-bg);
+      transform: translateY(-1px);
+    }
+    .action-btn.primary {
+      background: var(--violet-soft);
+      color: #fff;
+      border-color: var(--violet-soft);
+    }
+    .action-btn.primary:hover { background: #6d28d9; }
+
+    /* SVG Keyframe Path Animations */
+    .svg-path-draw {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawPath 600ms ease forwards;
+    }
+    .svg-result-dot {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: popDot 400ms ease 500ms both;
+    }
+    @keyframes drawPath { to { stroke-dashoffset: 0; } }
+    @keyframes popDot {
+      0% { opacity: 0; transform: scale(0.5); }
+      70% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Micro-Rule Cards */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .rule-micro-card {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface-elevated);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .rule-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .rule-text { font-size: 1rem; font-weight: 700; margin: 0; }
+
+    /* Multi-Representation Switcher */
+    .switcher-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+    }
+    .tab-btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover { color: var(--text-main); background: var(--bg-alt); }
+    .tab-btn.active {
+      background: var(--violet-bg);
+      color: var(--violet-soft);
+      border-color: var(--violet-border);
+    }
+    .rep-display {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 30px 20px;
+      min-height: 240px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Timeline Container */
+    .timeline-container {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+    .step-indicator-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .dot.active {
+      background: var(--violet-soft);
+      transform: scale(1.25);
+    }
+
+    /* Callouts & Worked Examples */
+    .callout {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border-left: 5px solid var(--violet-soft);
+      border-radius: var(--radius-sm);
+      background: var(--violet-bg);
+    }
+    .callout.success { border-left-color: var(--emerald-positive); background: var(--emerald-bg); color: var(--emerald-dark); }
+    .callout.warning { border-left-color: var(--amber-warning); background: var(--amber-bg); color: #92400e; }
+    .callout.danger { border-left-color: var(--coral-negative); background: var(--coral-bg); color: var(--coral-dark); }
+
+    .worked-example {
+      margin: 20px 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-surface);
+    }
+    .worked-example header {
+      padding: 14px 20px;
+      background: var(--navy-primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+    .worked-example .body { padding: 20px; }
+    .steps { counter-reset: step; list-style: none; padding: 0; margin: 12px 0 0; }
+    .steps li {
+      position: relative;
+      min-height: 38px;
+      padding: 6px 0 6px 44px;
+      font-size: 1.02rem;
+    }
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--violet-bg);
+      color: var(--violet-soft);
+      font-weight: 900;
+    }
+
+    .sign-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.98rem;
+    }
+    .sign-table th, .sign-table td {
+      padding: 12px 16px;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .sign-table th { background: var(--navy-primary); color: #fff; }
+    .sign-table tr:nth-child(even) td { background: var(--bg-alt); }
+
+    /* Exercise Card Inputs & Progressive Hints */
+    .exercise-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-top: 18px;
+    }
+    .input-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      max-width: 420px;
+      margin-top: 12px;
+    }
+    .answer-input {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .answer-input:focus { border-color: var(--violet-soft); }
+
+    details {
+      margin-top: 14px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+    }
+    summary {
+      cursor: pointer;
+      padding: 12px 16px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    details > div { padding: 0 16px 16px; }
+
+    /* Mastery Report Card */
+    .mastery-report-card {
+      text-align: center;
+      padding: 40px 24px;
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--violet-soft);
+      box-shadow: var(--shadow-lg);
+      margin-top: 30px;
+    }
+    .mastery-badge-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--violet-soft), var(--emerald-positive));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 2.5rem;
+      box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+    }
+
+    .mastery-report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+      text-align: left;
+    }
+    .report-card {
+      padding: 18px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-alt);
+    }
+    .report-card small {
+      display: block;
+      color: var(--violet-soft);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .report-card strong { color: var(--text-main); font-size: 1.1rem; }
+
+    /* --- NEW MODULE STYLES (EXTENDED) --- */
+    .revision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .revision-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .revision-card h4 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--violet-soft);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feynman-textarea {
+      width: 100%;
+      min-height: 110px;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      margin-top: 10px;
+      resize: vertical;
+    }
+    .feynman-textarea:focus { border-color: var(--violet-soft); }
+
+    .exam-header-bar {
+      background: var(--navy-primary);
+      color: #fff;
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .exam-timer {
+      font-size: 1.6rem;
+      font-weight: 900;
+      font-family: monospace;
+      padding: 6px 16px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.15);
+      letter-spacing: 0.05em;
+    }
+    .exam-nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .exam-pill {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s ease;
+    }
+    .exam-pill:hover { border-color: var(--violet-soft); background: var(--violet-bg); }
+    .exam-pill.active { background: var(--violet-soft); color: #fff; border-color: var(--violet-soft); }
+    .exam-pill.answered { border-color: var(--emerald-positive); background: var(--emerald-bg); color: var(--emerald-dark); }
+
+    .footer {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Print Stylesheet */
+    @media print {
+      .topbar, .sidebar, .action-btn, .theme-toggle-btn, #confettiCanvas { display: none !important; }
+      body { background: #fff; color: #000; }
+      .layout { display: block; padding: 0; }
+      .lab-section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; margin-bottom: 20px; }
+      details > div { display: block !important; }
+    }
+
+    /* Accessibility & Responsive Overrides */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .discovery-controls { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .topbar-inner { padding: 0 12px; }
+      .progress-bar-container { display: none; }
+      .hero { padding: 32px 16px 24px; }
+      .lab-section { padding: 20px 16px; }
+      .controls-bar { flex-direction: column; align-items: stretch; }
+      .live-equation { text-align: center; }
+      .options-grid { grid-template-columns: 1fr; }
+      .input-row { flex-direction: column; align-items: stretch; }
+      .discovery-header { flex-direction: column; align-items: flex-start; }
+      .revision-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Sticky Glass Topbar Header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Excellens — Accueil des révisions">
+        <span class="brand-icon">E</span>
+        <span>Excellens Lab</span>
+      </a>
+      <div class="top-gamification">
+        <div class="stat-badge" title="Série de bonnes réponses">
+          <span>🔥</span><span id="streakDisplay">0</span>
+        </div>
+        <div class="stat-badge" title="Points d'expérience gagnés">
+          <span>✨</span><span id="xpDisplay">0</span> XP
+        </div>
+        <div class="progress-bar-container" title="Progression de la leçon">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Basculer le mode sombre/clair">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <nav class="breadcrumbs" aria-label="Fil d'Ariane">
+          <a href="#">Révisions</a><span>›</span><a href="#">Mathématiques</a><span>›</span><span>Nombres relatifs</span>
+        </nav>
+        <span class="hero-kicker">🔬 Laboratoire de Mathématiques · 5e à Seconde</span>
+        <h1>Calculer avec les nombres relatifs grâce à la flèche graduée</h1>
+        <p class="hero-lead">Expérimente, prédis tes déplacements et découvre par toi-même toutes les règles du chapitre.</p>
+        <div class="hero-meta-pills">
+          <span class="meta-pill">⏱️ 15 à 20 min</span>
+          <span class="meta-pill">✨ +150 XP possibles</span>
+          <span class="meta-pill">🎯 Préparation Brevet</span>
+        </div>
+      </div>
+      <aside class="hero-challenge-card">
+        <small>Défi Initial</small>
+        <strong>🕹️ Tu avances de 5 pas vers la droite, puis tu recules de 7 pas vers la gauche. Où te trouves-tu ?</strong>
+        <div class="live-equation" style="text-align:center; font-size:1.3rem; margin-bottom:12px;"><span class="math-expr">$+5 - 7 = ?$</span></div>
+        <a class="action-btn primary" href="#stage1" style="width:100%; justify-content:center;">Relever le défi ➔</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Main 2-Column Layout -->
+  <div class="layout">
+    <!-- Sticky Navigation Sidebar -->
+    <aside class="sidebar" aria-label="Sommaire de la leçon">
+      <p class="sidebar-title">Sommaire du Lab</p>
+      <nav class="sidebar-nav">
+        <a class="sidebar-link active" href="#stage1"><span>1. Test Rapide de Départ</span><span class="sidebar-status-icon" id="status1">🔓</span></a>
+        <a class="sidebar-link" href="#stage2"><span>2. Flèche Interactive</span><span class="sidebar-status-icon" id="status2">🔒</span></a>
+        <a class="sidebar-link" href="#stage3"><span>3. Règles Essentielles</span><span class="sidebar-status-icon" id="status3">🔒</span></a>
+        <a class="sidebar-link" href="#stage4"><span>4. Multi-Représentations</span><span class="sidebar-status-icon" id="status4">🔒</span></a>
+        <a class="sidebar-link" href="#stage5"><span>5. Le Double Signe $-(-x)$</span><span class="sidebar-status-icon" id="status5">🔒</span></a>
+        <a class="sidebar-link" href="#stage6"><span>6. Addition & Soustraction</span><span class="sidebar-status-icon" id="status6">🔒</span></a>
+        <a class="sidebar-link" href="#stage7"><span>7. Produit & Quotient</span><span class="sidebar-status-icon" id="status7">🔒</span></a>
+        <a class="sidebar-link" href="#stage8"><span>8. Coaching Guidé</span><span class="sidebar-status-icon" id="status8">🔒</span></a>
+        <a class="sidebar-link" href="#stage9"><span>9. Exercices Autonomes</span><span class="sidebar-status-icon" id="status9">🔒</span></a>
+        <a class="sidebar-link" href="#stage10"><span>10. Bilan & Annales Brevet</span><span class="sidebar-status-icon" id="status10">🔒</span></a>
+        <a class="sidebar-link" href="#stage11"><span>11. Fiche Express 3 Min</span><span class="sidebar-status-icon" id="status11">🔒</span></a>
+        <a class="sidebar-link" href="#stage12"><span>12. Carnet d'Erreurs</span><span class="sidebar-status-icon" id="status12">🔒</span></a>
+        <a class="sidebar-link" href="#stage13"><span>13. Technique Feynman</span><span class="sidebar-status-icon" id="status13">🔒</span></a>
+        <a class="sidebar-link" href="#stage14"><span>14. Examen Chronométré</span><span class="sidebar-status-icon" id="status14">🔒</span></a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Stream -->
+    <main>
+
+      <!-- STAGE 1: CURIOSITY HOOK & PREREQUISITE CHECK -->
+      <section class="lab-section" id="stage1">
+        <div class="section-header">
+          <div class="section-step">Étape 1 · Test rapide de départ</div>
+          <h2>Test rapide de départ</h2>
+          <p class="section-desc">Réponds à ces trois questions. Ce test ne bloque jamais la suite : il sert seulement à repérer un éventuel rappel utile.</p>
+        </div>
+
+        <div class="quiz-card" data-prereq-id="fast-1">
+          <p class="question">1. Combien vaut 8 − 3 ?</p>
+          <div class="options-grid">
+            <button class="answer-btn" data-correct="true" data-fb-good="Exact ! 8 − 3 = 5." data-fb-bad="Rappel : 8 − 3 = 5.">5</button>
+            <button class="answer-btn" data-correct="false" data-fb-good="Exact ! 8 − 3 = 5." data-fb-bad="Rappel : 8 − 3 = 5.">−5</button>
+            <button class="answer-btn" data-correct="false" data-fb-good="Exact ! 8 − 3 = 5." data-fb-bad="Rappel : 8 − 3 = 5.">11</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <div class="quiz-card" data-prereq-id="fast-2">
+          <p class="question">2. Quel nombre est le plus petit ?</p>
+          <div class="options-grid">
+            <button class="answer-btn" data-correct="false" data-fb-good="Exact ! −4 est plus petit que 0 et 2." data-fb-bad="Rappel : Les nombres négatifs (−4) sont plus petits que 0 et que les nombres positifs (2).">2</button>
+            <button class="answer-btn" data-correct="true" data-fb-good="Exact ! −4 est plus petit que 0 et 2." data-fb-bad="Rappel : Les nombres négatifs (−4) sont plus petits que 0 et que les nombres positifs (2).">−4</button>
+            <button class="answer-btn" data-correct="false" data-fb-good="Exact ! −4 est plus petit que 0 et 2." data-fb-bad="Rappel : Les nombres négatifs (−4) sont plus petits que 0 et que les nombres positifs (2).">0</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <div class="quiz-card" data-prereq-id="fast-3">
+          <p class="question">3. Combien vaut 4 × 6 ?</p>
+          <div class="options-grid">
+            <button class="answer-btn" data-correct="false" data-fb-good="Exact ! 4 × 6 = 24." data-fb-bad="Rappel : 4 × 6 = 24.">10</button>
+            <button class="answer-btn" data-correct="true" data-fb-good="Exact ! 4 × 6 = 24." data-fb-bad="Rappel : 4 × 6 = 24.">24</button>
+            <button class="answer-btn" data-correct="false" data-fb-good="Exact ! 4 × 6 = 24." data-fb-bad="Rappel : 4 × 6 = 24.">46</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <div class="callout warning" style="margin-top:32px;">
+          <strong>Défi Intuition & Repérage :</strong> Prédis d'abord le déplacement. Ne calcule pas encore.
+        </div>
+
+        <div class="hook-box">
+          <p class="hook-question">🕹️ Tu avances de 5 pas vers la droite, puis tu recules de 7 pas vers la gauche. Où te trouves-tu par rapport au point de départ (0) ?</p>
+          <div class="options-grid" id="hookOptions">
+            <button class="option-btn" data-val="2">+2 pas devant</button>
+            <button class="option-btn" data-val="-2">−2 pas derrière</button>
+            <button class="option-btn" data-val="12">+12 pas devant</button>
+            <button class="option-btn" data-val="0">Au départ (0)</button>
+          </div>
+          <div id="hookFeedback" class="feedback-box"></div>
+        </div>
+
+        <div class="quiz-card" data-prereq-id="1">
+          <p class="question">4. En partant de 0, tu vas de 4 graduations vers la droite. Où arrives-tu ?</p>
+          <div class="options-grid">
+            <button class="answer-btn" data-correct="true">+4</button>
+            <button class="answer-btn" data-correct="false">−4</button>
+            <button class="answer-btn" data-correct="false">0</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <div class="quiz-card" data-prereq-id="2">
+          <p class="question">5. En partant de 0, tu vas de 3 graduations vers la gauche. Où arrives-tu ?</p>
+          <div class="options-grid">
+            <button class="answer-btn" data-correct="false">+3</button>
+            <button class="answer-btn" data-correct="true">−3</button>
+            <button class="answer-btn" data-correct="false">0</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+      </section>
+
+      <!-- STAGE 2: INTERACTIVE DISCOVERY ENGINE WITH SLIDERS (FILE B INTEGRATION) -->
+      <section class="lab-section locked" id="stage2">
+        <div class="section-header">
+          <div class="section-step">Étape 2 · Découverte Interactive</div>
+          <h2>Fais bouger la flèche</h2>
+          <p class="section-desc">Change les nombres. Observe le point final. Puis seulement, lis la règle.</p>
+        </div>
+
+        <!-- Discovery Panel Component from File B -->
+        <div class="discovery-panel" aria-label="Laboratoire interactif de déplacements">
+          <div class="discovery-header">
+            <div>
+              <div class="discovery-equation" id="labEquation">0 +5 −7</div>
+              <p style="margin:4px 0 0; color:var(--text-muted); font-size:0.95rem;">Une ligne. Deux déplacements. Un résultat à prédire.</p>
+            </div>
+            <span class="discovery-result" id="labResult">Résultat caché</span>
+          </div>
+
+          <div class="discovery-controls">
+            <div class="control-card">
+              <label for="startSlider"><span>Départ</span><strong id="startValue">0</strong></label>
+              <input id="startSlider" type="range" min="-8" max="8" value="0">
+            </div>
+            <div class="control-card">
+              <label for="moveOneSlider"><span>Mouvement 1</span><strong id="moveOneValue">+5</strong></label>
+              <input id="moveOneSlider" type="range" min="-10" max="10" value="5">
+            </div>
+            <div class="control-card">
+              <label for="moveTwoSlider"><span>Mouvement 2</span><strong id="moveTwoValue">−7</strong></label>
+              <input id="moveTwoSlider" type="range" min="-10" max="10" value="-7">
+            </div>
+          </div>
+
+          <div class="discovery-actions">
+            <button class="action-btn primary" id="revealLab">Révéler le trajet</button>
+            <button class="action-btn" id="resetLab">Réinitialiser</button>
+            <p class="discovery-feedback" id="labFeedback" aria-live="polite">Avant de cliquer, prédis le point final dans ta tête.</p>
+          </div>
+        </div>
+
+        <div class="number-line-container">
+          <svg id="interactiveSvg" viewBox="0 0 900 250" role="img" aria-label="Flèche graduée interactive"></svg>
+          <div class="controls-bar">
+            <div class="live-equation" id="liveEquationDisplay">+5 − 7 = −2</div>
+            <div class="btn-group">
+              <button class="action-btn" id="btnPreset1">+5 − 7</button>
+              <button class="action-btn" id="btnPreset2">−3 + 8</button>
+              <button class="action-btn" id="btnPreset3">−4 − 3</button>
+              <button class="action-btn" id="btnPreset4">−2 − (−5)</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px; text-align:center;">
+          <button class="action-btn primary" id="unlockStage3Btn">J'ai compris le principe, étape suivante ➔</button>
+        </div>
+      </section>
+
+      <!-- STAGE 3: MICRO-RULES DISCOVERY -->
+      <section class="lab-section locked" id="stage3">
+        <div class="section-header">
+          <div class="section-step">Étape 3 · Les Règles Essentielles</div>
+          <h2>Ce que tes yeux ont découvert</h2>
+          <p class="section-desc">Trois principes fondamentaux pour tout calculer de tête sans réciter par cœur.</p>
+        </div>
+
+        <div class="rules-grid">
+          <div class="rule-micro-card">
+            <div class="rule-icon">➡️</div>
+            <p class="rule-text"><strong>Un nombre positif (<span class="math-expr">$+$</span>)</strong> t'envoie vers la droite.</p>
+          </div>
+          <div class="rule-micro-card">
+            <div class="rule-icon">⬅️</div>
+            <p class="rule-text"><strong>Un nombre négatif (<span class="math-expr">$-$</span>)</strong> t'envoie vers la gauche.</p>
+          </div>
+          <div class="rule-micro-card">
+            <div class="rule-icon">⚖️</div>
+            <p class="rule-text"><strong>Les sens opposés s'annulent</strong> : <span class="math-expr">$+3$</span> et <span class="math-expr">$-3$</span> ramènent exactement à zéro.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+          <button class="action-btn primary" id="unlockStage4Btn">Découvrir d'autres représentations ➔</button>
+        </div>
+      </section>
+
+      <!-- STAGE 4: DUAL CODING MULTI-REPRESENTATION SWITCHER -->
+      <section class="lab-section locked" id="stage4">
+        <div class="section-header">
+          <div class="section-step">Étape 4 · Multi-Représentations (Dual Coding)</div>
+          <h2>Change de point de vue</h2>
+          <p class="section-desc">La logique mathématique reste rigoureusement identique dans la vie quotidienne.</p>
+        </div>
+
+        <div class="switcher-tabs">
+          <button class="tab-btn active" data-rep="line">📏 Flèche Graduée</button>
+          <button class="tab-btn" data-rep="temp">🌡️ Thermomètre (°C)</button>
+          <button class="tab-btn" data-rep="elevator">🛗 Ascenseur</button>
+          <button class="tab-btn" data-rep="sea">🌊 Niveau de la Mer</button>
+        </div>
+
+        <div class="rep-display" id="repDisplayArea">
+          <h3 id="repTitle" style="margin-top:0;">Flèche Horizontale</h3>
+          <div class="rep-graphic" id="repGraphicContent"></div>
+          <p id="repDescription" style="color:var(--text-muted); font-size:1.05rem; margin:12px 0 0;">
+            Avancer vers la droite = ajouter du positif. Reculer vers la gauche = ajouter du négatif.
+          </p>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+          <button class="action-btn primary" id="unlockStage5Btn">Comprendre le double signe négatif ➔</button>
+        </div>
+      </section>
+
+      <!-- STAGE 5: GUIDED TIMELINE ANIMATION (-(-x)) -->
+      <section class="lab-section locked" id="stage5">
+        <div class="section-header">
+          <div class="section-step">Étape 5 · Animation Guidée</div>
+          <h2>Comprendre le double signe <span class="math-expr">$-(-5)$</span></h2>
+          <p class="section-desc">Pourquoi soustraire un nombre négatif fait-il faire un demi-tour vers la droite ?</p>
+        </div>
+
+        <div class="timeline-container">
+          <div class="step-indicator-dots" id="timelineDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div id="timelineStepText" style="text-align:center; font-size:1.2rem; font-weight:800; min-height:70px;">
+            Étape 1 : Je pars de 0 et je vais à <span class="math-expr">$-2$</span> (2 pas vers la gauche).
+          </div>
+          <div class="controls-bar" style="border:none; padding-top:0;">
+            <button class="action-btn" id="timelinePrev">⏮️ Précédent</button>
+            <button class="action-btn primary" id="timelineNext">Suivant ⏭️</button>
+          </div>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+          <button class="action-btn primary" id="unlockStage6Btn">Passer aux règles de calcul formalisées ➔</button>
+        </div>
+      </section>
+
+      <!-- STAGE 6: ADDITION & SUBTRACTION FORMALIZATION -->
+      <section class="lab-section locked" id="stage6">
+        <div class="section-header">
+          <div class="section-step">Étape 6 · Formalisation Mathématique</div>
+          <h2>Additionner et Soustraire les Nombres Relatifs</h2>
+          <p class="section-desc">Simplifie l'écriture des signes avant de calculer de tête.</p>
+        </div>
+
+        <table class="sign-table">
+          <thead>
+            <tr>
+              <th>Écriture avec parenthèses</th>
+              <th>Écriture simplifiée</th>
+              <th>Sens du déplacement</th>
+              <th>Exemple commenté</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="math-expr">$+ (+5)$</span></td>
+              <td><span class="math-expr">$+5$</span></td>
+              <td style="color:var(--emerald-positive); font-weight:800;">➡️ Vers la droite</td>
+              <td><span class="math-expr">$2 + (+5) = 2 + 5 = 7$</span></td>
+            </tr>
+            <tr>
+              <td><span class="math-expr">$+ (-5)$</span></td>
+              <td><span class="math-expr">$-5$</span></td>
+              <td style="color:var(--coral-negative); font-weight:800;">⬅️ Vers la gauche</td>
+              <td><span class="math-expr">$2 + (-5) = 2 - 5 = -3$</span></td>
+            </tr>
+            <tr>
+              <td><span class="math-expr">$- (+5)$</span></td>
+              <td><span class="math-expr">$-5$</span></td>
+              <td style="color:var(--coral-negative); font-weight:800;">⬅️ Vers la gauche</td>
+              <td><span class="math-expr">$2 - (+5) = 2 - 5 = -3$</span></td>
+            </tr>
+            <tr>
+              <td><span class="math-expr">$- (-5)$</span></td>
+              <td><span class="math-expr">$+5$</span></td>
+              <td style="color:var(--emerald-positive); font-weight:800;">➡️ Vers la droite</td>
+              <td><span class="math-expr">$2 - (-5) = 2 + 5 = 7$</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="worked-example">
+          <header>Exemple rédigé pas à pas : <span class="math-expr">$A = -3 + 8$</span></header>
+          <div class="body">
+            <ol class="steps">
+              <li>Je pars de <strong>0</strong> et je vais de 3 graduations vers la gauche : j'arrive à <strong>−3</strong>.</li>
+              <li>Le terme <strong>+8</strong> m'envoie de 8 graduations vers la droite.</li>
+              <li>Les 3 premières graduations vers la droite ramènent à 0. Il reste 5 graduations vers la droite.</li>
+              <li>Résultat final : <span class="math-expr">$A = +5$</span> (ou simplement <span class="math-expr">$5$</span>).</li>
+            </ol>
+          </div>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+          <button class="action-btn primary" id="unlockStage7Btn">Découvrir la règle des signes ($\times$ et $\div$) ➔</button>
+        </div>
+      </section>
+
+      <!-- STAGE 7: MULTIPLICATION & DIVISION SIGN RULES -->
+      <section class="lab-section locked" id="stage7">
+        <div class="section-header">
+          <div class="section-step">Étape 7 · Multiplications & Divisions</div>
+          <h2>La Règle des Signes du Produit et du Quotient</h2>
+          <p class="section-desc">Une règle distincte et très simple pour multiplier ou diviser.</p>
+        </div>
+
+        <div class="rules-grid">
+          <div class="rule-micro-card" style="border-color:var(--emerald-border); background:var(--emerald-bg);">
+            <div class="rule-icon">✅</div>
+            <div>
+              <h4 style="margin:0 0 6px; color:var(--emerald-dark);">Mêmes signes ➔ POSITIF (+)</h4>
+              <p class="rule-text"><span class="math-expr">$(-4) \times (-3) = +12$</span></p>
+              <p class="rule-text"><span class="math-expr">$(-20) \div (-5) = +4$</span></p>
+            </div>
+          </div>
+
+          <div class="rule-micro-card" style="border-color:var(--coral-border); background:var(--coral-bg);">
+            <div class="rule-icon">⚠️</div>
+            <div>
+              <h4 style="margin:0 0 6px; color:var(--coral-dark);">Signes différents ➔ NÉGATIF (−)</h4>
+              <p class="rule-text"><span class="math-expr">$(-4) \times (+3) = -12$</span></p>
+              <p class="rule-text"><span class="math-expr">$(+20) \div (-5) = -4$</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="worked-example">
+          <header>Méthode pour une suite de multiplications : <span class="math-expr">$B = (-2) \times (-3) \times (-4)$</span></header>
+          <div class="body">
+            <ol class="steps">
+              <li>Compte le nombre de facteurs négatifs : il y en a <strong>3</strong> (nombre impair).</li>
+              <li>Un nombre impair de signes négatifs donne un résultat <strong>négatif</strong>.</li>
+              <li>Calcule le produit des distances à zéro : <span class="math-expr">$2 \times 3 \times 4 = 24$</span>.</li>
+              <li>Résultat final : <span class="math-expr">$B = -24$</span>.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+          <button class="action-btn primary" id="unlockStage8Btn">Passer au coaching guidé ➔</button>
+        </div>
+      </section>
+
+      <!-- STAGE 8: GUIDED COACHING PROBLEM -->
+      <section class="lab-section locked" id="stage8">
+        <div class="section-header">
+          <div class="section-step">Étape 8 · Coaching & Entraînement Guidé</div>
+          <h2>Exercice guidé pas à pas</h2>
+          <p class="section-desc">Calcule l'expression complexe suivante en utilisant la droite mentale.</p>
+        </div>
+
+        <div class="quiz-card">
+          <p class="question">Calcule : <span class="math-expr">$C = +6 - 10 + 3$</span></p>
+          <div class="input-row">
+            <input type="text" class="answer-input" id="guidedInput" placeholder="Entre ton résultat (ex: -1)" aria-label="Réponse exercice guidé">
+            <button class="action-btn primary" id="checkGuidedBtn">Vérifier</button>
+          </div>
+          <div id="guidedFeedback" class="feedback-box"></div>
+
+          <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;">
+            <button class="action-btn" id="btnShowHint">💡 Indice pas à pas</button>
+            <button class="action-btn" id="btnShowCorrection">📜 Voir la correction détaillée</button>
+          </div>
+
+          <div id="hintBox" class="callout warning" style="display:none; margin-top:16px;">
+            <strong>Indice :</strong> Pars de 0. Va d'abord de 6 vers la droite (+6), puis de 10 vers la gauche (−10), puis de 3 vers la droite (+3).
+          </div>
+
+          <details id="guidedCorrectionDetails">
+            <summary>Correction complète de l'exercice guidé</summary>
+            <div>
+              <ol class="steps">
+                <li><span class="math-expr">$+6$</span> : Je pars de 0 et j'arrive à <span class="math-expr">$+6$</span>.</li>
+                <li><span class="math-expr">$-10$</span> : De <span class="math-expr">$+6$</span>, 10 pas vers la gauche ramènent à <span class="math-expr">$-4$</span>.</li>
+                <li><span class="math-expr">$+3$</span> : De <span class="math-expr">$-4$</span>, 3 pas vers la droite ramènent à <span class="math-expr">$-1$</span>.</li>
+                <li>Conclusion : <span class="math-expr">$C = -1$</span>.</li>
+              </ol>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- STAGE 9: INDEPENDENT PRACTICE & DIAGNOSTIC ERROR REPLAY -->
+      <section class="lab-section locked" id="stage9">
+        <div class="section-header">
+          <div class="section-step">Étape 9 · Entraînement Autonome & Rejeu d'Erreur Visuel</div>
+          <h2>Entraîne tes réflexes</h2>
+          <p class="section-desc">En cas d'erreur, le système rejoue graphiquement ton calcul sur la flèche pour te montrer pourquoi.</p>
+        </div>
+
+        <!-- Exercise 1 -->
+        <div class="exercise-card" data-ex-id="ex1" data-target="-2" data-prompt="+5 − 7" data-concept="Addition / Soustraction">
+          <div class="question">Niveau 1 (Soustraction) : Calcule <span class="math-expr">$+5 - 7$</span></div>
+          <div class="input-row">
+            <input type="text" class="answer-input" placeholder="Résultat..." aria-label="Réponse ex 1">
+            <button class="action-btn primary check-ex-btn">Vérifier</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="exercise-card" data-ex-id="ex2" data-target="5" data-prompt="−3 + 8" data-concept="Passage par zéro">
+          <div class="question">Niveau 2 (Addition négative) : Calcule <span class="math-expr">$-3 + 8$</span></div>
+          <div class="input-row">
+            <input type="text" class="answer-input" placeholder="Résultat..." aria-label="Réponse ex 2">
+            <button class="action-btn primary check-ex-btn">Vérifier</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <!-- Exercise 3 -->
+        <div class="exercise-card" data-ex-id="ex3" data-target="6" data-prompt="−2 − (−8)" data-concept="Double signe négatif">
+          <div class="question">Niveau 3 (Double signe) : Calcule <span class="math-expr">$-2 - (-8)$</span></div>
+          <div class="input-row">
+            <input type="text" class="answer-input" placeholder="Résultat..." aria-label="Réponse ex 3">
+            <button class="action-btn primary check-ex-btn">Vérifier</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <!-- Exercise 4 -->
+        <div class="exercise-card" data-ex-id="ex4" data-target="-42" data-prompt="(−6) × 7" data-concept="Multiplication de signes différents">
+          <div class="question">Niveau 4 (Multiplication) : Calcule <span class="math-expr">$(-6) \times 7$</span></div>
+          <div class="input-row">
+            <input type="text" class="answer-input" placeholder="Résultat..." aria-label="Réponse ex 4">
+            <button class="action-btn primary check-ex-btn">Vérifier</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <!-- Exercise 5 -->
+        <div class="exercise-card" data-ex-id="ex5" data-target="-3" data-prompt="Température : 4 − 7" data-concept="Problème concrétisé">
+          <div class="question">Niveau 5 (Problème concrétisé) : Il fait <span class="math-expr">$4^\circ\text{C}$</span>. La température baisse de <span class="math-expr">$7^\circ\text{C}$</span>. Quelle est la nouvelle température ?</div>
+          <div class="input-row">
+            <input type="text" class="answer-input" placeholder="Nouvelle température en °C..." aria-label="Réponse ex 5">
+            <button class="action-btn primary check-ex-btn">Vérifier</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+      </section>
+
+      <!-- STAGE 10: MASTERY TEST, BREVET EXAM PREP & REVISION SHEET -->
+      <section class="lab-section locked" id="stage10">
+        <div class="section-header">
+          <div class="section-step">Étape 10 · Bilan de Maîtrise & Annales du Brevet</div>
+          <h2>Valide définitivement ton niveau</h2>
+          <p class="section-desc">Réponds à ce test de synthèse et découvre ton bilan de compétence personnalisé.</p>
+        </div>
+
+        <div class="quiz-card" data-mastery-q="1">
+          <p class="question">1. <span class="math-expr">$+7 - 10 = ?$</span></p>
+          <div class="options-grid">
+            <button class="answer-btn" data-correct="false">3</button>
+            <button class="answer-btn" data-correct="true">−3</button>
+            <button class="answer-btn" data-correct="false">−17</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <div class="quiz-card" data-mastery-q="2">
+          <p class="question">2. <span class="math-expr">$-4 - (-11) = ?$</span></p>
+          <div class="options-grid">
+            <button class="answer-btn" data-correct="false">−15</button>
+            <button class="answer-btn" data-correct="true">+7</button>
+            <button class="answer-btn" data-correct="false">+15</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <div class="quiz-card" data-mastery-q="3">
+          <p class="question">3. <span class="math-expr">$(-5) \times (-8) = ?$</span></p>
+          <div class="options-grid">
+            <button class="answer-btn" data-correct="false">−40</button>
+            <button class="answer-btn" data-correct="true">+40</button>
+            <button class="answer-btn" data-correct="false">+13</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <div class="quiz-card" data-mastery-q="4">
+          <p class="question">4. <span class="math-expr">$3 - 9 + 2 = ?$</span></p>
+          <div class="options-grid">
+            <button class="answer-btn" data-correct="true">−4</button>
+            <button class="answer-btn" data-correct="false">+4</button>
+            <button class="answer-btn" data-correct="false">−8</button>
+          </div>
+          <div class="feedback-box"></div>
+        </div>
+
+        <!-- Mastery Completion Card & Report -->
+        <div id="masteryReportCard" class="mastery-report-card" style="display:none;">
+          <div class="mastery-badge-icon">🏆</div>
+          <h2 style="margin-bottom:8px;">Chapitre Maîtrisé !</h2>
+          <p style="color:var(--text-muted); max-width:550px; margin:0 auto 20px;">
+            Félicitations ! Tu possèdes désormais une représentation mentale parfaite des nombres relatifs pour le Collège et le Brevet.
+          </p>
+
+          <div class="mastery-report-grid">
+            <div class="report-card">
+              <small>Points Forts</small>
+              <strong id="repStrength">Excellente représentation spatiale</strong>
+            </div>
+            <div class="report-card">
+              <small>À Surveiller</small>
+              <strong id="repWeakness">Vitesse de calcul de tête</strong>
+            </div>
+            <div class="report-card">
+              <small>Prochaine Révision</small>
+              <strong id="repRetention">Dans 3 jours</strong>
+            </div>
+            <div class="report-card">
+              <small>Recommandation</small>
+              <strong id="repNext">Passer à la fiche 3 min ➔</strong>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;">
+            <button class="action-btn primary" id="unlockStage11Btn">Accéder à la Fiche Express 3 Min ➔</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEW MODULE 3: 3-MINUTE REVISION SHEET (Étape 11) -->
+      <section class="lab-section locked" id="stage11">
+        <div class="section-header">
+          <div class="section-step">Étape 11 · Fiche Express 3 Minutes</div>
+          <h2>Révision Éclair (Avant l'Épreuve)</h2>
+          <p class="section-desc">Tout le chapitre condensé en 7 cartes visuelles compréhensibles en moins de 5 secondes.</p>
+        </div>
+
+        <div class="revision-grid">
+          <!-- Card 1 -->
+          <div class="revision-card">
+            <h4>📏 Axe & Sens du Déplacement</h4>
+            <ul style="margin:0; padding-left:18px; font-size:0.95rem;">
+              <li><strong style="color:var(--emerald-positive);">Nombres Positifs (+) :</strong> Déplacement vers la droite.</li>
+              <li><strong style="color:var(--coral-negative);">Nombres Négatifs (−) :</strong> Déplacement vers la gauche.</li>
+              <li><strong style="color:var(--violet-soft);">Le Zéro (0) :</strong> Point de départ neutre.</li>
+            </ul>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="revision-card">
+            <h4>⚡ Le Demi-Tour du Double Signe</h4>
+            <ul style="margin:0; padding-left:18px; font-size:0.95rem;">
+              <li><span class="math-expr">$+(-x) = -x$</span> (continue vers la gauche).</li>
+              <li><span class="math-expr">$-(+x) = -x$</span> (continue vers la gauche).</li>
+              <li><span class="math-expr">$-(-x) = +x$</span> <strong>(inversion / demi-tour vers la droite !)</strong>.</li>
+            </ul>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="revision-card">
+            <h4>➕/➖ Addition & Soustraction</h4>
+            <ul style="margin:0; padding-left:18px; font-size:0.95rem;">
+              <li><strong>Même sens :</strong> Additionne les distances, conserve le signe commun (<span class="math-expr">$-3 - 4 = -7$</span>).</li>
+              <li><strong>Sens opposés :</strong> Soustrais les distances, garde le signe de la plus grande (<span class="math-expr">$-8 + 5 = -3$</span>).</li>
+            </ul>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="revision-card">
+            <h4>✖️/➗ Produit & Quotient (Règle des Signes)</h4>
+            <ul style="margin:0; padding-left:18px; font-size:0.95rem;">
+              <li><strong style="color:var(--emerald-positive);">Mêmes signes ➔ POSITIF (+)</strong> : <span class="math-expr">$(-4) \times (-5) = +20$</span>.</li>
+              <li><strong style="color:var(--coral-negative);">Signes différents ➔ NÉGATIF (−)</strong> : <span class="math-expr">$(-4) \times (+5) = -20$</span>.</li>
+            </ul>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="revision-card">
+            <h4>🧠 Astuce du Calcul Mental</h4>
+            <p style="margin:0; font-size:0.95rem;">Dans une longue somme, regroupe d'abord les positifs ensemble et les négatifs ensemble :</p>
+            <div style="margin-top:6px; font-weight:800; color:var(--violet-soft); font-size:0.95rem;">
+              <span class="math-expr">$+3 - 7 + 8 - 2 = (+11) + (-9) = +2$</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="revision-card">
+            <h4>⚠️ Les 3 Pièges d'Examen du Brevet</h4>
+            <ul style="margin:0; padding-left:18px; font-size:0.95rem;">
+              <li>Ne pas confondre <span class="math-expr">$-3^2 = -9$</span> et <span class="math-expr">$(-3)^2 = +9$</span>.</li>
+              <li>Ne pas confondre addition (<span class="math-expr">$-5 - 7 = -12$</span>) et produit (<span class="math-expr">$(-5) \times (-7) = +35$</span>).</li>
+              <li>$5 - 7$ fait bien $-2$ (et non $+12$).</li>
+            </ul>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="revision-card" style="border-color:var(--emerald-border); background:var(--emerald-bg);">
+            <h4 style="color:var(--emerald-dark);">📋 Checklist de Vérification Avant de Rendre</h4>
+            <ul style="margin:0; padding-left:18px; font-size:0.95rem; color:var(--emerald-dark);">
+              <li>[ ] Ai-je bien simplifié les doubles signes avant de calculer ?</li>
+              <li>[ ] Le signe de mon produit correspond-il au nombre de facteurs négatifs ?</li>
+              <li>[ ] Mon résultat est-il cohérent sur la flèche graduée mentale ?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+          <button class="action-btn primary" id="unlockStage12Btn">Consulter Mon Carnet d'Erreurs ➔</button>
+        </div>
+      </section>
+
+      <!-- NEW MODULE 2: ERROR NOTEBOOK (Étape 12) -->
+      <section class="lab-section locked" id="stage12">
+        <div class="section-header">
+          <div class="section-step">Étape 12 · Carnet d'Erreurs Personnalisé</div>
+          <h2>Mon Carnet d'Erreurs</h2>
+          <p class="section-desc">Chaque erreur commise durant la leçon est capturée et décortiquée ici pour ne plus jamais la refaire.</p>
+        </div>
+
+        <div id="errorNotebookContainer">
+          <!-- Dynamically populated by JS -->
+          <div class="callout success">
+            <strong>Chargement du carnet...</strong> Si tu n'as fait aucune erreur, un message de félicitations s'affichera ici.
+          </div>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+          <button class="action-btn primary" id="unlockStage13Btn">Passer à la Technique Feynman ➔</button>
+        </div>
+      </section>
+
+      <!-- NEW MODULE 4: CAN YOU TEACH IT? / FEYNMAN TECHNIQUE (Étape 13) -->
+      <section class="lab-section locked" id="stage13">
+        <div class="section-header">
+          <div class="section-step">Étape 13 · Technique de Feynman</div>
+          <h2>Peux-tu l'expliquer ?</h2>
+          <p class="section-desc">Expliquer une règle avec tes propres mots est la preuve ultime que tu la maîtrises parfaitement.</p>
+        </div>
+
+        <!-- Feynman Challenge 1 -->
+        <div class="quiz-card">
+          <p class="question">Défi 1 : Pourquoi <span class="math-expr">$-(-5) = +5$</span> ?</p>
+          <p style="margin:0 0 10px; color:var(--text-muted); font-size:0.95rem;">Imagine que tu dois l'expliquer à un ami qui ne comprend pas cette règle.</p>
+          <textarea class="feynman-textarea" id="feynmanText1" placeholder="Écris ton explication ici avec tes propres mots..."></textarea>
+          <button class="action-btn primary" id="feynmanSubmit1" style="margin-top:12px;">Valider mon explication (+30 XP) ➔</button>
+
+          <div id="feynmanModel1" class="callout success" style="display:none; margin-top:16px;">
+            <strong>Explication Modèle :</strong><br>
+            Le premier signe <span class="math-expr">$-$</span> indique la direction vers la gauche. Le second signe <span class="math-expr">$-$</span> ordonne de soustraire ou d'inverser ce déplacement (faire un demi-tour). Inverser un déplacement vers la gauche t'envoie donc vers la droite (<span class="math-expr">$+$</span>) !
+            
+            <div style="margin-top:12px; font-weight:700;">Auto-Évaluation :</div>
+            <ul style="margin:4px 0 0; padding-left:18px;">
+              <li>[ ] J'ai mentionné la notion de direction ou de demi-tour</li>
+              <li>[ ] J'ai donné une conclusion claire ($+5$)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Feynman Challenge 2 -->
+        <div class="quiz-card">
+          <p class="question">Défi 2 : Pourquoi <span class="math-expr">$(-4) \times (-3) = +12$</span> alors que <span class="math-expr">$-4 - 3 = -7$</span> ?</p>
+          <textarea class="feynman-textarea" id="feynmanText2" placeholder="Explique la différence entre l'addition et la multiplication de négatifs..."></textarea>
+          <button class="action-btn primary" id="feynmanSubmit2" style="margin-top:12px;">Valider mon explication (+30 XP) ➔</button>
+
+          <div id="feynmanModel2" class="callout success" style="display:none; margin-top:16px;">
+            <strong>Explication Modèle :</strong><br>
+            Dans <span class="math-expr">$-4 - 3$</span>, on additionne deux déplacements vers la gauche (4 pas puis 3 pas), ce qui éloigne à $-7$.<br>
+            Dans <span class="math-expr">$(-4) \times (-3)$</span>, on applique la règle des signes du produit : multiplier deux nombres de mêmes signes donne un résultat positif ($+12$).
+          </div>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+          <button class="action-btn primary" id="unlockStage14Btn">Lancer l'Examen Blanc Chronométré ➔</button>
+        </div>
+      </section>
+
+      <!-- NEW MODULE 1: EXAM SIMULATION (Étape 14) -->
+      <section class="lab-section locked" id="stage14">
+        <div class="section-header">
+          <div class="section-step">Étape 14 · Simulation d'Examen Chronométré</div>
+          <h2>Examen Blanc Officiel (Niveau Brevet)</h2>
+          <p class="section-desc">15 questions soigneusement préparées pour évaluer tes compétences réelles en conditions d'examen.</p>
+        </div>
+
+        <!-- Timed Exam Header Bar -->
+        <div class="exam-header-bar">
+          <div>
+            <span style="font-size:0.85rem; font-weight:800; text-transform:uppercase; opacity:0.8;">Temps Restant</span>
+            <div class="exam-timer" id="examTimer">15:00</div>
+          </div>
+          <div>
+            <span style="font-size:0.85rem; font-weight:800; text-transform:uppercase; opacity:0.8;">Progression</span>
+            <div style="font-size:1.2rem; font-weight:900;" id="examProgressText">Question 1 / 15</div>
+          </div>
+          <button class="action-btn" id="btnStartExam" style="background:#fff; color:var(--navy-primary); font-weight:800;">Lancer l'Épreuve ⏱️</button>
+        </div>
+
+        <!-- Question Navigation Pills -->
+        <div class="exam-nav-pills" id="examPills">
+          <!-- Dynamic Pills 1..15 -->
+        </div>
+
+        <!-- Exam Active Question Box -->
+        <div id="examQuestionContainer" class="quiz-card" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span class="meta-pill" id="examDifficultyTag">Facile</span>
+            <span style="font-size:0.88rem; font-weight:800; color:var(--violet-soft);" id="examSkillTag">Repérage</span>
+          </div>
+          <h3 id="examQTitle" class="question" style="margin-bottom:16px;">Question 1</h3>
+          <div id="examQContent">
+            <!-- Dynamic Options or Inputs -->
+          </div>
+
+          <div style="display:flex; justify-content:space-between; gap:12px; margin-top:20px;">
+            <button class="action-btn" id="btnExamPrev">⏮️ Précédente</button>
+            <button class="action-btn primary" id="btnExamNext">Suivante ⏭️</button>
+            <button class="action-btn" id="btnSubmitExam" style="background:var(--emerald-positive); color:#fff; border-color:var(--emerald-positive); display:none;">Terminer l'Examen 🏆</button>
+          </div>
+        </div>
+
+        <!-- Exam Results & Competence Analytics Breakdown -->
+        <div id="examResultsCard" class="mastery-report-card" style="display:none;">
+          <div class="mastery-badge-icon">📊</div>
+          <h2 style="margin-bottom:6px;">Résultats de ton Examen Blanc</h2>
+          <div style="font-size:2.2rem; font-weight:900; color:var(--violet-soft);" id="examScoreDisplay">0 / 15 (0%)</div>
+          <p id="examRecommendationText" style="color:var(--text-muted); max-width:550px; margin:10px auto 24px;">
+            Analyse de tes compétences en cours...
+          </p>
+
+          <div class="mastery-report-grid" id="examSkillAnalyticsGrid">
+            <!-- Skills Breakdown Dynamic Grid -->
+          </div>
+
+          <div style="margin-top:30px; text-align:left;">
+            <h3>Correction Détaillée Question par Question</h3>
+            <div id="examDetailedCorrectionsList">
+              <!-- Corrections List -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>Excellens Lab · Plateforme d'apprentissage des Mathématiques au Collège · Libre & Gratuit</p>
+  </footer>
+
+  <!-- Embedded Vanilla JS Modular Architecture -->
+  <script>
+    (() => {
+      'use strict';
+
+      // --- KATEX DYNAMIC COMPILER HELPER ---
+      function renderMath(target = document.body) {
+        if (typeof renderMathInElement === 'function') {
+          renderMathInElement(target, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false}
+            ],
+            throwOnError: false
+          });
+        }
+      }
+
+      // --- STATE ENGINE ---
+      const STORAGE_KEY = 'excellens_nombres_relatifs_v3';
+      let state = {
+        xp: 0,
+        streak: 0,
+        unlockedStages: [1],
+        completedExercises: [],
+        masteryAnswers: {},
+        errorLog: []
+      };
+
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) state = Object.assign(state, JSON.parse(saved));
+      } catch (e) { console.error('LocalStorage load failed:', e); }
+
+      function saveState() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+      }
+
+      function updateUIStats() {
+        document.getElementById('xpDisplay').textContent = state.xp;
+        document.getElementById('streakDisplay').textContent = state.streak;
+
+        const totalStages = 14;
+        const progress = Math.min(100, Math.round((state.unlockedStages.length / totalStages) * 100));
+        document.getElementById('progressFill').style.width = progress + '%';
+
+        // Unlock stage elements and update sidebar status
+        for (let i = 1; i <= totalStages; i++) {
+          const sec = document.getElementById('stage' + i);
+          const statusIcon = document.getElementById('status' + i);
+          if (state.unlockedStages.includes(i)) {
+            if (sec) sec.classList.remove('locked');
+            if (statusIcon) statusIcon.textContent = '✅';
+          } else {
+            if (statusIcon) statusIcon.textContent = '🔒';
+          }
+        }
+      }
+
+      function addXP(amount) {
+        state.xp += amount;
+        state.streak += 1;
+        saveState();
+        updateUIStats();
+      }
+
+      function unlockStage(sId) {
+        if (!state.unlockedStages.includes(sId)) {
+          state.unlockedStages.push(sId);
+          saveState();
+          updateUIStats();
+        }
+      }
+
+      // --- ERROR COLLECTOR HELPER ---
+      function recordMistake(questionText, userAnswer, targetAnswer, concept, category) {
+        state.errorLog = state.errorLog || [];
+        if (!state.errorLog.some(e => e.qText === questionText && e.userAns === userAnswer)) {
+          state.errorLog.push({
+            qText: questionText,
+            userAns: userAnswer || '(vide)',
+            targetAns: targetAnswer,
+            concept: concept,
+            category: category
+          });
+          saveState();
+          renderErrorNotebook();
+        }
+      }
+
+      // --- THEME ENGINE ---
+      const themeBtn = document.getElementById('themeToggle');
+      const currentTheme = localStorage.getItem('excellens_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      themeBtn.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+      themeBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('excellens_theme', newTheme);
+      });
+
+      // --- STAGE 1: CURIOSITY HOOK & PREREQUISITES ---
+      const hookOpts = document.querySelectorAll('#hookOptions .option-btn');
+      const hookFeedback = document.getElementById('hookFeedback');
+
+      hookOpts.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = btn.dataset.val;
+          hookOpts.forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+          if (val === '-2') {
+            btn.classList.add('selected-correct');
+            hookFeedback.className = 'feedback-box show good';
+            hookFeedback.innerHTML = '<strong>Bravo !</strong> Tu es à 2 pas derrière ton départ (<span class="math-expr">$-2$</span>). Tu viens d\'effectuer ton premier calcul relatif !';
+            renderMath(hookFeedback);
+            addXP(20);
+            unlockStage(2);
+          } else {
+            btn.classList.add('selected-wrong');
+            hookFeedback.className = 'feedback-box show bad';
+            hookFeedback.innerHTML = '<strong>Pas tout à fait.</strong> Réfléchis : tes 5 pas vers l\'avant sont annulés par les 5 premiers pas vers l\'arrière. Il te reste encore 2 pas vers l\'arrière !';
+            recordMistake("🕹️ 5 pas à droite puis 7 pas à gauche", val, "-2", "Repérage & Déplacement", "Confusion de sens (droite/gauche)");
+          }
+        });
+      });
+
+      // Prerequisite checking & Test rapide
+      document.querySelectorAll('[data-prereq-id]').forEach(card => {
+        const btns = card.querySelectorAll('.answer-btn');
+        const fb = card.querySelector('.feedback-box');
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(b => b.disabled = true);
+            const isCorrect = btn.dataset.correct === 'true';
+            if (isCorrect) {
+              btn.classList.add('correct');
+              fb.className = 'feedback-box show good';
+              fb.textContent = btn.dataset.fbGood || 'Exact ! Bon réflexe.';
+              addXP(10);
+            } else {
+              btn.classList.add('incorrect');
+              fb.className = 'feedback-box show bad';
+              fb.textContent = btn.dataset.fbBad || 'Attention au calcul !';
+              recordMistake(card.querySelector('.question').textContent, btn.textContent, "Réponse correcte", "Test rapide de départ", "Rappel");
+            }
+            unlockStage(2);
+          });
+        });
+      });
+
+      // --- STAGE 2: SVG NUMBER LINE ENGINE ---
+      const lab = {
+        start: document.getElementById('startSlider'),
+        moveOne: document.getElementById('moveOneSlider'),
+        moveTwo: document.getElementById('moveTwoSlider'),
+        startValue: document.getElementById('startValue'),
+        moveOneValue: document.getElementById('moveOneValue'),
+        moveTwoValue: document.getElementById('moveTwoValue'),
+        equation: document.getElementById('labEquation'),
+        result: document.getElementById('labResult'),
+        feedback: document.getElementById('labFeedback')
+      };
+
+      function formatSigned(val) {
+        if (val === 0) return '0';
+        return (val > 0 ? '+' : '−') + Math.abs(val);
+      }
+
+      function moveLabel(val) {
+        const dir = val >= 0 ? 'à droite' : 'à gauche';
+        return `${formatSigned(val)} : ${Math.abs(val)} ${dir}`;
+      }
+
+      function currentLabDemo() {
+        const start = Number(lab.start ? lab.start.value : 0);
+        const first = Number(lab.moveOne ? lab.moveOne.value : 5);
+        const second = Number(lab.moveTwo ? lab.moveTwo.value : -7);
+        const afterFirst = start + first;
+        const result = afterFirst + second;
+        return {
+          expression: [formatSigned(start), formatSigned(first), formatSigned(second)].filter(s => s !== '0').join(' '),
+          result,
+          points: [start, afterFirst, result],
+          moves: [
+            { from: start, to: afterFirst, label: moveLabel(first), isRight: first >= 0 },
+            { from: afterFirst, to: result, label: moveLabel(second), isRight: second >= 0 }
+          ]
+        };
+      }
+
+      function updateLab(hidden = true) {
+        if (!lab.start) return;
+        const demo = currentLabDemo();
+        lab.startValue.textContent = formatSigned(Number(lab.start.value));
+        lab.moveOneValue.textContent = formatSigned(Number(lab.moveOne.value));
+        lab.moveTwoValue.textContent = formatSigned(Number(lab.moveTwo.value));
+        lab.equation.textContent = demo.expression;
+        lab.result.textContent = hidden ? 'Résultat caché' : formatSigned(demo.result);
+        if (hidden) lab.feedback.textContent = 'Avant de cliquer, prédis le point final dans ta tête.';
+      }
+
+      const svg = document.getElementById('interactiveSvg');
+      let currentPoints = [0, 5, -2];
+      let currentMoves = [
+        { from: 0, to: 5, label: '+5 : 5 à droite', isRight: true },
+        { from: 5, to: -2, label: '−7 : 7 à gauche', isRight: false }
+      ];
+
+      function renderSvgLine(points, moves, targetSvg = svg) {
+        if (!targetSvg) return;
+        const NS = 'http://www.w3.org/2000/svg';
+        targetSvg.replaceChildren();
+
+        const min = -10, max = 10;
+        const width = 900, height = 250;
+        const margin = 55;
+        const scaleX = val => margin + ((val - min) / (max - min)) * (width - 2 * margin);
+        const axisY = 165;
+
+        // <defs> for marker arrowheads
+        const defs = document.createElementNS(NS, 'defs');
+        
+        const mRight = document.createElementNS(NS, 'marker');
+        mRight.setAttribute('id', 'arrowRight');
+        mRight.setAttribute('markerWidth', '10');
+        mRight.setAttribute('markerHeight', '10');
+        mRight.setAttribute('refX', '8');
+        mRight.setAttribute('refY', '3');
+        mRight.setAttribute('orient', 'auto');
+        const pRight = document.createElementNS(NS, 'path');
+        pRight.setAttribute('d', 'M0,0 L0,6 L9,3 z');
+        pRight.setAttribute('fill', '#10b981');
+        mRight.appendChild(pRight);
+
+        const mLeft = document.createElementNS(NS, 'marker');
+        mLeft.setAttribute('id', 'arrowLeft');
+        mLeft.setAttribute('markerWidth', '10');
+        mLeft.setAttribute('markerHeight', '10');
+        mLeft.setAttribute('refX', '8');
+        mLeft.setAttribute('refY', '3');
+        mLeft.setAttribute('orient', 'auto');
+        const pLeft = document.createElementNS(NS, 'path');
+        pLeft.setAttribute('d', 'M0,0 L0,6 L9,3 z');
+        pLeft.setAttribute('fill', '#f43f5e');
+        mLeft.appendChild(pLeft);
+
+        defs.appendChild(mRight);
+        defs.appendChild(mLeft);
+        targetSvg.appendChild(defs);
+
+        // Axis line
+        const line = document.createElementNS(NS, 'line');
+        line.setAttribute('x1', margin);
+        line.setAttribute('y1', axisY);
+        line.setAttribute('x2', width - margin);
+        line.setAttribute('y2', axisY);
+        line.setAttribute('stroke', 'var(--text-main)');
+        line.setAttribute('stroke-width', '4');
+        line.setAttribute('stroke-linecap', 'round');
+        targetSvg.appendChild(line);
+
+        // Axis arrow tips
+        const lTip = document.createElementNS(NS, 'path');
+        lTip.setAttribute('d', `M ${margin} ${axisY} l 12 -7 v 14 z`);
+        lTip.setAttribute('fill', 'var(--text-main)');
+        targetSvg.appendChild(lTip);
+
+        const rTip = document.createElementNS(NS, 'path');
+        rTip.setAttribute('d', `M ${width - margin} ${axisY} l -12 -7 v 14 z`);
+        rTip.setAttribute('fill', 'var(--text-main)');
+        targetSvg.appendChild(rTip);
+
+        // Ticks and labels
+        for (let i = min; i <= max; i++) {
+          const x = scaleX(i);
+          const tick = document.createElementNS(NS, 'line');
+          tick.setAttribute('x1', x);
+          tick.setAttribute('y1', axisY - 8);
+          tick.setAttribute('x2', x);
+          tick.setAttribute('y2', axisY + 8);
+          tick.setAttribute('stroke', 'var(--text-main)');
+          tick.setAttribute('stroke-width', i === 0 ? '4' : '2');
+          targetSvg.appendChild(tick);
+
+          const txt = document.createElementNS(NS, 'text');
+          txt.setAttribute('x', x);
+          txt.setAttribute('y', axisY + 28);
+          txt.setAttribute('text-anchor', 'middle');
+          txt.setAttribute('fill', i === 0 ? 'var(--text-main)' : 'var(--text-muted)');
+          txt.setAttribute('font-size', '14');
+          txt.setAttribute('font-weight', i === 0 ? '900' : '600');
+          txt.textContent = i > 0 ? '+' + i : (i < 0 ? '−' + Math.abs(i) : '0');
+          targetSvg.appendChild(txt);
+        }
+
+        // Draw movement vector arcs with keyframe path animations
+        moves.forEach((m, idx) => {
+          const x1 = scaleX(m.from);
+          const x2 = scaleX(m.to);
+          const arcY = 100 - idx * 42;
+          const color = m.isRight ? '#10b981' : '#f43f5e';
+          const marker = m.isRight ? 'url(#arrowRight)' : 'url(#arrowLeft)';
+
+          const path = document.createElementNS(NS, 'path');
+          path.setAttribute('d', `M ${x1} ${axisY - 12} Q ${(x1 + x2) / 2} ${arcY} ${x2} ${axisY - 12}`);
+          path.setAttribute('fill', 'none');
+          path.setAttribute('stroke', color);
+          path.setAttribute('stroke-width', '5');
+          path.setAttribute('stroke-linecap', 'round');
+          path.setAttribute('marker-end', marker);
+          path.setAttribute('class', 'svg-path-draw');
+          targetSvg.appendChild(path);
+
+          const labelTxt = document.createElementNS(NS, 'text');
+          labelTxt.setAttribute('x', (x1 + x2) / 2);
+          labelTxt.setAttribute('y', arcY - 8);
+          labelTxt.setAttribute('text-anchor', 'middle');
+          labelTxt.setAttribute('fill', color);
+          labelTxt.setAttribute('font-size', '14');
+          labelTxt.setAttribute('font-weight', '800');
+          labelTxt.textContent = m.label;
+          targetSvg.appendChild(labelTxt);
+        });
+
+        // Draw final arrival dot
+        if (points.length > 0) {
+          const finalVal = points[points.length - 1];
+          const circle = document.createElementNS(NS, 'circle');
+          circle.setAttribute('cx', scaleX(finalVal));
+          circle.setAttribute('cy', axisY);
+          circle.setAttribute('r', '11');
+          circle.setAttribute('fill', 'var(--violet-soft)');
+          circle.setAttribute('stroke', '#ffffff');
+          circle.setAttribute('stroke-width', '3');
+          circle.setAttribute('class', 'svg-result-dot');
+          targetSvg.appendChild(circle);
+        }
+      }
+
+      [lab.start, lab.moveOne, lab.moveTwo].forEach(input => {
+        input?.addEventListener('input', () => updateLab(true));
+      });
+
+      document.getElementById('revealLab')?.addEventListener('click', () => {
+        const demo = currentLabDemo();
+        updateLab(false);
+        lab.feedback.textContent = 'Le point final est ' + formatSigned(demo.result) + '. Explique-le avec deux déplacements.';
+        currentPoints = demo.points;
+        currentMoves = demo.moves;
+        document.getElementById('liveEquationDisplay').textContent = demo.expression + ' = ' + formatSigned(demo.result);
+        renderSvgLine(currentPoints, currentMoves);
+        addXP(15);
+      });
+
+      document.getElementById('resetLab')?.addEventListener('click', () => {
+        if (lab.start) lab.start.value = 0;
+        if (lab.moveOne) lab.moveOne.value = 5;
+        if (lab.moveTwo) lab.moveTwo.value = -7;
+        updateLab(true);
+        currentPoints = [0, 5, -2];
+        currentMoves = [
+          { from: 0, to: 5, label: '+5 : 5 à droite', isRight: true },
+          { from: 5, to: -2, label: '−7 : 7 à gauche', isRight: false }
+        ];
+        document.getElementById('liveEquationDisplay').textContent = '+5 − 7 = −2';
+        renderSvgLine(currentPoints, currentMoves);
+      });
+
+      // Presets for Stage 2
+      document.getElementById('btnPreset1')?.addEventListener('click', () => {
+        if (lab.start) lab.start.value = 0;
+        if (lab.moveOne) lab.moveOne.value = 5;
+        if (lab.moveTwo) lab.moveTwo.value = -7;
+        updateLab(false);
+        currentPoints = [0, 5, -2];
+        currentMoves = [
+          { from: 0, to: 5, label: '+5 : 5 à droite', isRight: true },
+          { from: 5, to: -2, label: '−7 : 7 à gauche', isRight: false }
+        ];
+        document.getElementById('liveEquationDisplay').textContent = '+5 − 7 = −2';
+        renderSvgLine(currentPoints, currentMoves);
+      });
+
+      document.getElementById('btnPreset2')?.addEventListener('click', () => {
+        if (lab.start) lab.start.value = 0;
+        if (lab.moveOne) lab.moveOne.value = -3;
+        if (lab.moveTwo) lab.moveTwo.value = 8;
+        updateLab(false);
+        currentPoints = [0, -3, 5];
+        currentMoves = [
+          { from: 0, to: -3, label: '−3 : 3 à gauche', isRight: false },
+          { from: -3, to: 5, label: '+8 : 8 à droite', isRight: true }
+        ];
+        document.getElementById('liveEquationDisplay').textContent = '−3 + 8 = +5';
+        renderSvgLine(currentPoints, currentMoves);
+      });
+
+      document.getElementById('btnPreset3')?.addEventListener('click', () => {
+        if (lab.start) lab.start.value = 0;
+        if (lab.moveOne) lab.moveOne.value = -4;
+        if (lab.moveTwo) lab.moveTwo.value = -3;
+        updateLab(false);
+        currentPoints = [0, -4, -7];
+        currentMoves = [
+          { from: 0, to: -4, label: '−4 : 4 à gauche', isRight: false },
+          { from: -4, to: -7, label: '−3 : 3 encore à gauche', isRight: false }
+        ];
+        document.getElementById('liveEquationDisplay').textContent = '−4 − 3 = −7';
+        renderSvgLine(currentPoints, currentMoves);
+      });
+
+      document.getElementById('btnPreset4')?.addEventListener('click', () => {
+        if (lab.start) lab.start.value = 0;
+        if (lab.moveOne) lab.moveOne.value = -2;
+        if (lab.moveTwo) lab.moveTwo.value = 5;
+        updateLab(false);
+        currentPoints = [0, -2, 3];
+        currentMoves = [
+          { from: 0, to: -2, label: '−2 : 2 à gauche', isRight: false },
+          { from: -2, to: 3, label: '−(−5) = +5 : 5 à droite', isRight: true }
+        ];
+        document.getElementById('liveEquationDisplay').textContent = '−2 − (−5) = +3';
+        renderSvgLine(currentPoints, currentMoves);
+      });
+
+      updateLab(true);
+      renderSvgLine(currentPoints, currentMoves);
+
+      // Stage Unlock Handlers
+      document.getElementById('unlockStage3Btn')?.addEventListener('click', () => {
+        addXP(15);
+        unlockStage(3);
+        document.getElementById('stage3')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('unlockStage4Btn')?.addEventListener('click', () => {
+        addXP(15);
+        unlockStage(4);
+        document.getElementById('stage4')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('unlockStage5Btn')?.addEventListener('click', () => {
+        addXP(15);
+        unlockStage(5);
+        document.getElementById('stage5')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('unlockStage6Btn')?.addEventListener('click', () => {
+        addXP(15);
+        unlockStage(6);
+        document.getElementById('stage6')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('unlockStage7Btn')?.addEventListener('click', () => {
+        addXP(15);
+        unlockStage(7);
+        document.getElementById('stage7')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('unlockStage8Btn')?.addEventListener('click', () => {
+        addXP(15);
+        unlockStage(8);
+        document.getElementById('stage8')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('unlockStage11Btn')?.addEventListener('click', () => {
+        addXP(20);
+        unlockStage(11);
+        document.getElementById('stage11')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('unlockStage12Btn')?.addEventListener('click', () => {
+        addXP(20);
+        unlockStage(12);
+        document.getElementById('stage12')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('unlockStage13Btn')?.addEventListener('click', () => {
+        addXP(20);
+        unlockStage(13);
+        document.getElementById('stage13')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('unlockStage14Btn')?.addEventListener('click', () => {
+        addXP(20);
+        unlockStage(14);
+        document.getElementById('stage14')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // --- STAGE 4: DUAL CODING MULTI-REPRESENTATIONS ---
+      const tabBtns = document.querySelectorAll('.switcher-tabs .tab-btn');
+      const repTitle = document.getElementById('repTitle');
+      const repDesc = document.getElementById('repDescription');
+      const repGraphic = document.getElementById('repGraphicContent');
+
+      const repData = {
+        line: {
+          title: '📏 Flèche Graduée Horizontale',
+          desc: 'Se déplacer vers la droite augmente la valeur (+). Se déplacer vers la gauche diminue la valeur (−).',
+          graphic: '<div style="font-size:3rem; font-weight:900;">⬅️  0  ➡️</div>'
+        },
+        temp: {
+          title: '🌡️ Thermomètre (°C)',
+          desc: 'La température monte vers le positif (+5 °C = chaud) et descend sous zéro dans les négatifs (−5 °C = gel).',
+          graphic: '<div style="font-size:2.8rem; font-weight:900;">🔥 +10°C <br> ❄️ −5°C</div>'
+        },
+        elevator: {
+          title: '🛗 Ascenseur d\'Immeuble',
+          desc: 'Les étages au-dessus du rez-de-chaussée sont positifs (+1, +2). Les sous-sols sont négatifs (−1, −2).',
+          graphic: '<div style="font-size:2.8rem; font-weight:900;">🏢 Étage 3 <br> 🚗 Sous-sol −2</div>'
+        },
+        sea: {
+          title: '🌊 Niveau de la Mer (Altitude)',
+          desc: 'L\'altitude au-dessus de l\'eau est positive (+50 m). La profondeur sous l\'eau est négative (−20 m).',
+          graphic: '<div style="font-size:2.5rem; font-weight:900;">🛸 +50m <br> 🌊 0m <br> ⚓ −20m</div>'
+        }
+      };
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const data = repData[btn.dataset.rep];
+          if (data) {
+            repTitle.textContent = data.title;
+            repDesc.textContent = data.desc;
+            repGraphic.innerHTML = data.graphic;
+          }
+        });
+      });
+      if (repGraphic) repGraphic.innerHTML = repData.line.graphic;
+
+      // --- STAGE 5: GUIDED TIMELINE ANIMATION (-(-x)) ---
+      let timelineStep = 0;
+      const timelineSteps = [
+        "Étape 1 : Je pars de 0 et je vais à <span class=\"math-expr\">$-2$</span> (2 pas vers la gauche).",
+        "Étape 2 : Je dois soustraire <span class=\"math-expr\">$-5$</span>. Le double signe <span class=\"math-expr\">$-(-5)$</span> inverse le sens et devient <span class=\"math-expr\">$+5$</span> (demi-tour vers la droite).",
+        "Étape 3 : De <span class=\"math-expr\">$-2$</span>, 5 pas vers la droite conduisent à <span class=\"math-expr\">$+3$</span> !"
+      ];
+
+      const tDots = document.querySelectorAll('#timelineDots .dot');
+      const tText = document.getElementById('timelineStepText');
+
+      function updateTimelineUI() {
+        tDots.forEach((d, idx) => d.classList.toggle('active', idx === timelineStep));
+        if (tText) {
+          tText.innerHTML = timelineSteps[timelineStep];
+          renderMath(tText);
+        }
+      }
+
+      document.getElementById('timelineNext')?.addEventListener('click', () => {
+        timelineStep = (timelineStep + 1) % timelineSteps.length;
+        updateTimelineUI();
+      });
+
+      document.getElementById('timelinePrev')?.addEventListener('click', () => {
+        timelineStep = (timelineStep - 1 + timelineSteps.length) % timelineSteps.length;
+        updateTimelineUI();
+      });
+
+      // --- STAGE 8: GUIDED COACHING PROBLEM ---
+      document.getElementById('btnShowHint')?.addEventListener('click', () => {
+        const hintBox = document.getElementById('hintBox');
+        if (hintBox) hintBox.style.display = 'block';
+      });
+
+      document.getElementById('btnShowCorrection')?.addEventListener('click', () => {
+        const det = document.getElementById('guidedCorrectionDetails');
+        if (det) det.open = true;
+      });
+
+      document.getElementById('checkGuidedBtn')?.addEventListener('click', () => {
+        const input = document.getElementById('guidedInput');
+        const fb = document.getElementById('guidedFeedback');
+        const val = input.value.trim().replace('+', '');
+        if (val === '-1') {
+          fb.className = 'feedback-box show good';
+          fb.innerHTML = '<strong>Félicitations !</strong> <span class="math-expr">$C = -1$</span> est la bonne réponse !';
+          renderMath(fb);
+          addXP(25);
+          unlockStage(9);
+        } else {
+          fb.className = 'feedback-box show bad';
+          fb.innerHTML = '<strong>Regarde l\'indice :</strong> De +6, reculer de 10 mène à −4, puis avancer de 3 mène à −1.';
+          recordMistake("Calcule : C = +6 − 10 + 3", val, "-1", "Enchaînement de calculs", "Passage par zéro");
+        }
+      });
+
+      // --- STAGE 9: EXERCISES & MISTAKE DIAGNOSTIC REPLAY ---
+      document.querySelectorAll('.exercise-card').forEach(card => {
+        const btn = card.querySelector('.check-ex-btn');
+        const input = card.querySelector('.answer-input');
+        const fb = card.querySelector('.feedback-box');
+        const target = card.dataset.target;
+
+        btn?.addEventListener('click', () => {
+          const userVal = input.value.trim().replace('+', '');
+          if (userVal === target) {
+            card.style.borderColor = 'var(--emerald-positive)';
+            fb.className = 'feedback-box show good';
+            fb.innerHTML = '<strong>Excellente réponse !</strong> 🎉 Bravo pour ton calcul.';
+            addXP(20);
+
+            if (card.dataset.exId === 'ex5') unlockStage(10);
+          } else {
+            card.style.borderColor = 'var(--coral-negative)';
+            fb.className = 'feedback-box show bad';
+            fb.innerHTML = `<strong>Attention :</strong> Ton résultat (${userVal || 'vide'}) n'est pas exact. La cible était <strong>${target}</strong>. Visualise à nouveau le sens de chaque déplacement !`;
+            recordMistake(card.dataset.prompt || card.querySelector('.question').textContent, userVal, target, card.dataset.concept || "Nombres relatifs", "Calcul autonome");
+          }
+        });
+      });
+
+      // --- STAGE 10: MASTERY TEST & REPORT ---
+      const masteryCards = document.querySelectorAll('[data-mastery-q]');
+      masteryCards.forEach(card => {
+        const btns = card.querySelectorAll('.answer-btn');
+        const fb = card.querySelector('.feedback-box');
+        const qId = card.dataset.masteryQ;
+
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(b => b.disabled = true);
+            const isCorrect = btn.dataset.correct === 'true';
+            state.masteryAnswers[qId] = isCorrect;
+            saveState();
+
+            if (isCorrect) {
+              btn.classList.add('correct');
+              fb.className = 'feedback-box show good';
+              fb.textContent = 'Correct ! Excellent réflexe.';
+              addXP(25);
+            } else {
+              btn.classList.add('incorrect');
+              fb.className = 'feedback-box show bad';
+              fb.textContent = 'Incorrect. Révise les règles de déplacement et de signes.';
+              recordMistake(card.querySelector('.question').textContent, btn.textContent, "Réponse exacte", "Test de maîtrise", "Règle des signes");
+            }
+
+            // Check if all mastery questions answered
+            if (Object.keys(state.masteryAnswers).length === masteryCards.length) {
+              document.getElementById('masteryReportCard').style.display = 'block';
+              triggerConfetti();
+              unlockStage(11);
+            }
+          });
+        });
+      });
+
+      // --- MODULE 2: DYNAMIC ERROR NOTEBOOK RENDERER ---
+      function renderErrorNotebook() {
+        const container = document.getElementById('errorNotebookContainer');
+        if (!container) return;
+
+        const errors = state.errorLog || [];
+        if (errors.length === 0) {
+          container.innerHTML = `
+            <div class="callout success">
+              <h3 style="margin:0 0 8px; color:var(--emerald-dark);">🎉 Excellent ! Aucune erreur détectée.</h3>
+              <p style="margin:0; font-size:1.02rem;">Tu as répondu sans faute jusqu'ici. Voici 2 défis Maître pour tester ta réflexion :</p>
+            </div>
+            <div class="quiz-card" style="margin-top:16px;">
+              <p class="question">Défi Maître 1 : Quel est le signe de <span class="math-expr">$(-1) \\times (-2) \\times \\dots \\times (-100)$</span> ?</p>
+              <p style="margin:0; color:var(--text-muted);">Réponse : Produit de 100 facteurs négatifs (100 est pair) ➔ <strong>POSITIF (+)</strong> !</p>
+            </div>
+            <div class="quiz-card" style="margin-top:16px;">
+              <p class="question">Défi Maître 2 : Détermine la valeur de <span class="math-expr">$A = -5 - (-12) + (-7) - (+3)$</span></p>
+              <p style="margin:0; color:var(--text-muted);">Calcul : <span class="math-expr">$-5 + 12 - 7 - 3 = 12 - 15 = -3$</span>.</p>
+            </div>
+          `;
+          renderMath(container);
+          return;
+        }
+
+        let html = `<p style="font-weight:700; margin-bottom:16px;">Tu as ${errors.length} erreur(s) enregistrée(s) à retravailler :</p>`;
+        errors.forEach((err, idx) => {
+          html += `
+            <div class="worked-example" style="margin-bottom:16px;">
+              <header style="background:var(--coral-dark);">Erreur ${idx + 1} · ${err.category} (${err.concept})</header>
+              <div class="body">
+                <p style="margin:0 0 8px; font-weight:800;">Question : ${err.qText}</p>
+                <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px;">
+                  <span class="meta-pill" style="background:var(--coral-bg); border-color:var(--coral-border); color:var(--coral-dark);">Ta réponse : ${err.userAns}</span>
+                  <span class="meta-pill" style="background:var(--emerald-bg); border-color:var(--emerald-border); color:var(--emerald-dark);">Réponse attendue : ${err.targetAns}</span>
+                </div>
+                <div class="callout warning" style="margin:10px 0;">
+                  <strong>Pourquoi cette erreur ?</strong> ${getExplanatoryMistakeHint(err.category)}
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        container.innerHTML = html;
+        renderMath(container);
+      }
+
+      function getExplanatoryMistakeHint(category) {
+        if (category.includes('double signe')) return "Lorsqu'on soustrait un nombre négatif −(−x), les deux signes − se neutralisent et inversent le sens vers la droite (+x).";
+        if (category.includes('sens')) return "N'oublie pas : le signe placé devant le nombre indique la direction. + s'effectue vers la droite, − vers la gauche.";
+        if (category.includes('zéro')) return "Lors de déplacements opposés, repère d'abord combien de pas sont nécessaires pour revenir à 0.";
+        return "Prends le temps de décomposer le calcul étape par étape sur la flèche graduée mentale.";
+      }
+
+      renderErrorNotebook();
+
+      // --- MODULE 4: FEYNMAN TECHNIQUE HANDLERS ---
+      document.getElementById('feynmanSubmit1')?.addEventListener('click', () => {
+        const txt = document.getElementById('feynmanText1').value.trim();
+        if (txt.length < 5) {
+          alert('Écris au moins une phrase pour expliquer ta réflexion !');
+          return;
+        }
+        document.getElementById('feynmanModel1').style.display = 'block';
+        addXP(30);
+      });
+
+      document.getElementById('feynmanSubmit2')?.addEventListener('click', () => {
+        const txt = document.getElementById('feynmanText2').value.trim();
+        if (txt.length < 5) {
+          alert('Écris au moins une phrase pour expliquer la différence !');
+          return;
+        }
+        document.getElementById('feynmanModel2').style.display = 'block';
+        addXP(30);
+        unlockStage(14);
+      });
+
+      // --- MODULE 1: EXAM SIMULATION ENGINE (15 QUESTIONS) ---
+      const examQuestions = [
+        { id: 1, diff: 'Facile', skill: 'Repérage', q: 'Calcule : $+8 - 13$', type: 'qcm', opts: ['−5', '+5', '−21'], correct: '−5' },
+        { id: 2, diff: 'Facile', skill: 'Double signe', q: 'Calcule : $-6 - (-14)$', type: 'qcm', opts: ['+8', '−20', '−8'], correct: '+8' },
+        { id: 3, diff: 'Facile', skill: 'Multiplication', q: 'Calcule : $(-7) \\times (-6)$', type: 'qcm', opts: ['+42', '−42', '+13'], correct: '+42' },
+        { id: 4, diff: 'Facile', skill: 'Division', q: 'Calcule : $(-36) \\div (+9)$', type: 'qcm', opts: ['−4', '+4', '−27'], correct: '−4' },
+        { id: 5, diff: 'Moyen', skill: 'Calcul mixte', q: 'Calcule : $5 - (-3) + (-8)$', type: 'input', correct: '0' },
+        { id: 6, diff: 'Moyen', skill: 'Multiplication', q: 'Calcule : $(-2) \\times (+4) \\times (-5)$', type: 'input', correct: '40' },
+        { id: 7, diff: 'Moyen', skill: 'Problème concrétisé', q: 'Il fait $-2^\\circ\\text{C}$ le matin. La température monte de $9^\\circ\\text{C}$ l\'après-midi, puis descend de $4^\\circ\\text{C}$ le soir. Quelle est la température le soir ?', type: 'input', correct: '3' },
+        { id: 8, diff: 'Moyen', skill: 'Règle des signes', q: 'Quel est le signe du produit de 5 facteurs négatifs : $(-1) \\times (-2) \\times (-3) \\times (-4) \\times (-5)$ ?', type: 'qcm', opts: ['Négatif (−)', 'Positif (+)'], correct: 'Négatif (−)' },
+        { id: 9, diff: 'Moyen', skill: 'Nombre manquant', q: 'Trouve le nombre manquant : $-8 + \\dots = +5$', type: 'input', correct: '13' },
+        { id: 10, diff: 'Difficile', skill: 'Priorités opératoires', q: 'Calcule : $D = (-3) + (-4) \\times (-2)$', type: 'qcm', opts: ['+5', '+14', '−11'], correct: '+5' },
+        { id: 11, diff: 'Difficile', skill: 'Problème de profondeur', q: 'Un sous-marin est à $-150\\text{ m}$. Il descend de $80\\text{ m}$, puis remonte de $120\\text{ m}$. Quelle est sa nouvelle profondeur (en m) ?', type: 'input', correct: '-110' },
+        { id: 12, diff: 'Difficile', skill: 'Triples signes', q: 'Simplifie l\'écriture : $-(-(-7))$', type: 'qcm', opts: ['−7', '+7', '0'], correct: '−7' },
+        { id: 13, diff: 'Niveau Brevet', skill: 'Priorités opératoires', q: 'Calcule : $E = -5 - 3 \\times (-4)$', type: 'qcm', opts: ['+7', '−32', '−17'], correct: '+7' },
+        { id: 14, diff: 'Niveau Brevet', skill: 'Problème bancaire', q: 'Le solde de compte d\'Alex est de $-45\\text{ €}$. Il dépose $100\\text{ €}$, puis effectue un achat de $65\\text{ €}$ et un autre de $20\\text{ €}$. Quel est son nouveau solde (en €) ?', type: 'input', correct: '-30' },
+        { id: 15, diff: 'Niveau Brevet', skill: 'Raisonnement théorique', q: 'Vrai ou Faux : Soustraire un nombre négatif revient toujours à ajouter son opposé positif.', type: 'qcm', opts: ['Vrai', 'Faux'], correct: 'Vrai' }
+      ];
+
+      let examState = {
+        active: false,
+        currentIdx: 0,
+        answers: {},
+        timeLeft: 900,
+        timerTimer: null
+      };
+
+      const examPillsContainer = document.getElementById('examPills');
+      const examQContainer = document.getElementById('examQuestionContainer');
+
+      function initExamPills() {
+        if (!examPillsContainer) return;
+        examPillsContainer.replaceChildren();
+        examQuestions.forEach((q, idx) => {
+          const pill = document.createElement('button');
+          pill.className = 'exam-pill' + (idx === examState.currentIdx ? ' active' : '') + (examState.answers[idx] !== undefined ? ' answered' : '');
+          pill.textContent = idx + 1;
+          pill.addEventListener('click', () => {
+            if (!examState.active) return;
+            examState.currentIdx = idx;
+            renderExamQuestion();
+          });
+          examPillsContainer.appendChild(pill);
+        });
+      }
+
+      function renderExamQuestion() {
+        if (!examState.active) return;
+        const q = examQuestions[examState.currentIdx];
+        if (!q) return;
+
+        document.getElementById('examProgressText').textContent = `Question ${examState.currentIdx + 1} / ${examQuestions.length}`;
+        document.getElementById('examDifficultyTag').textContent = q.diff;
+        document.getElementById('examSkillTag').textContent = q.skill;
+        document.getElementById('examQTitle').innerHTML = `Question ${q.id} : ${q.q}`;
+        renderMath(document.getElementById('examQTitle'));
+
+        const content = document.getElementById('examQContent');
+        content.replaceChildren();
+
+        const userAns = examState.answers[examState.currentIdx];
+
+        if (q.type === 'qcm') {
+          const grid = document.createElement('div');
+          grid.className = 'options-grid';
+          q.opts.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'answer-btn' + (userAns === opt ? ' correct' : '');
+            btn.textContent = opt;
+            btn.addEventListener('click', () => {
+              examState.answers[examState.currentIdx] = opt;
+              initExamPills();
+              renderExamQuestion();
+            });
+            grid.appendChild(btn);
+          });
+          content.appendChild(grid);
+        } else {
+          const row = document.createElement('div');
+          row.className = 'input-row';
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'answer-input';
+          input.placeholder = 'Ta réponse numérique...';
+          input.value = userAns !== undefined ? userAns : '';
+          const btn = document.createElement('button');
+          btn.className = 'action-btn primary';
+          btn.textContent = 'Enregistrer';
+          btn.addEventListener('click', () => {
+            examState.answers[examState.currentIdx] = input.value.trim().replace('+', '');
+            initExamPills();
+          });
+          row.appendChild(input);
+          row.appendChild(btn);
+          content.appendChild(row);
+        }
+
+        // Prev/Next/Submit visibility
+        document.getElementById('btnExamPrev').disabled = examState.currentIdx === 0;
+        document.getElementById('btnExamNext').disabled = examState.currentIdx === examQuestions.length - 1;
+        document.getElementById('btnSubmitExam').style.display = Object.keys(examState.answers).length >= 10 ? 'inline-flex' : 'none';
+
+        initExamPills();
+      }
+
+      document.getElementById('btnStartExam')?.addEventListener('click', () => {
+        examState.active = true;
+        examState.currentIdx = 0;
+        examState.answers = {};
+        examState.timeLeft = 900;
+
+        document.getElementById('btnStartExam').style.display = 'none';
+        examQContainer.style.display = 'block';
+
+        initExamPills();
+        renderExamQuestion();
+
+        if (examState.timerTimer) clearInterval(examState.timerTimer);
+        examState.timerTimer = setInterval(() => {
+          examState.timeLeft--;
+          const m = Math.floor(examState.timeLeft / 60);
+          const s = examState.timeLeft % 60;
+          document.getElementById('examTimer').textContent = `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
+          if (examState.timeLeft <= 0) {
+            clearInterval(examState.timerTimer);
+            finishExam();
+          }
+        }, 1000);
+      });
+
+      document.getElementById('btnExamPrev')?.addEventListener('click', () => {
+        if (examState.currentIdx > 0) {
+          examState.currentIdx--;
+          renderExamQuestion();
+        }
+      });
+
+      document.getElementById('btnExamNext')?.addEventListener('click', () => {
+        if (examState.currentIdx < examQuestions.length - 1) {
+          examState.currentIdx++;
+          renderExamQuestion();
+        }
+      });
+
+      document.getElementById('btnSubmitExam')?.addEventListener('click', finishExam);
+
+      function finishExam() {
+        if (examState.timerTimer) clearInterval(examState.timerTimer);
+        examQContainer.style.display = 'none';
+        const resultsCard = document.getElementById('examResultsCard');
+        resultsCard.style.display = 'block';
+
+        let correctCount = 0;
+        let skillScores = {};
+
+        examQuestions.forEach((q, idx) => {
+          const userAns = (examState.answers[idx] || '').trim().replace('+', '');
+          const isCorrect = userAns === q.correct.replace('+', '');
+          if (isCorrect) correctCount++;
+
+          skillScores[q.skill] = skillScores[q.skill] || { correct: 0, total: 0 };
+          skillScores[q.skill].total++;
+          if (isCorrect) skillScores[q.skill].correct++;
+
+          if (!isCorrect) {
+            recordMistake(q.q, userAns, q.correct, q.skill, "Examen Blanc");
+          }
+        });
+
+        const pct = Math.round((correctCount / examQuestions.length) * 100);
+        document.getElementById('examScoreDisplay').textContent = `${correctCount} / ${examQuestions.length} (${pct}%)`;
+
+        let recText = "Excellent travail ! Tu es parfaitement prêt(e) pour l'épreuve du Brevet des Collèges.";
+        if (pct < 50) recText = "Des lacunes subsistent. Relis attentivement la Fiche Express 3 Min et refais le Carnet d'Erreurs.";
+        else if (pct < 80) recText = "Bon niveau global. Révise les priorités opératoires et les problèmes en contexte.";
+        document.getElementById('examRecommendationText').textContent = recText;
+
+        // Skills analytics grid
+        const analyticsGrid = document.getElementById('examSkillAnalyticsGrid');
+        analyticsGrid.replaceChildren();
+        Object.entries(skillScores).forEach(([skill, data]) => {
+          const ratio = Math.round((data.correct / data.total) * 100);
+          const card = document.createElement('div');
+          card.className = 'report-card';
+          card.innerHTML = `
+            <small>${skill}</small>
+            <strong>${ratio}% de réussite (${data.correct}/${data.total})</strong>
+          `;
+          analyticsGrid.appendChild(card);
+        });
+
+        // Detailed question corrections list
+        const correctionsList = document.getElementById('examDetailedCorrectionsList');
+        correctionsList.replaceChildren();
+        examQuestions.forEach((q, idx) => {
+          const userAns = (examState.answers[idx] || '').trim().replace('+', '');
+          const isCorrect = userAns === q.correct.replace('+', '');
+          const item = document.createElement('div');
+          item.className = 'callout ' + (isCorrect ? 'success' : 'danger');
+          item.style.margin = '10px 0';
+          item.innerHTML = `
+            <strong>Question ${q.id} (${q.skill}) :</strong> ${q.q}<br>
+            <span>Ta réponse : <strong>${userAns || 'sans réponse'}</strong> | Correct : <strong>${q.correct}</strong> ${isCorrect ? '✅' : '❌'}</span>
+          `;
+          correctionsList.appendChild(item);
+        });
+
+        renderMath(resultsCard);
+        addXP(100);
+        triggerConfetti();
+      }
+
+      // --- CONFETTI PARTICLE ENGINE ---
+      function triggerConfetti() {
+        const canvas = document.getElementById('confettiCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const pieces = [];
+        for (let i = 0; i < 90; i++) {
+          pieces.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            size: Math.random() * 8 + 4,
+            color: ['#10b981', '#6d28d9', '#f43f5e', '#d97706'][Math.floor(Math.random() * 4)],
+            speedY: Math.random() * 3 + 2
+          });
+        }
+
+        function loop() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          pieces.forEach(p => {
+            p.y += p.speedY;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x, p.y, p.size, p.size);
+          });
+          if (pieces.some(p => p.y < canvas.height)) {
+            requestAnimationFrame(loop);
+          }
+        }
+        loop();
+      }
+
+      // --- INTERSECTION OBSERVER FOR SIDEBAR NAVIGATION ---
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('.lab-section').forEach(sec => observer.observe(sec));
+
+      window.addEventListener('DOMContentLoaded', () => {
+        renderMath();
+      });
+
+      updateUIStats();
+    })();
+  </script>
+</body>
+</html>
