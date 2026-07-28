@@ -78,10 +78,17 @@ Every Excellens lesson constructs a flexible learning journey spanning mandatory
    - Asks the student to explain a core rule in plain language as if teaching a beginner.
    - Upon submission, reveals a structured Model Explanation and a self-evaluation checklist.
 
+4. **Non-Blocking Exercise Progression Protocol**:
+   - Wrong answers MUST NEVER block stage progression or lock the student in a stuck state.
+   - The exercise **attempt** itself satisfies the stage advancement criteria:
+     - **Correct Answer**: Displays positive feedback, awards XP, triggers milestone confetti, and unlocks the next stage.
+     - **Incorrect Answer**: Displays clear explanation and diagnostic correction (`❌ Pas tout à fait...`), logs entry into Error Notebook, permits additional retries, AND STILL unlocks the next stage (`if (student_attempted) unlock_next_stage()`).
+   - Learning occurs through active attempts, immediate feedback, and risk-free iteration.
+
 ---
 
 ## 3. Assessment Philosophy
 
-1. **Low-Stakes Diagnostics**: Initial tests never block progress; they identify baseline readiness.
+1. **Low-Stakes Non-Blocking Diagnostics**: Initial tests and practice questions never block progress; they identify baseline readiness and encourage continuous forward momentum.
 2. **Mastery Verification**: End-of-lesson assessment measures multi-faceted understanding.
 3. **Exam Simulation**: Timed evaluations simulate real exam conditions, offering detailed skill analytics across cognitive levels (Easy, Medium, Hard, Official Exam standard).

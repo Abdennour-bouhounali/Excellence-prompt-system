@@ -20,7 +20,7 @@
   <!-- KaTeX for LaTeX Math Rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$',right:'$',display:false},{left:'$$',right:'$$',display:true}],throwOnError:false});"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -1806,9 +1806,9 @@
       'use strict';
 
       // --- KATEX DYNAMIC COMPILER HELPER ---
-      function renderMath(target = document.body) {
-        if (typeof renderMathInElement === 'function') {
-          renderMathInElement(target, {
+      function renderAllMath(element = document.body) {
+        if (window.renderMathInElement) {
+          renderMathInElement(element, {
             delimiters: [
               {left: '$$', right: '$$', display: true},
               {left: '$', right: '$', display: false}
@@ -1817,6 +1817,7 @@
           });
         }
       }
+      const renderMath = renderAllMath;
 
       // --- STATE ENGINE ---
       const STORAGE_KEY = 'excellens_nombres_relatifs_v3';

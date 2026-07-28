@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simplifier l'écriture d'une racine carrée pour extraire les carrés parfaits | Excellens</title>
+  <meta name="description" content="Laboratoire interactif, animations géométriques et épreuves du Brevet (3e) : maîtrise la simplification des racines carrées sous la forme a√b en décomposant et extrayant les carrés parfaits.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://www.excellens.co/revisions/mathematiques/racines-carrees/simplification">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Simplifier l'écriture d'une racine carrée pour extraire les carrés parfaits | Excellens">
+  <meta property="og:description" content="Laboratoire interactif et entraînement complet : comprends enfin l'extraction des carrés parfaits avec des représentations visuelles, le carnet d'erreurs et la préparation au Brevet.">
+  <meta property="og:url" content="https://www.excellens.co/revisions/mathematiques/racines-carrees/simplification">
+  <meta property="og:site_name" content="Excellens">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- KaTeX for LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Simplifier l'écriture d'une racine carrée pour extraire les carrés parfaits",
+    "description": "Laboratoire interactif, cours complet, représentations visuelles géométriques, carnet d'erreurs et examen blanc officiel du Brevet sur les racines carrées.",
+    "inLanguage": "fr-FR",
+    "educationalLevel": ["3e", "Collège", "Cycle 4"],
+    "learningResourceType": ["InteractiveResource", "Cours", "Exercices", "Quiz", "Brevet", "ExamSimulation"],
+    "teaches": [
+      "Reconnaître les carrés parfaits",
+      "Utiliser la propriété $\sqrt{a \times b} = \sqrt{a} \times \sqrt{b}$",
+      "Décomposer un nombre sous le radical",
+      "Exprimer une racine sous la forme $a\sqrt{b}$ avec $b$ le plus petit possible",
+      "Identifier et éviter le piège $\sqrt{a+b} \neq \sqrt{a} + \sqrt{b}$",
+      "Distinguer écriture exacte et valeur approchée décimale",
+      "Résoudre des problèmes du Brevet des Collèges"
+    ],
+    "isAccessibleForFree": true,
+    "provider": {
+      "@type": "Organization",
+      "name": "Excellens",
+      "url": "https://www.excellens.co"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      /* Brand & Base Colors */
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #ffffff;
+      --bg-alt: #f1f5f9;
+      --border-color: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      
+      --navy-primary: #0f172a;
+      --navy-accent: #1e293b;
+      
+      /* Semantic State Colors */
+      --emerald-positive: #10b981;
+      --emerald-dark: #047857;
+      --emerald-bg: #ecfdf5;
+      --emerald-border: #a7f3d0;
+      
+      --coral-negative: #f43f5e;
+      --coral-dark: #be123c;
+      --coral-bg: #fff1f2;
+      --coral-border: #fecdd3;
+      
+      --violet-accent: #6d28d9;
+      --violet-soft: #7c3aed;
+      --violet-bg: #f5f3ff;
+      --violet-border: #ddd6fe;
+      
+      --amber-warning: #d97706;
+      --amber-bg: #fffbeb;
+      --amber-border: #fef3c7;
+      
+      --sky-accent: #0284c7;
+      --sky-bg: #f0f9ff;
+      --sky-border: #bae6fd;
+      
+      /* Surface Geometry & Shadows */
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.12);
+      
+      --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --max-width: 1160px;
+    }
+
+    [data-theme="dark"] {
+      --bg-base: #090d16;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1f2937;
+      --bg-alt: #1a2332;
+      --border-color: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      
+      --navy-primary: #f8fafc;
+      --navy-accent: #e2e8f0;
+      
+      --emerald-bg: rgba(16, 185, 129, 0.15);
+      --emerald-border: rgba(16, 185, 129, 0.4);
+      
+      --coral-bg: rgba(244, 63, 94, 0.15);
+      --coral-border: rgba(244, 63, 94, 0.4);
+      
+      --violet-bg: rgba(124, 58, 237, 0.2);
+      --violet-border: rgba(139, 92, 246, 0.4);
+      
+      --amber-bg: rgba(245, 158, 11, 0.18);
+      --amber-border: rgba(245, 158, 11, 0.4);
+      
+      --sky-bg: rgba(2, 132, 199, 0.18);
+      --sky-border: rgba(2, 132, 199, 0.4);
+      
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: var(--font-sans);
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Accessibility Focus Rings */
+    :focus-visible {
+      outline: 3px solid var(--violet-soft);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* Layout Containers */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 24px;
+    }
+
+    [data-theme="dark"] .topbar {
+      background: rgba(17, 24, 39, 0.85);
+    }
+
+    .topbar-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--violet-soft), var(--violet-accent));
+      color: white;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .topbar-stats {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .stat-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    .theme-toggle-btn {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--border-color);
+    }
+
+    /* Global Progress Line */
+    .progress-bar-container {
+      width: 120px;
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--emerald-positive), var(--emerald-dark));
+      transition: width 0.4s ease;
+    }
+
+    /* Main Container Grid */
+    .app-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px;
+      width: 100%;
+      flex: 1;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, var(--navy-primary) 0%, var(--navy-accent) 100%);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: "√";
+      position: absolute;
+      right: -20px;
+      bottom: -40px;
+      font-size: 14rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+      font-family: serif;
+    }
+
+    .hero-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      opacity: 0.8;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 720px;
+    }
+
+    .hero-meta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    /* 2-Column App Layout */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Bounded Sticky Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 84px;
+      max-height: calc(100vh - 104px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-header {
+      font-weight: 800;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      padding: 0 8px;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .nav-item:hover:not(.locked) {
+      background: var(--bg-alt);
+    }
+
+    .nav-item.active {
+      background: var(--violet-bg);
+      color: var(--violet-accent);
+      border-left-color: var(--violet-accent);
+    }
+
+    .nav-item.completed .status-icon {
+      color: var(--emerald-positive);
+
+    }
+
+    .nav-item.locked {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .status-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      min-width: 0;
+    }
+
+    /* Lab Section Container & Locked Overlay */
+    .lab-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+
+    .lab-section.locked {
+      position: relative;
+      opacity: 0.55;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+
+    .lab-section.locked::after {
+      content: "🔒 Complète l'étape précédente pour débloquer cette section";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: var(--radius-lg);
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 24px;
+      z-index: 10;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .step-number-pill {
+      background: var(--violet-bg);
+      color: var(--violet-accent);
+      border: 1px solid var(--violet-border);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Pedagogical Callouts */
+    .callout {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--violet-accent);
+      background: var(--violet-bg);
+      border-top: 1px solid var(--violet-border);
+      border-right: 1px solid var(--violet-border);
+      border-bottom: 1px solid var(--violet-border);
+    }
+
+    .callout.warning {
+      border-left-color: var(--amber-warning);
+      background: var(--amber-bg);
+      border-color: var(--amber-border);
+    }
+
+    .callout.success {
+      border-left-color: var(--emerald-positive);
+      background: var(--emerald-bg);
+      border-color: var(--emerald-border);
+    }
+
+    .callout.info {
+      border-left-color: var(--sky-accent);
+      background: var(--sky-bg);
+      border-color: var(--sky-border);
+    }
+
+    .callout-title {
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Discovery & Visual Canvas */
+    .interactive-canvas-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .svg-visualizer-container {
+      width: 100%;
+      max-width: 600px;
+      height: 280px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Control Rows & Range Sliders */
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .control-btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .control-btn:hover {
+      background: var(--violet-bg);
+      border-color: var(--violet-border);
+      color: var(--violet-accent);
+    }
+
+    .control-btn.active {
+      background: var(--violet-accent);
+      color: white;
+      border-color: var(--violet-accent);
+    }
+
+    /* Atomic Student-Friendly Math Input Components */
+    .math-input-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-alt);
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .atomic-input {
+      width: 54px;
+      height: 48px;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .atomic-input:focus {
+      border-color: var(--violet-soft);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25);
+    }
+
+    .atomic-input.correct {
+      border-color: var(--emerald-positive);
+      background: var(--emerald-bg);
+    }
+
+    .atomic-input.incorrect {
+      border-color: var(--coral-negative);
+      background: var(--coral-bg);
+    }
+
+    /* Quiz & Exercise Cards */
+    .exercise-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .question-title {
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .option-btn {
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .option-btn:hover {
+      border-color: var(--violet-soft);
+      background: var(--violet-bg);
+    }
+
+    .option-btn.selected-correct {
+      border-color: var(--emerald-positive);
+      background: var(--emerald-bg);
+      color: var(--emerald-dark);
+    }
+
+    .option-btn.selected-incorrect {
+      border-color: var(--coral-negative);
+      background: var(--coral-bg);
+      color: var(--coral-dark);
+    }
+
+    /* Feedback Boxes */
+    .feedback-box {
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .feedback-box.good {
+      display: block;
+      background: var(--emerald-bg);
+      border: 1px solid var(--emerald-border);
+      color: var(--emerald-dark);
+    }
+
+    .feedback-box.bad {
+      display: block;
+      background: var(--coral-bg);
+      border: 1px solid var(--coral-border);
+      color: var(--coral-dark);
+    }
+
+    .feedback-box.info {
+      display: block;
+      background: var(--sky-bg);
+      border: 1px solid var(--sky-border);
+      color: var(--navy-primary);
+    }
+
+    /* Navigation Action Buttons */
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--violet-soft), var(--violet-accent));
+      color: white;
+      font-weight: 800;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(109, 40, 217, 0.3);
+      text-decoration: none;
+      align-self: flex-start;
+      margin-top: 12px;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(109, 40, 217, 0.4);
+    }
+
+    .action-btn.secondary {
+      background: var(--bg-alt);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      box-shadow: none;
+    }
+
+    .action-btn.secondary:hover {
+      background: var(--border-color);
+    }
+
+    /* Exam Header Bar & Timer */
+    .exam-header-bar {
+      background: var(--navy-primary);
+      color: white;
+      padding: 16px 24px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .timer-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.25rem;
+      font-weight: 900;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Confetti Canvas Overlay */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 900px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        top: 0;
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-banner {
+        padding: 24px;
+      }
+
+      .topbar-stats {
+        gap: 8px;
+      }
+
+      .progress-bar-container {
+        display: none;
+      }
+
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      .topbar, .sidebar, .action-btn, .theme-toggle-btn, #confettiCanvas {
+        display: none !important;
+      }
+
+      .app-layout {
+        display: block;
+      }
+
+      .lab-section.locked {
+        opacity: 1;
+        filter: none;
+      }
+
+      .lab-section.locked::after {
+        display: none;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Confetti Celebration Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Sticky Topbar Navigation -->
+  <header class="topbar">
+    <div class="topbar-content">
+      <a href="#" class="brand-logo">
+        <span>Excellens</span>
+        <span class="brand-badge">Collège 3ᵉ</span>
+      </a>
+
+      <div class="topbar-stats">
+        <div class="stat-badge" title="Points d'expérience gagnés">
+          <span>⚡</span>
+          <span id="xpCount">0 XP</span>
+        </div>
+
+        <div class="stat-badge" title="Série d'apprentissages réussis">
+          <span>🔥</span>
+          <span id="streakCount">1 jour</span>
+        </div>
+
+        <div class="progress-bar-container" title="Progression générale">
+          <div class="progress-bar-fill" id="globalProgressBar"></div>
+        </div>
+
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Basculer le thème clair ou sombre">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <div class="app-container">
+    
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-breadcrumbs">
+        <span>Mathématiques</span> &rsaquo; 
+        <span>Collège (Cycle 4 - 3ᵉ)</span> &rsaquo; 
+        <span>Nombres réels</span>
+      </div>
+      <h1 class="hero-title">Simplifier l'écriture d'une racine carrée pour extraire les carrés parfaits</h1>
+      <p class="hero-subtitle">
+        Apprends à décomposer tout nombre sous le radical pour écrire une racine carrée sous sa forme la plus simple $a\sqrt{b}$, avec $b$ le plus petit entier possible.
+      </p>
+      <div class="hero-meta-grid">
+        <div class="hero-meta-item">⏱️ Durée : 15 - 20 min</div>
+        <div class="hero-meta-item">🎯 Objectif Brevet des Collèges</div>
+        <div class="hero-meta-item">💡 Apprentissage visuel &amp; guidé</div>
+      </div>
+    </section>
+
+    <!-- 2-Column App Grid -->
+    <div class="app-layout">
+      
+      <!-- Bounded Navigation Sidebar -->
+      <aside class="sidebar" aria-label="Navigation de la leçon">
+        <div class="sidebar-header">Sommaire du parcours</div>
+        <ul class="sidebar-nav" id="sidebarNav">
+          <li>
+            <a href="#stage-0" class="nav-item active" id="nav-stage-0">
+              <span>Étape 0 : Carrés parfaits</span>
+              <span class="status-icon">▶</span>
+            </a>
+          </li>
+          <li>
+            <a href="#stage-1" class="nav-item locked" id="nav-stage-1">
+              <span>Étape 1 : Découverte visuelle</span>
+              <span class="status-icon">🔒</span>
+            </a>
+          </li>
+          <li>
+            <a href="#stage-2" class="nav-item locked" id="nav-stage-2">
+              <span>Étape 2 : La Règle d'Or</span>
+              <span class="status-icon">🔒</span>
+            </a>
+          </li>
+          <li>
+            <a href="#stage-3" class="nav-item locked" id="nav-stage-3">
+              <span>Étape 3 : Détecteur de Pièges</span>
+              <span class="status-icon">🔒</span>
+            </a>
+          </li>
+          <li>
+            <a href="#stage-4" class="nav-item locked" id="nav-stage-4">
+              <span>Étape 4 : Entraînement Guidé</span>
+              <span class="status-icon">🔒</span>
+            </a>
+          </li>
+          <li>
+            <a href="#stage-5" class="nav-item locked" id="nav-stage-5">
+              <span>Étape 5 : Pratique Autonome</span>
+              <span class="status-icon">🔒</span>
+            </a>
+          </li>
+          <li>
+            <a href="#stage-6" class="nav-item locked" id="nav-stage-6">
+              <span>Étape 6 : Carnet d'Erreurs</span>
+              <span class="status-icon">🔒</span>
+            </a>
+          </li>
+          <li>
+            <a href="#stage-7" class="nav-item locked" id="nav-stage-7">
+              <span>Étape 7 : Méthode Feynman</span>
+              <span class="status-icon">🔒</span>
+            </a>
+          </li>
+          <li>
+            <a href="#stage-8" class="nav-item locked" id="nav-stage-8">
+              <span>Étape 8 : Épreuve du Brevet</span>
+              <span class="status-icon">🔒</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Main Section Stream -->
+      <main class="main-content">
+
+        <!-- Stage 0: Préréquis & Diagnostic -->
+        <section class="lab-section" id="stage-0">
+          <div class="section-header">
+            <div class="step-number-pill">0</div>
+            <h2 class="section-title">Diagnostic des Carrés Parfaits</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Pour simplifier une racine carrée, il faut connaître sur le bout des doigts la liste des <strong>carrés parfaits</strong>. Un carré parfait est le résultat de la multiplication d'un entier par lui-même ($x 	imes x = x^2$).
+            </p>
+            
+            <div class="callout info">
+              <div class="callout-title">💡 Liste de référence à retenir</div>
+              <p>
+                $1^2 = 1$, &nbsp; $2^2 = 4$, &nbsp; $3^2 = 9$, &nbsp; $4^2 = 16$, &nbsp; $5^2 = 25$, &nbsp; $6^2 = 36$, &nbsp; $7^2 = 49$, &nbsp; $8^2 = 64$, &nbsp; $9^2 = 81$, &nbsp; $10^2 = 100$.
+              </p>
+            </div>
+
+            <div class="exercise-card">
+              <div class="question-title">Test de rapidité : Lequel de ces nombres est un carré parfait ?</div>
+              <div class="options-grid" id="stage0-options">
+                <button class="option-btn" onclick="checkStage0(12, false, this)">
+                  <span>12</span>
+                  <span>❌</span>
+                </button>
+                <button class="option-btn" onclick="checkStage0(18, false, this)">
+                  <span>18</span>
+                  <span>❌</span>
+                </button>
+                <button class="option-btn" onclick="checkStage0(36, true, this)">
+                  <span>36</span>
+                  <span>✔️</span>
+                </button>
+                <button class="option-btn" onclick="checkStage0(20, false, this)">
+                  <span>20</span>
+                  <span>❌</span>
+                </button>
+              </div>
+              <div class="feedback-box" id="stage0-feedback"></div>
+              <button class="action-btn" id="stage0-continue" style="display:none;" onclick="advanceToStage(1)">
+                <span>➡ Continuer vers : Étape 1 — Découverte visuelle</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stage 1: Découverte Intuitive & Représentation Visuelle -->
+        <section class="lab-section locked" id="stage-1">
+          <div class="section-header">
+            <div class="step-number-pill">1</div>
+            <h2 class="section-title">Découverte visuelle : Extraire un carré d'une aire</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Prendre la racine carrée d'un nombre $N$, c'est trouver la <strong>longueur du côté d'un carré</strong> dont l'aire vaut $N$.
+            </p>
+            <p>
+              Quand un nombre n'est pas un carré parfait (comme 12), on peut décomposer son aire en un produit : un carré parfait (aire 4) et une autre surface (aire 3).
+            </p>
+
+            <div class="interactive-canvas-card">
+              <h3>Laboratoire Interactif : Décomposition de $\sqrt{N}$</h3>
+              <p>Sélectionne un nombre sous le radical pour visualiser sa décomposition géométrique :</p>
+              
+              <div class="controls-row">
+                <button class="control-btn active" onclick="updateVisualizer(12)">$\sqrt{12}$</button>
+                <button class="control-btn" onclick="updateVisualizer(18)">$\sqrt{18}$</button>
+                <button class="control-btn" onclick="updateVisualizer(50)">$\sqrt{50}$</button>
+                <button class="control-btn" onclick="updateVisualizer(75)">$\sqrt{75}$</button>
+              </div>
+
+              <div class="svg-visualizer-container" id="svgContainer">
+                <!-- SVG Canvas dynamically injected via JS -->
+              </div>
+
+              <div class="callout success" id="visualExplanation">
+                <div class="callout-title">🔍 Explication de $\sqrt{12}$</div>
+                <p>
+                  $12 = 4 	imes 3$. Comme $\sqrt{4} = 2$, on extrait le 2 de la racine : $\sqrt{12} = \sqrt{4 	imes 3} = 2\sqrt{3}$.
+                </p>
+              </div>
+            </div>
+
+            <button class="action-btn" onclick="advanceToStage(2)">
+              <span>➡ Continuer vers : Étape 2 — La Règle d'Or</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Stage 2: Formalisation & Propriétés -->
+        <section class="lab-section locked" id="stage-2">
+          <div class="section-header">
+            <div class="step-number-pill">2</div>
+            <h2 class="section-title">La Règle d'Or de Simplification</h2>
+          </div>
+          <div class="section-body">
+            <div class="callout info">
+              <div class="callout-title">📜 Propriété Fondamentale</div>
+              <p>
+                Pour tous nombres entiers positifs $a$ et $b$ :
+              </p>
+              <p>
+                $$ \sqrt{a 	imes b} = \sqrt{a} 	imes \sqrt{b} $$
+              </p>
+              <p>
+                Si $a$ est un <strong>carré parfait</strong>, alors $\sqrt{a}$ devient un nombre entier $k$, ce qui nous donne la forme simplifiée :
+              </p>
+              <p>
+                $$ \sqrt{a 	imes b} = k\sqrt{b} $$
+              </p>
+            </div>
+
+            <p><strong>Méthode infaillible en 3 étapes :</strong></p>
+            <ol style="padding-left:24px; display:flex; flex-direction:column; gap:10px;">
+              <li><strong>Chercher</strong> le plus GRAND carré parfait qui divise le nombre sous la racine.</li>
+              <li><strong>Décomposer</strong> le nombre sous la forme $a 	imes b$.</li>
+              <li><strong>Extraire</strong> la racine du carré parfait : $\sqrt{a 	imes b} = \sqrt{a} 	imes \sqrt{b} = k\sqrt{b}$.</li>
+            </ol>
+
+            <div class="exercise-card">
+              <div class="question-title">Exemple guidé : Comment simplifier $\sqrt{50}$ ?</div>
+              <p>Quelle est la meilleure décomposition de 50 pour faire apparaître le plus grand carré parfait ?</p>
+              <div class="options-grid">
+                <button class="option-btn" onclick="checkStage2(false, this)">
+                  <span>$50 = 5 	imes 10$</span>
+                  <span>❌ Pas de carré parfait</span>
+                </button>
+                <button class="option-btn" onclick="checkStage2(true, this)">
+                  <span>$50 = 25 	imes 2$</span>
+                  <span>✔️ 25 est $5^2$</span>
+                </button>
+              </div>
+              <div class="feedback-box" id="stage2-feedback"></div>
+              <button class="action-btn" id="stage2-continue" style="display:none;" onclick="advanceToStage(3)">
+                <span>➡ Continuer vers : Étape 3 — Détecteur de Pièges</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stage 3: Détecteur de Pièges (Brevet) -->
+        <section class="lab-section locked" id="stage-3">
+          <div class="section-header">
+            <div class="step-number-pill">3</div>
+            <h2 class="section-title">Détecteur de Pièges Classiques du Brevet</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Le jour du Brevet, beaucoup d'élèves tombent dans des pièges classiques. Analyse ces 4 erreurs courantes pour ne plus jamais les faire :
+            </p>
+
+            <div class="callout warning">
+              <div class="callout-title">⚠️ Piège #1 : La fausse addition de racines</div>
+              <p>
+                <strong>ERREUR GRAVE :</strong> Penser que $\sqrt{a+b} = \sqrt{a} + \sqrt{b}$.
+              </p>
+              <p>
+                <strong>Preuve :</strong> $\sqrt{9+16} = \sqrt{25} = 5$. Or $\sqrt{9} + \sqrt{16} = 3 + 4 = 7$. Et $5 
+eq 7$ !<br>
+                <em>On ne sépare jamais une addition sous la racine !</em>
+              </p>
+            </div>
+
+            <div class="callout warning">
+              <div class="callout-title">⚠️ Piège #2 : Oublier de simplifier complètement</div>
+              <p>
+                Si tu écris $\sqrt{48} = \sqrt{4 	imes 12} = 2\sqrt{12}$, l'exercice n'est <strong>PAS fini</strong> car 12 contient encore un carré parfait ($12 = 4 	imes 3$).
+              </p>
+              <p>
+                <strong>Bon réflexe :</strong> Choisir directement le plus grand carré parfait ($48 = 16 	imes 3 \Rightarrow \sqrt{48} = 4\sqrt{3}$).
+              </p>
+            </div>
+
+            <div class="callout warning">
+              <div class="callout-title">⚠️ Piège #3 : Valeur exacte VS valeur approchée</div>
+              <p>
+                Une question du Brevet demandant <em>"Écrire sous la forme $a\sqrt{b}$"</em> exige la <strong>valeur exacte</strong>. Écrire une valeur décimale arrondie (ex: $pprox 3{,}46$) fait perdre tous les points !
+              </p>
+            </div>
+
+            <div class="exercise-card">
+              <div class="question-title">Test anti-piège : L'égalité $\sqrt{16 + 9} = 4 + 3 = 7$ est-elle vraie ou fausse ?</div>
+              <div class="options-grid">
+                <button class="option-btn" onclick="checkStage3(false, this)">
+                  <span>Vraie</span>
+                  <span>❌</span>
+                </button>
+                <button class="option-btn" onclick="checkStage3(true, this)">
+                  <span>Fausse (car $\sqrt{25} = 5$)</span>
+                  <span>✔️</span>
+                </button>
+              </div>
+              <div class="feedback-box" id="stage3-feedback"></div>
+              <button class="action-btn" id="stage3-continue" style="display:none;" onclick="advanceToStage(4)">
+                <span>➡ Continuer vers : Étape 4 — Entraînement Guidé</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stage 4: Pratique Guidée Pas à Pas -->
+        <section class="lab-section locked" id="stage-4">
+          <div class="section-header">
+            <div class="step-number-pill">4</div>
+            <h2 class="section-title">Entraînement Guidé Pas à Pas</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Complète les cases manquantes avec des entiers pour simplifier chaque racine carrée :
+            </p>
+
+            <!-- Question 4.1 -->
+            <div class="exercise-card">
+              <div class="question-title">Exercice 4.1 : Simplifier $\sqrt{20}$</div>
+              <p>
+                $\sqrt{20} = \sqrt{	ext{[carré parfait]} 	imes 5} = 	ext{[coefficient]} \sqrt{5}$
+              </p>
+              <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center;">
+                <div class="math-input-group">
+                  <span>$\sqrt{20} = \sqrt{}$</span>
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex4_1_a" aria-label="Carré parfait sous la racine" placeholder="?">
+                  <span>$	imes 5 = $</span>
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex4_1_coeff" aria-label="Coefficient extérieur" placeholder="?">
+                  <span>$\sqrt{5}$</span>
+                </div>
+                <button class="action-btn secondary" onclick="checkEx4_1()">Vérifier</button>
+              </div>
+              <div class="feedback-box" id="ex4_1-feedback"></div>
+            </div>
+
+            <!-- Question 4.2 -->
+            <div class="exercise-card">
+              <div class="question-title">Exercice 4.2 : Simplifier $\sqrt{45}$</div>
+              <p>
+                $\sqrt{45} = \sqrt{9 	imes 5} = a\sqrt{b}$
+              </p>
+              <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center;">
+                <div class="math-input-group">
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex4_2_a" aria-label="Coefficient extérieur a" placeholder="a">
+                  <span>$\sqrt{\phantom{x}}$</span>
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex4_2_b" aria-label="Radical b" placeholder="b">
+                </div>
+                <button class="action-btn secondary" onclick="checkEx4_2()">Vérifier</button>
+              </div>
+              <div class="feedback-box" id="ex4_2-feedback"></div>
+            </div>
+
+            <button class="action-btn" id="stage4-continue" style="display:none;" onclick="advanceToStage(5)">
+              <span>➡ Continuer vers : Étape 5 — Pratique Autonome</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Stage 5: Entraînement Autonome -->
+        <section class="lab-section locked" id="stage-5">
+          <div class="section-header">
+            <div class="step-number-pill">5</div>
+            <h2 class="section-title">Pratique Autonome (Format Brevet)</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Écris chaque expression sous la forme $a\sqrt{b}$, où $a$ et $b$ sont des entiers et $b$ est le plus petit possible.
+            </p>
+
+            <!-- Question 5.1 -->
+            <div class="exercise-card">
+              <div class="question-title">1. Écrire $\sqrt{18}$ sous la forme $a\sqrt{b}$</div>
+              <div class="math-input-group">
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex5_1_a" aria-label="Coefficient a pour racine 18" placeholder="a">
+                <span>$\sqrt{\phantom{x}}$</span>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex5_1_b" aria-label="Nombre b pour racine 18" placeholder="b">
+              </div>
+            </div>
+
+            <!-- Question 5.2 -->
+            <div class="exercise-card">
+              <div class="question-title">2. Écrire $\sqrt{75}$ sous la forme $a\sqrt{b}$</div>
+              <div class="math-input-group">
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex5_2_a" aria-label="Coefficient a pour racine 75" placeholder="a">
+                <span>$\sqrt{\phantom{x}}$</span>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex5_2_b" aria-label="Nombre b pour racine 75" placeholder="b">
+              </div>
+            </div>
+
+            <!-- Question 5.3 -->
+            <div class="exercise-card">
+              <div class="question-title">3. Écrire $\sqrt{98}$ sous la forme $a\sqrt{b}$</div>
+              <div class="math-input-group">
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex5_3_a" aria-label="Coefficient a pour racine 98" placeholder="a">
+                <span>$\sqrt{\phantom{x}}$</span>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="ex5_3_b" aria-label="Nombre b pour racine 98" placeholder="b">
+              </div>
+            </div>
+
+            <button class="action-btn" onclick="checkStage5()">Valider la série d'exercices</button>
+            <div class="feedback-box" id="stage5-feedback"></div>
+            
+            <button class="action-btn" id="stage5-continue" style="display:none;" onclick="advanceToStage(6)">
+              <span>➡ Continuer vers : Étape 6 — Carnet d'Erreurs</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Stage 6: Carnet d'Erreurs -->
+        <section class="lab-section locked" id="stage-6">
+          <div class="section-header">
+            <div class="step-number-pill">6</div>
+            <h2 class="section-title">Carnet d'Erreurs : Analyse de Copies d'Élèves</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Voici la copie de Thomas. Il a écrit :<br>
+              <em>" $\sqrt{32} = \sqrt{4 	imes 8} = 2\sqrt{8}$ "</em>
+            </p>
+            <div class="callout danger" style="background:var(--coral-bg); border-color:var(--coral-border);">
+              <div class="callout-title">❓ Quelle est l'erreur dans le raisonnement de Thomas ?</div>
+              <p>Pourquoi son résultat n'est-il pas sous la forme la plus simple possible ?</p>
+            </div>
+
+            <div class="options-grid">
+              <button class="option-btn" onclick="checkStage6(false, this)">
+                <span>Son calcul est complètement faux au début.</span>
+                <span>❌</span>
+              </button>
+              <button class="option-btn" onclick="checkStage6(true, this)">
+                <span>Il n'a pas pris le plus grand carré parfait (16), car $32 = 16 	imes 2 \Rightarrow 4\sqrt{2}$.</span>
+                <span>✔️</span>
+              </button>
+            </div>
+
+            <div class="feedback-box" id="stage6-feedback"></div>
+
+            <button class="action-btn" id="stage6-continue" style="display:none;" onclick="advanceToStage(7)">
+              <span>➡ Continuer vers : Étape 7 — Méthode Feynman</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Stage 7: Feynman Technique -->
+        <section class="lab-section locked" id="stage-7">
+          <div class="section-header">
+            <div class="step-number-pill">7</div>
+            <h2 class="section-title">Méthode Feynman : Explique avec tes mots</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              La meilleure façon d'être certain de maîtriser une notion est de pouvoir l'expliquer simplement à un camarade de classe.
+            </p>
+            
+            <div class="exercise-card">
+              <label for="feynmanInput" class="question-title">Comment expliquerais-tu la règle pour simplifier $\sqrt{72}$ à un élève qui n'a pas compris la leçon ?</label>
+              <textarea id="feynmanInput" rows="4" style="width:100%; padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-color); font-family:inherit;" placeholder="Écris ton explication ici..."></textarea>
+              
+              <button class="action-btn secondary" onclick="revealFeynmanModel()">Voir le modèle d'explication idéal</button>
+              
+              <div id="feynmanModel" style="display:none;" class="callout success">
+                <div class="callout-title">✨ Modèle d'explication idéal</div>
+                <p>
+                  "Pour simplifier $\sqrt{72}$, je cherche d'abord le plus grand carré parfait qui divise 72. Je trouve 36, car $72 = 36 	imes 2$. Ensuite, j'utilise la règle des racines : $\sqrt{36 	imes 2} = \sqrt{36} 	imes \sqrt{2}$. Comme $\sqrt{36} = 6$, le résultat final très simple est $6\sqrt{2}$."
+                </p>
+              </div>
+            </div>
+
+            <button class="action-btn" onclick="advanceToStage(8)">
+              <span>➡ Continuer vers : Étape 8 — Épreuve du Brevet</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Stage 8: Timed Exam Mode -->
+        <section class="lab-section locked" id="stage-8">
+          <div class="section-header">
+            <div class="step-number-pill">8</div>
+            <h2 class="section-title">Épreuve Blanche du Brevet des Collèges</h2>
+          </div>
+          <div class="section-body">
+            <div class="exam-header-bar">
+              <div>
+                <strong style="font-size:1.1rem;">Épreuve officielle sur les racines carrées</strong>
+                <div style="font-size:0.875rem; opacity:0.8;">3 questions indépendantes • Note sur 20</div>
+              </div>
+              <div class="timer-badge" id="examTimer">⏱️ 10:00</div>
+            </div>
+
+            <!-- Exam Question 1 -->
+            <div class="exercise-card">
+              <div class="question-title">Question 1 (6 pts) : Écrire $\sqrt{108}$ sous la forme $a\sqrt{b}$ avec $b$ le plus petit possible.</div>
+              <div class="math-input-group">
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="eq1_a" aria-label="Question 1 coefficient a" placeholder="a">
+                <span>$\sqrt{\phantom{x}}$</span>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="eq1_b" aria-label="Question 1 radical b" placeholder="b">
+              </div>
+            </div>
+
+            <!-- Exam Question 2 -->
+            <div class="exercise-card">
+              <div class="question-title">Question 2 (7 pts) : Simplifier la somme $A = \sqrt{12} + \sqrt{27}$ sous la forme $k\sqrt{3}$.</div>
+              <div class="math-input-group">
+                <span>$A = $</span>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="eq2_k" aria-label="Question 2 coefficient k" placeholder="k">
+                <span>$\sqrt{3}$</span>
+              </div>
+            </div>
+
+            <!-- Exam Question 3 -->
+            <div class="exercise-card">
+              <div class="question-title">Question 3 (7 pts) : Calculer l'aire exacte d'un rectangle de largeur $\sqrt{2}	ext{ cm}$ et de longueur $\sqrt{18}	ext{ cm}$.</div>
+              <div class="math-input-group">
+                <span>Aire = </span>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" class="atomic-input" id="eq3_area" aria-label="Question 3 aire exacte" placeholder="?">
+                <span>$	ext{cm}^2$</span>
+              </div>
+            </div>
+
+            <button class="action-btn" onclick="submitExam()">Soumettre la copie du Brevet</button>
+            
+            <div class="feedback-box" id="examReport" style="margin-top:16px;"></div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- JavaScript State & Interactive Engine -->
+  <script>
+    (function() {
+      // Client State Persistence
+      const STORAGE_KEY = 'excellens_racines_carrees_state';
+      let state = {
+        unlockedStages: [0],
+        completedStages: [],
+        xp: 0,
+        streak: 1,
+        examTimerSeconds: 600,
+        examActive: false
+      };
+
+      // Load saved state
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state.unlockedStages = parsed.unlockedStages || [0];
+          state.completedStages = parsed.completedStages || [];
+          state.xp = parsed.xp || 0;
+        }
+      } catch (e) {
+        console.warn('LocalStorage non accessible');
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (e) {}
+      }
+
+      // Centralized KaTeX Helper
+      function renderAllMath(element = document.body) {
+        if (window.renderMathInElement) {
+          try {
+            renderMathInElement(element, {
+              delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false }
+              ],
+              throwOnError: false
+            });
+          } catch(err) {
+            console.error('KaTeX error:', err);
+          }
+        }
+      }
+
+      // Confetti Engine
+      function launchConfetti() {
+        const canvas = document.getElementById('confettiCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const colors = ['#10b981', '#6d28d9', '#f43f5e', '#0284c7', '#d97706'];
+
+        for (let i = 0; i < 80; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            r: Math.random() * 6 + 4,
+            d: Math.random() * 80,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            tilt: Math.random() * 10 - 10,
+            tiltAngleIncremental: Math.random() * 0.07 + 0.05
+          });
+        }
+
+        let animationFrame;
+        let ticks = 0;
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach((p) => {
+            ctx.beginPath();
+            ctx.lineWidth = p.r;
+            ctx.strokeStyle = p.color;
+            ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+            ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+            ctx.stroke();
+
+            p.y += (Math.cos(p.d) + 1 + p.r / 2) * 2;
+            p.tiltAngle += p.tiltAngleIncremental;
+            p.tilt = Math.sin(p.tiltAngle) * 15;
+          });
+
+          ticks++;
+          if (ticks < 120) {
+            animationFrame = requestAnimationFrame(draw);
+          } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+          }
+        }
+        draw();
+      }
+
+      // UI Update Functions
+      function updateUI() {
+        document.getElementById('xpCount').textContent = state.xp + ' XP';
+        const progressPct = Math.round((state.completedStages.length / 8) * 100);
+        document.getElementById('globalProgressBar').style.width = progressPct + '%';
+
+        // Update Lock Overlays & Sidebar Icons
+        for (let i = 0; i <= 8; i++) {
+          const section = document.getElementById('stage-' + i);
+          const navItem = document.getElementById('nav-stage-' + i);
+          if (!section || !navItem) continue;
+
+          const isUnlocked = state.unlockedStages.includes(i);
+          const isCompleted = state.completedStages.includes(i);
+
+          if (isUnlocked) {
+            section.classList.remove('locked');
+          } else {
+            section.classList.add('locked');
+          }
+
+          const iconSpan = navItem.querySelector('.status-icon');
+          if (isCompleted) {
+            navItem.classList.add('completed');
+            navItem.classList.remove('locked');
+            if (iconSpan) iconSpan.textContent = '✅';
+          } else if (isUnlocked) {
+            navItem.classList.remove('locked');
+            if (iconSpan) iconSpan.textContent = '🔓';
+          } else {
+            navItem.classList.add('locked');
+            if (iconSpan) iconSpan.textContent = '🔒';
+          }
+        }
+      }
+
+      // Stage Advancement Handler
+      window.advanceToStage = function(stageNumber) {
+        if (!state.unlockedStages.includes(stageNumber)) {
+          state.unlockedStages.push(stageNumber);
+        }
+        const prevStage = stageNumber - 1;
+        if (!state.completedStages.includes(prevStage)) {
+          state.completedStages.push(prevStage);
+          state.xp += 50;
+        }
+
+        saveState();
+        updateUI();
+        launchConfetti();
+
+        const targetEl = document.getElementById('stage-' + stageNumber);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
+      // Stage 0 Check
+      window.checkStage0 = function(val, isCorrect, btn) {
+        const feedback = document.getElementById('stage0-feedback');
+        const contBtn = document.getElementById('stage0-continue');
+        
+        if (isCorrect) {
+          btn.classList.add('selected-correct');
+          feedback.className = 'feedback-box good';
+          feedback.innerHTML = 'Bravo ! $36$ est un carré parfait car $6 \times 6 = 36$.';
+          state.xp += 20;
+          launchConfetti();
+        } else {
+          btn.classList.add('selected-incorrect');
+          feedback.className = 'feedback-box bad';
+          feedback.innerHTML = 'Attention, ' + val + ' n'est pas le carré d'un nombre entier. Le bon choix était 36 ($6^2$).';
+        }
+        renderAllMath(feedback);
+        contBtn.style.display = 'inline-flex';
+      };
+
+      // Dynamic Visualizer Engine (SVG)
+      window.updateVisualizer = function(n) {
+        const container = document.getElementById('svgContainer');
+        const explanation = document.getElementById('visualExplanation');
+
+        // Toggle active button
+        const buttons = document.querySelectorAll('.controls-row .control-btn');
+        buttons.forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+
+        let squareArea = 4;
+        let squareSide = 2;
+        let remArea = 3;
+
+        if (n === 18) { squareArea = 9; squareSide = 3; remArea = 2; }
+        else if (n === 50) { squareArea = 25; squareSide = 5; remArea = 2; }
+        else if (n === 75) { squareArea = 25; squareSide = 5; remArea = 3; }
+
+        container.innerHTML = `
+          <svg width="320" height="220" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background grid -->
+            <rect width="320" height="220" fill="var(--bg-alt)" rx="8" />
+            <!-- Perfect square area -->
+            <rect x="40" y="30" width="${squareSide * 30}" height="${squareSide * 30}" fill="rgba(10d, 40d, 217d, 0.15)" stroke="var(--violet-accent)" stroke-width="3" stroke-dasharray="4,4" />
+            <text x="${40 + (squareSide * 15)}" y="${35 + (squareSide * 15)}" font-weight="800" fill="var(--violet-accent)" text-anchor="middle">
+              Carré d'aire ${squareArea} (Côté = ${squareSide})
+            </text>
+            <!-- Multiplier representation -->
+            <text x="160" y="195" font-weight="900" fill="var(--text-main)" text-anchor="middle" font-size="16">
+              \sqrt{${n}} = \sqrt{${squareArea} \times ${remArea}} = ${squareSide}\sqrt{${remArea}}
+            </text>
+          </svg>
+        `;
+
+        explanation.innerHTML = `
+          <div class="callout-title">🔍 Explication de $\sqrt{${n}}$</div>
+          <p>
+            $${n} = ${squareArea} \times ${remArea}$. Le plus grand carré parfait contenu dans $${n}$ est $${squareArea}$ (car $\sqrt{${squareArea}} = ${squareSide}$).<br>
+            On a donc : $\sqrt{${n}} = \sqrt{${squareArea} \times ${remArea}} = ${squareSide}\sqrt{${remArea}}$.
+          </p>
+        `;
+        renderAllMath(container);
+        renderAllMath(explanation);
+      };
+
+      // Initial visualizer mount
+      setTimeout(() => {
+        if (document.getElementById('svgContainer')) {
+          window.updateVisualizer(12);
+        }
+      }, 300);
+
+      // Stage 2 Check
+      window.checkStage2 = function(isCorrect, btn) {
+        const feedback = document.getElementById('stage2-feedback');
+        const contBtn = document.getElementById('stage2-continue');
+        if (isCorrect) {
+          btn.classList.add('selected-correct');
+          feedback.className = 'feedback-box good';
+          feedback.innerHTML = 'Excellente décomposition ! $25$ est le plus grand carré parfait qui divise 50, donc $\sqrt{50} = \sqrt{25 \times 2} = 5\sqrt{2}$.';
+        } else {
+          btn.classList.add('selected-incorrect');
+          feedback.className = 'feedback-box bad';
+          feedback.innerHTML = 'Bien que $5 \times 10 = 50$, ni 5 ni 10 ne sont des carrés parfaits. La meilleure décomposition est $25 \times 2$.';
+        }
+        renderAllMath(feedback);
+        contBtn.style.display = 'inline-flex';
+      };
+
+      // Stage 3 Check
+      window.checkStage3 = function(isCorrect, btn) {
+        const feedback = document.getElementById('stage3-feedback');
+        const contBtn = document.getElementById('stage3-continue');
+        if (isCorrect) {
+          btn.classList.add('selected-correct');
+          feedback.className = 'feedback-box good';
+          feedback.innerHTML = 'Parfait ! $\sqrt{16+9} = \sqrt{25} = 5$, alors que $4+3 = 7$. On ne peut jamais séparer une racine sur une addition !';
+        } else {
+          btn.classList.add('selected-incorrect');
+          feedback.className = 'feedback-box bad';
+          feedback.innerHTML = 'Attention ! $\sqrt{16+9} = \sqrt{25} = 5$, ce qui n'est pas égal à 7 ! L'égalité est fausse.';
+        }
+        renderAllMath(feedback);
+        contBtn.style.display = 'inline-flex';
+      };
+
+      // Stage 4 Exercises
+      window.checkEx4_1 = function() {
+        const a = document.getElementById('ex4_1_a').value.trim();
+        const coeff = document.getElementById('ex4_1_coeff').value.trim();
+        const feedback = document.getElementById('ex4_1-feedback');
+
+        if (a === '4' && coeff === '2') {
+          feedback.className = 'feedback-box good';
+          feedback.innerHTML = 'Exact ! $\sqrt{20} = \sqrt{4 \times 5} = 2\sqrt{5}$.';
+          document.getElementById('stage4-continue').style.display = 'inline-flex';
+        } else {
+          feedback.className = 'feedback-box bad';
+          feedback.innerHTML = 'Indice : $20 = 4 \times 5$ et $\sqrt{4} = 2$. Recommence !';
+        }
+        renderAllMath(feedback);
+      };
+
+      window.checkEx4_2 = function() {
+        const a = document.getElementById('ex4_2_a').value.trim();
+        const b = document.getElementById('ex4_2_b').value.trim();
+        const feedback = document.getElementById('ex4_2-feedback');
+
+        if (a === '3' && b === '5') {
+          feedback.className = 'feedback-box good';
+          feedback.innerHTML = 'Très bien ! $\sqrt{45} = \sqrt{9 \times 5} = 3\sqrt{5}$.';
+          document.getElementById('stage4-continue').style.display = 'inline-flex';
+        } else {
+          feedback.className = 'feedback-box bad';
+          feedback.innerHTML = 'Indice : $45 = 9 \times 5$ et $\sqrt{9} = 3$. Tu cherches $a=3$ et $b=5$.';
+        }
+        renderAllMath(feedback);
+      };
+
+      // Stage 5 Validation
+      window.checkStage5 = function() {
+        const q1a = document.getElementById('ex5_1_a').value.trim();
+        const q1b = document.getElementById('ex5_1_b').value.trim();
+        const q2a = document.getElementById('ex5_2_a').value.trim();
+        const q2b = document.getElementById('ex5_2_b').value.trim();
+        const q3a = document.getElementById('ex5_3_a').value.trim();
+        const q3b = document.getElementById('ex5_3_b').value.trim();
+
+        const feedback = document.getElementById('stage5-feedback');
+        let score = 0;
+
+        if (q1a === '3' && q1b === '2') score++;
+        if (q2a === '5' && q2b === '3') score++;
+        if (q3a === '7' && q3b === '2') score++;
+
+        if (score === 3) {
+          feedback.className = 'feedback-box good';
+          feedback.innerHTML = '🎉 Sans-faute parfait ! 18 = 9×2 (3√2), 75 = 25×3 (5√3), 98 = 49×2 (7√2).';
+          state.xp += 50;
+        } else {
+          feedback.className = 'feedback-box bad';
+          feedback.innerHTML = 'Tu as ' + score + '/3 réponses justes. Révisions : $\sqrt{18}=3\sqrt{2}$, $\sqrt{75}=5\sqrt{3}$, $\sqrt{98}=7\sqrt{2}$.';
+        }
+        renderAllMath(feedback);
+        document.getElementById('stage5-continue').style.display = 'inline-flex';
+      };
+
+      // Stage 6 Check
+      window.checkStage6 = function(isCorrect, btn) {
+        const feedback = document.getElementById('stage6-feedback');
+        const contBtn = document.getElementById('stage6-continue');
+        if (isCorrect) {
+          btn.classList.add('selected-correct');
+          feedback.className = 'feedback-box good';
+          feedback.innerHTML = 'Excellente analyse ! $32 = 16 \times 2$, donc $\sqrt{32} = 4\sqrt{2}$. Prendre 4 laisse $\sqrt{8}$ qui peut encore être simplifiée en $2\sqrt{2}$.';
+        } else {
+          btn.classList.add('selected-incorrect');
+          feedback.className = 'feedback-box bad';
+          feedback.innerHTML = 'Thomas a bon au début, mais 8 contient encore le carré parfait 4. Il aurait dû prendre 16 directement.';
+        }
+        renderAllMath(feedback);
+        contBtn.style.display = 'inline-flex';
+      };
+
+      // Stage 7 Feynman Reveal
+      window.revealFeynmanModel = function() {
+        document.getElementById('feynmanModel').style.display = 'block';
+        renderAllMath(document.getElementById('feynmanModel'));
+      };
+
+      // Exam Submission Handler
+      window.submitExam = function() {
+        const q1a = document.getElementById('eq1_a').value.trim();
+        const q1b = document.getElementById('eq1_b').value.trim();
+        const q2k = document.getElementById('eq2_k').value.trim();
+        const q3area = document.getElementById('eq3_area').value.trim();
+
+        let total = 0;
+        let reportHTML = '<h3>Résultat de l'épreuve officielle</h3>';
+
+        // Q1: sqrt(108) = 6*sqrt(3)
+        if (q1a === '6' && q1b === '3') {
+          total += 6;
+          reportHTML += '<p>✔️ Question 1 (+6 pts) : $\sqrt{108} = \sqrt{36 \times 3} = 6\sqrt{3}$.</p>';
+        } else {
+          reportHTML += '<p>❌ Question 1 (0/6 pt) : $\sqrt{108} = \sqrt{36 \times 3} = 6\sqrt{3}$. (Ta réponse : ' + q1a + '√' + q1b + ')</p>';
+        }
+
+        // Q2: sqrt(12)+sqrt(27) = 2*sqrt(3)+3*sqrt(3) = 5*sqrt(3)
+        if (q2k === '5') {
+          total += 7;
+          reportHTML += '<p>✔️ Question 2 (+7 pts) : $A = 2\sqrt{3} + 3\sqrt{3} = 5\sqrt{3}$.</p>';
+        } else {
+          reportHTML += '<p>❌ Question 2 (0/7 pt) : $A = 2\sqrt{3} + 3\sqrt{3} = 5\sqrt{3}$.</p>';
+        }
+
+        // Q3: sqrt(2)*sqrt(18) = sqrt(36) = 6
+        if (q3area === '6') {
+          total += 7;
+          reportHTML += '<p>✔️ Question 3 (+7 pts) : Aire = $\sqrt{2} \times \sqrt{18} = \sqrt{36} = 6\text{ cm}^2$.</p>';
+        } else {
+          reportHTML += '<p>❌ Question 3 (0/7 pt) : Aire = $\sqrt{2 \times 18} = \sqrt{36} = 6\text{ cm}^2$.</p>';
+        }
+
+        reportHTML += '<h4 style="margin-top:12px;">Note finale : ' + total + ' / 20</h4>';
+        if (total >= 16) {
+          reportHTML += '<p style="color:var(--emerald-dark); font-weight:800;">🏆 Mention Très Bien ! Tu maîtrises parfaitement la simplification des racines carrées pour le Brevet.</p>';
+          launchConfetti();
+        } else {
+          reportHTML += '<p style="color:var(--amber-warning); font-weight:800;">💪 Résultat encourageant. Relis l'étape 3 sur les pièges et refais l'épreuve !</p>';
+        }
+
+        const reportEl = document.getElementById('examReport');
+        reportEl.className = total >= 10 ? 'feedback-box good' : 'feedback-box bad';
+        reportEl.innerHTML = reportHTML;
+        renderAllMath(reportEl);
+
+        state.completedStages.push(8);
+        state.xp += total * 10;
+        saveState();
+        updateUI();
+      };
+
+      // Theme Toggle Logic
+      document.getElementById('themeToggleBtn').addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        this.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+
+      // IntersectionObserver for Dynamic Active Sidebar
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            document.querySelectorAll('.sidebar-nav .nav-item').forEach(item => {
+              item.classList.remove('active');
+            });
+            const activeNav = document.getElementById('nav-' + id);
+            if (activeNav) {
+              activeNav.classList.add('active');
+            }
+          }
+        });
+      }, observerOptions);
+
+      // DOM Content Loaded Handler
+      document.addEventListener('DOMContentLoaded', function() {
+        updateUI();
+        renderAllMath(document.body);
+
+        document.querySelectorAll('.lab-section').forEach(section => {
+          observer.observe(section);
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>

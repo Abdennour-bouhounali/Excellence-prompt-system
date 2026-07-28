@@ -27,20 +27,17 @@ Analyze input lesson requirements and construct a pure pedagogical specification
 1. **Cognitive Obstacle Analysis**: Identify the fundamental friction points, abstract obstacles, and common student misconceptions associated with the topic.
 2. **Mental Model Selection**: Apply dual-coding rules (`decision_principles.md`) to select the ideal spatial, visual, or structural mental model for the concept (e.g. spatial axis, gauge, timeline, structure tree).
 3. **Predict-First Active Discovery Design**: Design interactive discovery scenarios where students predict outcomes before observing calculated answers.
-4. **Learning Journey Progression**: Map out sequential pedagogical stages adapting to topic complexity:
-   - Curiosity & Baseline Diagnostic Hook
-   - Interactive Active Discovery
-   - Intuition & Micro-Rule Takeaways
-   - Multi-Representation Dual Coding
-   - Guided Animation & Formalized Sign/Rule Tables
-   - Worked Examples with Step Counters
-   - Scaffolded Guided Practice with Progressive Hints
-   - Autonomous Practice with Diagnostic Error Categorization
-   - Mastery Assessment & Competency Summary
-   - Express Revision Cards & Checklist
-   - Feynman Technique Metacognitive Prompt & Self-Evaluation Rubric
-   - 15-Question Timed Exam Simulation
-5. **Exercise & Assessment Design**: Draft all questions, QCM options, open inputs, correct answers, step-by-step solutions, and diagnostic mistake hints.
+4. **Learning Journey Progression & Locked Sequential Design**: Map out sequential pedagogical stages adapting to topic complexity. Enforce **strictly sequential progression**:
+   - Initial State: Only Step 0 (`stage-0`) is accessible at start. All subsequent steps (Step 1..N) start locked behind an overlay.
+   - Stage Classification: Every stage content in `lesson_spec.json` MUST be classified into one of three step types:
+     - **Case A (Evaluated Activity)**: Stage contains interactive evaluation (MCQ, quiz, input, matching). Correct submission automatically marks stage completed (sidebar icon becomes green ✅), unlocks next stage, smooth scrolls to it, and updates active state.
+     - **Case B (Incorrect Response Remediation)**: Incorrect answers present diagnostic explanation AND an immediate "Continue" action prompt (`➡ Continuer vers : Étape X — [Title]`). Clicking unlocks next stage, scrolls, and updates sidebar.
+     - **Case C (Informational Step)**: Stage contains explanatory text/graphics with no evaluation. MUST end with an explicit navigation button prompt (`➡ Continuer vers : Étape suivante — [Title]`) that marks stage completed, unlocks next stage, smooth scrolls, and updates active state.
+5. **Exercise & Assessment Design & Non-Blocking Progression**: Draft all questions, QCM options, open inputs, correct answers, step-by-step solutions, and diagnostic mistake hints. Enforce non-blocking exercise progression: student errors become learning opportunities with instant Continue navigation so learning momentum is never stopped.
+6. **Student-Friendly Mathematical Input Philosophy**: Design exercises for students aged 11–17 (using smartphones, tablets, AZERTY keyboards, and laptops without easy access to mathematical symbols). The lesson must adapt its input interface to the student's keyboard, not the opposite:
+   - **No Complex Math Notation Typing**: Students must NEVER be required to type complex mathematical symbols (`√`, `²`, `³`, `^`, `×`, `÷`, `≤`, `≥`, `π`, `∞`, Greek letters, LaTeX syntax, or Unicode math symbols).
+   - **Atomic Component Decomposition**: Break mathematical answers into atomic components (One mathematical idea = One input field). Students type only standard characters existing on every keyboard (digits `0–9`, `+`, `-`, `*`, `/`, `,`, `.`, and parentheses when necessary).
+   - **Structured Answer Schemas**: Specify exercise expected answers as structured atomic key-value pairs in `lesson_spec.json` (e.g., `{ "outsideCoeff": 3, "insideRadical": 5 }` instead of monolithic string `"3√5"`).
 
 ---
 
@@ -48,6 +45,9 @@ Analyze input lesson requirements and construct a pure pedagogical specification
 - **NEVER** output HTML, CSS, JavaScript, dynamic SVG code, or web layout markup.
 - **NEVER** specify UI visual elements such as cards, sidebars, progress bar colors, button styles, or pixel layouts.
 - **NEVER** hardcode 14 stages as a fixed template if the topic requires fewer or more pedagogical stages.
+- **NEVER** design exercise progression gates that block stage advancement on wrong answers.
+- **NEVER** omit the Continue navigation prompt for informational or remediation steps.
+- **NEVER** require students to type complex mathematical symbols (`√`, `²`, `^`, `\sqrt`, `\frac`) or monolithic mathematical string expressions.
 
 ---
 
@@ -71,7 +71,8 @@ Analyze input lesson requirements and construct a pure pedagogical specification
 ├─────────────────────────────────────────────────────────────────────────┤
 │ 4. FORMULATE EXERCISES & DIAGNOSTIC REMEDIATION                         │
 │    • Create scaffolded exercises from intuition to exam rigor.          │
-│    • Formulate specific diagnostic feedback for likely wrong answers.    │
+│    • Formulate specific diagnostic feedback for likely wrong answers.   │
+│    • Ensure non-blocking logic: attempt unlocks next stage automatically.│
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -82,6 +83,7 @@ Analyze input lesson requirements and construct a pure pedagogical specification
 - [ ] Is every phase focused on a single clear cognitive objective?
 - [ ] Does the discovery section feature a predict-first design?
 - [ ] Are hints scaffolded (concept hint ➔ detailed solution)?
+- [ ] Are exercises designed for non-blocking progression (attempts unlock subsequent stages regardless of correctness)?
 - [ ] Does the exam section contain at least 10–15 questions covering multiple difficulty tiers?
 - [ ] Does the Feynman section include an open prompt, model explanation, and self-evaluation checklist?
 
@@ -90,7 +92,8 @@ Analyze input lesson requirements and construct a pure pedagogical specification
 ## Acceptance Criteria
 1. Output is valid JSON matching `specifications/output_schema.md`.
 2. Learning progression incorporates all required pedagogical phase types.
-3. Content adheres strictly to `specifications/excellens_style_guide.md` (French educational voice, LaTeX math notation).
+3. Exercise interactions follow non-blocking progression (attempting satisfies unlock condition).
+4. Content adheres strictly to `specifications/excellens_style_guide.md` (French educational voice, LaTeX math notation).
 
 ---
 

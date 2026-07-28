@@ -102,22 +102,55 @@ All styling must be driven by CSS Custom Properties attached to `:root` and over
 - **Sticky Topbar Header**: `position: sticky; top: 0; z-index: 100`, glassmorphic backdrop filter (`backdrop-filter: blur(16px)`). Holds brand logo, streak badge, XP display, lesson progress bar, theme toggle.
 - **Hero Header**: High-impact header section containing breadcrumbs, kicker tag, main title, overview metadata, and initial challenge card.
 - **Two-Column Main Layout**:
-  - `sidebar`: `position: sticky; top: 84px`, 260px fixed width, bounded height (`max-height: calc(100vh - 104px)`), internal vertical scroll area (`overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth;`), rendering section navigation links with status icons (`🔓`/`🔒`). The sidebar must never expand infinitely or push page layout, ensuring full accessibility across 20+ lesson sections.
+  - `sidebar`: `position: sticky; top: 84px`, 260px fixed width, bounded height (`max-height: calc(100vh - 104px)`), internal vertical scroll area (`overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth;`), rendering section navigation links with status icons (`🔓`/`🔒`). The sidebar must never expand infinitely or push page layout.
+  - `sidebar active tracking`: Uses `IntersectionObserver` (or scroll position tracking) to dynamically attach `.active` ONLY to the navigation item corresponding to the section currently visible in the viewport. When the student scrolls away from Stage 0 (`#stage-0`), `.active` MUST be removed from Stage 0 and assigned to the active section. Permanent highlighting of Stage 0 is strictly forbidden.
   - `main`: Fluid flexible column (`minmax(0, 1fr)`) containing sequential `.lab-section` modules.
 
 ---
 
 ## 4. UI Component Primitives
 
-1. **`.sidebar` & `.sidebar-nav`**: Navigation container with sticky positioning (`top: 84px`), fixed width (`260px`), viewport-constrained max height (`max-height: calc(100vh - 104px)`), and internal vertical scrolling (`overflow-y: auto; scroll-behavior: smooth`) so navigation remains permanently accessible regardless of lesson section count.
-2. **`.lab-section`**: Main content section container with smooth lock overlay (`.lab-section.locked`).
+1. **`.sidebar` & `.sidebar-nav`**: Navigation container with sticky positioning (`top: 84px`), fixed width (`260px`), viewport-constrained max height (`max-height: calc(100vh - 104px)`), and internal vertical scrolling (`overflow-y: auto; scroll-behavior: smooth`).
+   - **3-State Sidebar Icons & Progression**:
+     - `.nav-item.locked .status-icon`: Displays `🔒` with yellow/amber styling (`color: var(--amber-warning)`), indicating the stage is unavailable and non-interactive.
+     - `.nav-item.active .status-icon`: Displays `▶` with primary accent highlight border (`border-left: 3px solid var(--violet-accent)`), indicating the student is currently working on this step.
+     - `.nav-item.completed .status-icon`: Displays `✅` with vibrant green styling (`color: var(--emerald-positive)`), indicating the step has been completed. This icon remains green permanently.
+2. **`.lab-section` & Locked Section Overlay**: Main content section container. When locked (`.lab-section.locked`), it enforces:
+   ```css
+   .lab-section.locked {
+     position: relative;
+     opacity: 0.55;
+     pointer-events: none;
+     filter: blur(1px);
+   }
+   .lab-section.locked::after {
+     content: "🔒 Complète l'étape précédente pour débloquer cette section";
+     position: absolute;
+     inset: 0;
+     display: grid;
+     place-items: center;
+     background: rgba(15, 23, 42, 0.45);
+     backdrop-filter: blur(4px);
+     border-radius: var(--radius-lg);
+     color: white;
+     font-weight: 800;
+     font-size: 1.1rem;
+     text-align: center;
+     padding: 20px;
+     z-index: 10;
+   }
+   ```
 3. **`.discovery-panel`**: Interactive experimentation container housing dynamic equation displays, range sliders, and prediction action controls.
-4. **`.quiz-card` & `.exercise-card`**: Input/QCM option card containers featuring feedback boxes (`.feedback-box.good`, `.feedback-box.bad`, `.feedback-box.info`).
+4. **`.quiz-card` & `.exercise-card`**: Input/QCM option card containers featuring feedback boxes (`.feedback-box.good`, `.feedback-box.bad`, `.feedback-box.info`) and instant non-blocking Continue action buttons for wrong answers/informational steps.
 5. **`.worked-example`**: Multi-step solution card featuring numbered counter steps (`.steps li::before`).
 6. **`.callout`**: Emphasized alert container with colored left-border accent (`.callout.success`, `.callout.warning`, `.callout.danger`).
 7. **`.mastery-report-card`**: Synthesis completion card featuring badge icon, score metrics grid, and recommendation highlights.
 8. **`.revision-card`**: Flash-revision card container.
 9. **`.exam-header-bar`**: Dark header bar displaying live exam countdown timer, question progression, and action controls.
+10. **`.math-input-group` (Student-Friendly Mathematical Input Components)**: Atomic input component layout where mathematical notation ($\sqrt{\phantom{x}}$, fraction bars, superscripts) is rendered visually by the UI.
+    - **Accessibility Attributes**: Every input field MUST feature explicit, descriptive accessibility tags (`aria-label="..."`, e.g. `aria-label="Coefficient extérieur"`, `aria-label="Nombre sous la racine"`, `aria-label="Numérateur"`).
+    - **Mobile Keypad Optimization**: All numeric fields MUST include `inputmode="numeric"` and `pattern="[0-9]*"` to automatically trigger mobile numeric keypads on iOS and Android devices.
+    - **Touch Targets & Focus**: Minimum touch target height ≥ 44px, inline width matched to expected value length (`min-width: 44px`, `text-align: center`), with high-contrast `:focus-visible` ring.
 
 ---
 
