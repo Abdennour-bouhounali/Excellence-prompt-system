@@ -370,9 +370,9 @@ def main():
             lang = "html" if filepath.suffix.lower() == ".html" else "plain text"
             blocks = plain_text_to_notion_blocks(content, lang)
             
-        # Append metadata block to blocks list
+        # Insert metadata block at the beginning of blocks list
         meta_block = make_metadata_block(path_str, sha256=local_hash, is_dir=False)
-        blocks.append(meta_block)
+        blocks.insert(0, meta_block)
         
         if path_str in managed_pages:
             notion_info = managed_pages[path_str]
