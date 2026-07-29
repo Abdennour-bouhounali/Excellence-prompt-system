@@ -18,7 +18,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - run: python scripts/sync.py
+      - run: python scripts/sync.py sync
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_PARENT_PAGE: ${{ secrets.NOTION_PARENT_PAGE }}
