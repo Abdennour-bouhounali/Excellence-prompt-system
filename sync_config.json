@@ -1,0 +1,19 @@
+{
+  "root": "Prompt System",
+  "sync": [
+    "docs/**",
+    "prompts/**",
+    "specifications/**",
+    "reference/**",
+    "Orchestrator_Prompt.txt"
+  ],
+  "ignore": [
+    "Output Lessons/**",
+    "scripts/**",
+    "validators/**",
+    "__pycache__/**",
+    "*.pyc",
+    "*.log"
+  ],
+  "delete_policy": "archive"
+}
