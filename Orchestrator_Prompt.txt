@@ -73,6 +73,8 @@ These files define the Excellens compiler architecture.
 
 Read and respect them before generating anything.
 
+The files in the Output Lessons/ folder are just examples of previous lessons. Do not use them as a source of information.
+
 --------------
 INPUTS
 ---------------
